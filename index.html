@@ -141,9 +141,6 @@ button[data-log]:hover{background:var(--ink); border-color:var(--ink);}
 #eventlog{border:1.5px solid var(--ink); background:#fff; padding:10px 12px; height:150px; overflow-y:auto; font-size:12.5px; color:var(--soft);}
 #eventlog .t{color:#bcb49c; margin-right:8px;}
 #eventlog .hot{color:var(--ink); font-weight:500;} #eventlog .warn{color:var(--red); font-weight:700;}
-.rulelist{counter-reset:r; font-size:14px;}
-.rulelist li{list-style:none; padding:7px 0 7px 40px; position:relative; border-bottom:1px solid var(--hair);}
-.rulelist li::before{counter-increment:r; content:counter(r,decimal-leading-zero); position:absolute; left:0; top:6px; font-family:"Archivo Black",sans-serif; font-size:15px;}
 .note{font-size:13px; color:var(--soft); margin-top:8px;}
 .repair-item{color:var(--ink); font-size:14px; padding:6px 0; border-bottom:1px solid var(--hair); display:flex; gap:8px; align-items:center;}
 .repair-item::before{content:""; width:10px; height:10px; background:var(--red); flex:none;}
@@ -154,11 +151,11 @@ button[data-log]:hover{background:var(--ink); border-color:var(--ink);}
 .carver b{font-weight:700;}
 .sched-day{border:1.5px solid var(--ink); background:var(--card); padding:10px 12px; margin-bottom:8px;}
 .sched-day h4{font-family:"Archivo Black",sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:.05em; border-bottom:1.5px solid var(--ink); padding-bottom:3px; margin-bottom:5px;}
-.sched-day .blk{display:flex; gap:10px; padding:4px 0; border-bottom:1px solid #eee6d0; font-size:13.5px; align-items:baseline;}
+.sched-day .blk{display:flex; gap:10px; padding:5px 0; border-bottom:1px solid #eee6d0; font-size:13.5px; align-items:baseline; flex-wrap:wrap;}
 .sched-day .blk:last-child{border-bottom:0;}
-.sched-day .bt{color:var(--soft); min-width:96px; white-space:nowrap; font-size:12.5px;}
+.sched-day .bt{color:var(--soft); min-width:92px; white-space:nowrap; font-size:12.5px;}
 .sched-day .bc{font-weight:700; min-width:76px;}
-.sched-day .life{color:var(--soft);}
+.sched-day .bp{color:var(--soft);}
 @media (prefers-reduced-motion:reduce){ .bar i{transition:none;} }
 @media (max-width:640px){ .kv b{font-size:22px;} .logo{font-size:27px;} }
 </style>
@@ -196,7 +193,7 @@ const PASS = 80;
 
 /* ================= THE ACADEMIC CALENDAR =================
    Matriculation: Jul 26 – Aug 8, 2026.  Term I: Aug 9 (Sun) – Oct 17 (Sat), ten weeks.
-   Written work due Saturdays. Quizzes Friday. Midterms Fri of Week 5 (Sep 11).
+   Written work due Saturdays. Quizzes in Friday's quiz section. Midterms Fri of Week 5 (Sep 11).
    Finals on fixed days in the Examination Week, Oct 18–24. */
 const T1START = new Date(2026,7,9);
 const MATRIC  = new Date(2026,6,26);
@@ -237,57 +234,29 @@ const FINALS = {
 };
 const MIDTERM_DATE = wkDate(4,5); /* Fri Sep 11 */
 
-/* ===== THE WEEK GRID — single source of truth for class meetings. ===== */
+/* ===== THE CLASS SCHEDULE — single source of truth.
+   Real college model: short meetings proportional to credits, ~15 in-class
+   hours a week, Mon–Fri afternoons only, placed OUTSIDE MNQ market hours
+   (RTH 6:30a–1:00p PT). Mornings and weekends carry no classes.
+   Everything not listed here is homework — you place it yourself.
+   Times are defaults: edit this block to move any class. ===== */
 const GRID = [
- [ {t:"early",c:null,l:"Light mixed review over coffee"},
-   {t:"7:00–9:00",c:"HPS 101",k:"Kitchen lab",l:"Batch cooking"},
-   {t:"9:00",c:null,l:"House, car and workspace reset"},
-   {t:"10:30",c:null,l:"Money and admin review"},
-   {t:"11:30–12:30",c:"ALL",k:"Tutorial",l:"Weekly tutorial or discussion"},
-   {t:"pm",c:null,l:"Reading, walking, recovery"},
-   {t:"3:30",c:null,l:"Inner Council + plan the week"},
-   {t:"eve",c:null,l:"No new projects tonight"} ],
- [ {t:"4:30–7:00",c:"MAT 101",k:"Lecture"},
-   {t:"8:00–11:00",c:"CRE 101",k:"Production",l:"Paid art and commissions"},
-   {t:"11:00",c:"CRE 101",k:"Outreach",l:"Sales contacts"},
-   {t:"1:00–2:30",c:"MUS 101",k:"Theory + ear"},
-   {t:"2:45–4:15",c:"CSC 101",k:"Lab"},
-   {t:"4:30–5:30",c:"HPS 101",k:"Strength"},
-   {t:"eve",c:null,l:"Shadow Ledger, prep tomorrow"} ],
- [ {t:"4:30–7:00",c:"CSC 101",k:"Lecture"},
-   {t:"8:00–12:00",c:"STB 090",k:"Agency block",l:"GA, documents, DMV, job search"},
-   {t:"1:00–3:00",c:"CRE 101",k:"Enterprise"},
-   {t:"3:15–4:15",c:"MUS 101",k:"Keyboard"},
-   {t:"4:15",c:null,l:"Walk"},
-   {t:"eve",c:null,l:"Cook, file paperwork, ledger"} ],
- [ {t:"4:30–7:00",c:"MAT 101",k:"Problem session"},
-   {t:"8:00–11:00",c:"CRE 101",k:"Production",l:"Art and portfolio production"},
-   {t:"11:00",c:"CRE 101",k:"Outreach",l:"Sales contacts"},
-   {t:"12:30–2:00",c:"CMP 101",k:"Studio"},
-   {t:"2:15–4:15",c:"CSC 101",k:"Project"},
-   {t:"4:30–5:30",c:"HPS 101",k:"Strength"},
-   {t:"eve",c:null,l:"Low-stimulation review"} ],
- [ {t:"4:30–6:30",c:"MAT 101",k:"Review"},
-   {t:"6:45–7:45",c:"MUS 101",k:"Musicianship"},
-   {t:"8:00–12:00",c:"STB 090",k:"Agency block",l:"Follow-ups"},
-   {t:"1:00–3:00",c:"CRE 101",k:"Enterprise"},
-   {t:"3:15–4:45",c:"CSC 101",k:"Pset section"},
-   {t:"eve",c:null,l:"Cooking + inner work"} ],
- [ {t:"4:30–7:00",c:"CSC 101",k:"Deep work"},
-   {t:"8:00–10:00",c:"MAT 101",k:"Quiz section",l:"Weekly quiz — assessment day"},
-   {t:"10:15–11:15",c:"AIM 101",k:"AI lab",l:"Prompt library + tutorial prep"},
-   {t:"11:30–12:30",c:"ALL",k:"Oral defense",l:"Defend one piece of work"},
-   {t:"1:30–3:00",c:"CMP 101",k:"Studio"},
-   {t:"3:15–4:15",c:"QTR 090",k:"Read-only review"},
-   {t:"4:30–5:30",c:"HPS 101",k:"Strength"},
-   {t:"eve",c:null,l:"Weekly review"} ],
- [ {t:"4:30–7:00",c:null,l:"Integrated math + Python project"},
-   {t:"8:00–10:00",c:"CRE 101",k:"Delivery",l:"Finish and deliver visual work"},
-   {t:"10:30–12:30",c:"CMP 101",k:"Studio"},
-   {t:"1:30–3:00",c:null,l:"Export scores, audio, code"},
-   {t:"3:15–4:15",c:"ALL",k:"Jury",l:"Weekly jury"},
-   {t:"4:15–5:00",c:"RDG 101",k:"Reading lab",l:"Public post + book brief"},
-   {t:"eve",c:null,l:"Early shutdown"} ],
+ [], /* Sunday — no classes */
+ [ {t:"1:30–2:30",c:"MAT 101",k:"Lecture"},
+   {t:"2:45–3:45",c:"MUS 101",k:"Class"},
+   {t:"4:00–5:00",c:"AIM 101",k:"Lab"} ],
+ [ {t:"1:30–3:00",c:"CSC 101",k:"Lecture"},
+   {t:"3:15–4:15",c:"CRE 101",k:"Practicum"} ],
+ [ {t:"1:30–2:30",c:"MAT 101",k:"Problem session"},
+   {t:"2:45–3:45",c:"MUS 101",k:"Class"},
+   {t:"4:00–5:00",c:"HPS 101",k:"Lab"} ],
+ [ {t:"1:30–3:00",c:"CSC 101",k:"Section"},
+   {t:"3:15–4:15",c:"CRE 101",k:"Practicum"},
+   {t:"4:30–5:15",c:"RDG 101",k:"Lab"} ],
+ [ {t:"1:30–2:30",c:"MAT 101",k:"Quiz section"},
+   {t:"2:45–4:15",c:"CMP 101",k:"Studio"},
+   {t:"4:30–5:00",c:"ALL",k:"Tutorial"} ],
+ [], /* Saturday — no classes; written work due by end of day */
 ];
 const DAYNAMES=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 function meetsLine(code){
@@ -295,8 +264,37 @@ function meetsLine(code){
   GRID.forEach((day,di)=>{ day.forEach(b=>{ if(b.c===code) parts.push(DAYNAMES[di].slice(0,3)+" "+b.t+" ("+b.k+")"); }); });
   return parts.join(" · ");
 }
-const MATRICPLAN = ["Record baselines — sleep, food, money, environment","Stand up the container: binder, calendar, one spreadsheet","Set the workspace and clean the car","Tue/Thu 8:00–12:00 · Agency block — GA, birth certificate, Social Security, DMV","Take the three placement exams — inside MAT, CSC and MUS","Install Anki, first 20 cards","Set the sleep window: 8:30p – 4:00a","No formal coursework yet — that starts Aug 9"];
-const ANCHORS = "Anki 20 minutes, first thing · one finished thing before shutdown · sleep window holds, 8:30p – 4:00a";
+/* What each meeting kind is FOR — the standing definition shown in Schedule */
+const KINDDESC = {
+ "MAT 101|Lecture":"work the week's reading","MAT 101|Problem session":"the week's problem set","MAT 101|Quiz section":"the weekly quiz, cumulative",
+ "CSC 101|Lecture":"the week's CS50P lecture","CSC 101|Section":"the week's problem set + build",
+ "MUS 101|Class":"theory chapter + written work (keyboard practice is homework)",
+ "CMP 101|Studio":"the current miniature",
+ "CRE 101|Practicum":"offers, outreach, publishing",
+ "HPS 101|Lab":"the week's logs and protocols",
+ "AIM 101|Lab":"prompt library + verification work",
+ "RDG 101|Lab":"the book brief + Anki deck",
+ "ALL|Tutorial":"defend one piece of work — the ten questions",
+};
+/* What each meeting covers THIS WEEK — resolved from the course data, so the
+   schedule always points at real coursework. */
+function agendaFor(code,kind){
+  const w=curWeek(); if(w<0||w>9) return "";
+  if(code==="ALL") return "Defend one piece of this week's work";
+  if(code==="MAT 101"){ const d=MATW[w];
+    if(kind==="Lecture") return "Read "+d.sec+" — "+d.t;
+    if(kind==="Problem session") return "Problem set: "+d.sec;
+    return d.noquiz? "Review week — rework the error log" : (d.mid? "MIDTERM — 40 questions, 60 minutes" : "Weekly quiz — 20 questions, cumulative"); }
+  if(code==="CSC 101"){ const d=CSCW[w];
+    return kind==="Lecture"? d.lec : d.pset+" + build: "+d.b; }
+  if(code==="MUS 101"){ const d=MUSW[w]; return d.t+" — "+d.w; }
+  const c=TERMS[0].courses.find(x=>x.code===code); if(!c||!c.items) return "";
+  const idx=c.items.findIndex((it,i)=> typeof it[2]==="number" && !S.checks[code+"#c"+i]);
+  if(idx>=0) return "Next: "+c.items[idx][1];
+  const fall={"CRE 101":"Weekly rhythm — ten contacts, one publish","HPS 101":"Review the week's logs","AIM 101":"Prompt library upkeep","RDG 101":"This week's book brief"};
+  return fall[code]||"";
+}
+const MATRICPLAN = ["Record baselines — sleep, food, money, environment","Stand up the container: one binder, one calendar, one spreadsheet","Set the workspace and clean the car","Agency work — GA, birth certificate, Social Security, DMV (business hours)","Take the three placement exams — inside MAT 101, CSC 101 and MUS 101","Install Anki, first 20 cards","No formal coursework yet — that starts Aug 9"];
 
 /* ================= THE PLACEMENT ENGINE ================= */
 const PLC = {
@@ -511,7 +509,7 @@ const GB_ITEMS={
 };
 
 const TERMS = [
-{ id:"T1", name:"Term I — Foundations", dates:"Aug 9 – Oct 17 · exams Oct 18–24", begins:null, active:true,
+{ id:"T1", name:"Term I — Foundations", dates:"Aug 9 – Oct 17 · exams Oct 18–24", begins:null,
   note:"Term I records Pass / No Pass — the MIT and Caltech first-year rule. Every course carries the same 100-point gradebook: 5 homework × 6 + midterm 20 + final 50. Every task has its real due date; work ahead any time.",
   courses:[
   C("ORI 000",0,"Matriculation","The two setup weeks that make Aug 9 possible. Everything here is due before the first day of class.","None.",
@@ -529,7 +527,7 @@ const TERMS = [
     "Notation to phrase structure through Open Music Theory, with a daily keyboard and ear prescription, ending in a jury.",
     "None. The placement exam below is due by Aug 8.",
     [["Open Music Theory",true],["Alfred's Basic Adult All-in-One (piano method)",false]], "mus",
-    {placement:true, daily:"Daily, six days a week, 60 minutes: technique 15 · reading 10 · rhythm 10 · ear and singing 10 · repertoire 15."}),
+    {placement:true, daily:"Practice homework: 60 minutes, six days a week — technique 15 · reading 10 · rhythm 10 · ear and singing 10 · repertoire 15."}),
   C("CMP 101",2,"Composition Studio I",
     "Four finished miniatures and one revision, each through the full cycle: idea → sketch → draft → critique → revision → export. Each milestone has its week.",
     "Alongside MUS 101.",
@@ -574,7 +572,7 @@ const TERMS = [
     "The open loops that make everything else physically possible. Outranks every academic course until closed — Constitution 17. Government timelines slip; your deadline is to have every loop initiated and tracked by Aug 8.",
     "None. Front-loaded.",
     [["Your open-loops ledger",false]], "lab",
-    {items:[["STB090-LED1","Write the open-loops ledger",0],["STB090-GA01","Initiate General Assistance",0],["STB090-BC01","Request the birth certificate (Merced)",0],["STB090-SS01","Request Social Security documentation",0],["STB090-DMV1","Check DMV status",0],["STB090-JOB1","Job-search sprints in the Tue/Thu blocks","w"],["STB090-MED1","Queue medical and dental appointments",1]]}),
+    {items:[["STB090-LED1","Write the open-loops ledger",0],["STB090-GA01","Initiate General Assistance",0],["STB090-BC01","Request the birth certificate (Merced)",0],["STB090-SS01","Request Social Security documentation",0],["STB090-DMV1","Check DMV status",0],["STB090-JOB1","Job-search sprints, twice a week","w"],["STB090-MED1","Queue medical and dental appointments",1]]}),
 ]},
 { id:"T2", name:"Term II — Methods", dates:"Oct 25 – Jan 2", begins:"Oct 25",
   note:"Letter grades reach the transcript from this term.",
@@ -652,7 +650,7 @@ function flash(msg){ const f=document.getElementById("flash"); f.textContent=msg
 function award(xp){ const before=rank(); S.xp+=xp; if(rank()!==before){ logEv("Rank up · "+rank(),"hot"); setTimeout(()=>flash("RANK UP: "+rank()),400);} }
 function rank(){ let r=RANKS[0][1]; for(const [x,t] of RANKS) if(S.xp>=x) r=t; return r; }
 
-/* ================= TASKS + SCHEDULE ================= */
+/* ================= TASKS ================= */
 let PROMPTS=[];
 function P(t){ PROMPTS.push(t); return PROMPTS.length-1; }
 function isHW(c, code){
@@ -674,7 +672,7 @@ function courseWeeks(c){
       {type:"chk", code:W(n)+"-PS01", tx:"Do "+w.ps+". Full attempt before checking any answers — they are in your book.", due:dueForWeekTask(i,false)},
       {type:"chk", code:W(n)+"-EX01", tx:"Write 300–500 words: "+w.ex, due:dueForWeekTask(i,false)},
     ];
-    if(!w.noquiz) tasks.push({type:"quiz", code:W(n)+(w.mid?"-MID":"-Q01"), tx:(w.mid?"Midterm — Friday, "+fshort(MIDTERM_DATE)+". 40 questions, 60 minutes, everything so far. Worth 20 gradebook points.":"Quiz — Friday. 20 questions, 30 minutes, everything so far."), qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(w.mid?matMidPrompt():matQuizPrompt(n,w.end,w.sec,w.t))});
+    if(!w.noquiz) tasks.push({type:"quiz", code:W(n)+(w.mid?"-MID":"-Q01"), tx:(w.mid?"Midterm — Friday, "+fshort(MIDTERM_DATE)+". 40 questions, 60 minutes, everything so far. Worth 20 gradebook points.":"Quiz — Friday's quiz section. 20 questions, 30 minutes, everything so far."), qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(w.mid?matMidPrompt():matQuizPrompt(n,w.end,w.sec,w.t))});
     weeks.push({title:"Week "+n, sub:w.t, wi:i, tasks});});
   } else if(c.kind==="csc"){
     CSCW.forEach((w,i)=>{ const n=i+1; weeks.push({title:"Week "+n, sub:w.lec.replace(/Lecture \d+ — /,""), wi:i, tasks:[
@@ -804,7 +802,7 @@ function gradingDetails(){
   <b>80 = B− = pass.</b> Same gate as always. Under 80 on anything → Repairs: patch it, retest, cleared. Term I records simply <b>P</b> on the transcript — MIT's first-year rule — with your letter kept in the gradebook.</div></details>`;
 }
 function spineHTML(c){ return `<div class="spine">The book${c.spine.length>1?"s":""}: ${c.spine.map(s=>`<b>${s[0]}</b>${s[1]===true?'<span class="free">FREE</span>':''}`).join(" · ")}</div>`; }
-function meetsHTML(c){ const m=meetsLine(c.code); return m? `<div class="meets"><b>Meets:</b> ${m}</div>` : ""; }
+function meetsHTML(c){ const m=meetsLine(c.code); return m? `<div class="meets"><b>Meets:</b> ${m}. Everything else is homework — written work due Saturdays.</div>` : ""; }
 function quizCell(qkey, sc, diag){
   const stamp = sc==null? "" : diag? `<span class="stamp d">logged ${sc}${sc<PASS?" — see your repair plan":""}</span>` : sc>=PASS? `<span class="stamp p">Cleared ✓ ${sc}</span>` : `<span class="stamp r">Needs repair · ${sc}</span>`;
   return `<div class="qrow"><input type="number" min="0" max="100" placeholder="score" data-q="${qkey}" aria-label="score"><button data-log="${qkey}" data-diag="${diag?1:0}">Log</button>${stamp}</div>`;
@@ -883,9 +881,9 @@ function syllabusHTML(c){
   <h3>${CO} — ${c.title}</h3>
   <div class="note" style="margin-top:2px">Renaissance Operator Institute · Term I, Fall 2026 · ${c.cr} credits</div>
   <h4>Organisation</h4>
-  <div style="font-size:13px">Course head: Ricky. Examiner of record: your AI, per AIM 101 and the Honor Code. Tutorials: Fri 11:30 and Sun 11:30.</div>
+  <div style="font-size:13px">Course head: Ricky. Examiner of record: your AI, per AIM 101 and the Honor Code. Tutorial: Fri 4:30.</div>
   <h4>Meets</h4>
-  <div style="font-size:13px">${meetsLine(CO)||"By arrangement — see Schedule."}</div>
+  <div style="font-size:13px">${meetsLine(CO)||"No class meetings — checklist work on your own schedule."}</div>
   <h4>Textbook</h4>
   <div style="font-size:13px">${c.spine.map(s=>s[0]+(s[1]===true?" (free)":"")).join(" · ")}</div>
   <h4>Description</h4>
@@ -900,7 +898,7 @@ function syllabusHTML(c){
   <h4>Calendar</h4>
   <ul class="cal">${cal}</ul>
   <h4>Policies</h4>
-  <div style="font-size:13px">Full attempt before answer keys (first-attempt target 80). Misses go to Repairs and are retested. Exams closed-book and timed. Work ahead freely — dates are the floor. Constitution 9 would like a word before any all-nighter.</div>
+  <div style="font-size:13px">Full attempt before answer keys (first-attempt target 80). Misses go to Repairs and are retested. Exams closed-book and timed. Work ahead freely — dates are the floor.</div>
   </div>`;
 }
 
@@ -1002,7 +1000,7 @@ function renderDash(){
   const dateLine=now.toLocaleDateString("en-US",{weekday:"long", month:"long", day:"numeric"});
   const dow=now.getDay();
   let planHTML;
-  if(ph.p==="before"){ planHTML=["Tonight, write one line: Matriculation begins after sleep.","Then close the university for the night."].map(x=>`<li class="life">${x}</li>`).join(""); }
+  if(ph.p==="before"){ planHTML=["Matriculation begins "+fdate(MATRIC)+".","Nothing is due yet."].map(x=>`<li class="life">${x}</li>`).join(""); }
   else if(ph.p==="matric"){ planHTML=MATRICPLAN.map(x=>`<li class="life">${x}</li>`).join(""); }
   else if(ph.p==="exam"){
     const t=todayD();
@@ -1010,8 +1008,13 @@ function renderDash(){
     planHTML=[ todays.length? "Finals today: "+todays.join(", ")+" — defense follows each final." : "See the finals schedule in the Schedule tab.",
       "Sun Oct 18 · reading day. Sat Oct 24 · repairs and makeups.","No new material this week."].map(x=>`<li class="life">${x}</li>`).join("");
   }
-  else if(ph.p==="post"){ planHTML=["Term I is complete. Term II begins Oct 25.","Winter reading and repair."].map(x=>`<li class="life">${x}</li>`).join(""); }
-  else planHTML=GRID[dow].map(b=> b.c? `<li><span class="cc2">${b.t} · ${b.c}</span>&nbsp;${b.k||""}${b.l?" — "+b.l:""}</li>` : `<li class="life">${b.t} · ${b.l}</li>`).join("");
+  else if(ph.p==="post"){ planHTML=["Term I is complete. Term II begins Oct 25."].map(x=>`<li class="life">${x}</li>`).join(""); }
+  else {
+    const blocks=GRID[dow];
+    planHTML = blocks.length
+      ? blocks.map(b=>{ const ag=agendaFor(b.c,b.k); return `<li><span class="cc2">${b.t} · ${b.c==="ALL"?"Tutorial":b.c}</span>${b.c!=="ALL"&&b.k? " "+b.k:""}${ag? " — "+ag:""}</li>`; }).join("")
+      : `<li class="life">No classes today. Homework is yours to place — written work is due Saturday.</li>`;
+  }
 
   const due=dueList(); const shown=due.slice(0,7);
   const t1=TERMS[0]; let earned=0, possible=0;
@@ -1023,12 +1026,12 @@ function renderDash(){
     <div class="todaydate">${dateLine}</div>
     <div class="phase">${ph.label}</div>
     <ul class="plan">${planHTML}</ul>
-    <div class="note">Every day: ${ANCHORS}.</div>
+    <div class="note">Class time is ~15 hours a week, 1:30–5:15 PM, outside market hours. Everything else is homework you place yourself. Standing homework: Anki 20 min daily (RDG 101) · keyboard practice 60 min, six days (MUS 101).</div>
   </div>
   <div class="panel"><div class="ph">Due</div>
     ${shown.length? shown.map(n=>`<div class="next-card ${n.od?'od':''}"><span class="cc">${n.cc}</span><span style="flex:1">${n.tx}</span><span class="duechip">${n.od?'overdue · was '+fdate(n.due):'due '+fdate(n.due)}</span><button data-go="${n.id}">Go</button></div>`).join("") : `<div class="note">Nothing due right now. ${ph.p==="term"?"This week is clear — work ahead if you want; the calendar brings the next week to you on "+fdate(wkDate(Math.min(curWeek()+1,9),0))+".":"The term calendar takes over on Aug 9."}</div>`}
     ${due.length>7? `<div class="note">+ ${due.length-7} more in Courses.</div>`:""}
-    <div class="note">Order is real: overdue first, then by date, with Stabilization outranking coursework — Constitution 17. Written work Saturdays · quizzes Fridays · midterms Fri ${fshort(MIDTERM_DATE)} · finals on fixed days, Oct 18–24 — see Schedule.</div>
+    <div class="note">Order is real: overdue first, then by date, with Stabilization outranking coursework — Constitution 17. Written work Saturdays · quizzes in Friday's sections · midterms Fri ${fshort(MIDTERM_DATE)} · finals on fixed days, Oct 18–24 — see Schedule.</div>
   </div>
   <div class="panel"><div class="ph">Student status</div>
     <div class="kv">
@@ -1051,22 +1054,24 @@ function renderDash(){
 }
 
 function renderSchedule(){
-  let h=`<div class="panel"><div class="ph">The week — every class, fixed times, no conflicts</div>
-  <div class="note" style="margin:0 0 12px">The same grid drives Today and every course's Meets line — one source, so it cannot contradict itself. Predictability is the point: you always know when every class starts, so you can work ahead or trade hours deliberately.</div>`;
-  GRID.forEach((day,di)=>{
+  const hours = GRID.flat().length;
+  let h=`<div class="panel"><div class="ph">Class schedule — Term I</div>
+  <div class="note" style="margin:0 0 12px">The real college model: about <b>15 hours of class a week</b>, Monday–Friday, 1:30–5:15 PM — placed outside MNQ market hours (6:30a–1:00p PT). Mornings and weekends carry no classes; everything not on this grid is homework you place yourself, with written work due Saturdays. Each meeting below states what it exists for, and Today resolves it to the current week's actual assignment. One grid drives Today and every course's Meets line, so the schedule cannot contradict itself. Times are defaults — edit the GRID block at the top of the file to move any class.</div>`;
+  [1,2,3,4,5].forEach(di=>{
     h+=`<div class="sched-day"><h4>${DAYNAMES[di]}</h4>`;
-    day.forEach(b=>{
-      h+= b.c? `<div class="blk"><span class="bt">${b.t}</span><span class="bc">${b.c}</span><span>${b.k||""}${b.l?" — "+b.l:""}</span></div>`
-             : `<div class="blk life"><span class="bt">${b.t}</span><span style="min-width:76px"></span><span>${b.l}</span></div>`;
+    GRID[di].forEach(b=>{
+      const purpose = KINDDESC[(b.c)+"|"+(b.k)] || "";
+      h+=`<div class="blk"><span class="bt">${b.t}</span><span class="bc">${b.c==="ALL"?"Tutorial":b.c}</span><span class="bp">${b.c==="ALL"?"":b.k+" — "}${purpose}</span></div>`;
     });
     h+=`</div>`;
   });
-  h+=`</div>
+  h+=`<div class="sched-day"><h4>Saturday + Sunday</h4><div class="blk"><span class="bt">—</span><span class="bc"></span><span class="bp">No classes. Written work due Saturday; otherwise the weekend is yours.</span></div></div>
+  </div>
   <div class="panel"><div class="ph">Exam dates — fixed, visible from day one</div>
   <table class="tr-table"><tr><th>Course</th><th>Midterm</th><th>Final</th></tr>
   ${TERMS[0].courses.filter(c=>c.kind!=="lab").map(c=>`<tr><td><b>${c.code}</b></td><td>${fdate(MIDTERM_DATE)}</td><td>${fdate(FINALS[c.code])} · ${c.finlabel||"Final exam"} + defense</td></tr>`).join("")}
   </table>
-  <div class="note">Sun Oct 18 · reading day. Sat Oct 24 · repairs and makeups. Knowing every date from today is what buys the flexibility you wanted — front-load homework, or spend the night before an exam studying. (Constitution 9 will side-eye the all-nighter; the schedule makes it possible anyway, because the dates never sneak up on you.)</div></div>`;
+  <div class="note">Sun Oct 18 · reading day. Sat Oct 24 · repairs and makeups. Every date is known from today — front-load homework or cram before an exam; the dates never sneak up on you.</div></div>`;
   view.innerHTML=h;
 }
 
