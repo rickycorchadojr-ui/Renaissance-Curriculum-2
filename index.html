@@ -166,7 +166,7 @@ button[data-log]:hover{background:var(--ink); border-color:var(--ink);}
 <header>
   <div class="logo">Renaissance Operator Institute</div>
   <div class="shapes" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><i class="s5"></i></div>
-  <div class="sub">Ricky · Honors Foundation Year · Fall 2026 · "Do what is right in front of you."</div>
+  <div class="sub">Ricky · Honors Foundation Year · Fall 2026 · BUILD 10 · "Do what is right in front of you."</div>
   <div class="key">Color means one thing everywhere: <b class="kb">blue = now</b> · <b class="kr">red = late or needs repair</b> · <b class="ky">yellow = counts for points</b> · <b class="kg">green = done</b></div>
 </header>
 
@@ -242,20 +242,20 @@ const MIDTERM_DATE = wkDate(4,5); /* Fri Sep 11 */
    Times are defaults: edit this block to move any class. ===== */
 const GRID = [
  [], /* Sunday — no classes */
- [ {t:"1:30–2:30",c:"MAT 101",k:"Lecture"},
-   {t:"2:45–3:45",c:"MUS 101",k:"Class"},
-   {t:"4:00–5:00",c:"AIM 101",k:"Lab"} ],
- [ {t:"1:30–3:00",c:"CSC 101",k:"Lecture"},
-   {t:"3:15–4:15",c:"CRE 101",k:"Practicum"} ],
- [ {t:"1:30–2:30",c:"MAT 101",k:"Problem session"},
-   {t:"2:45–3:45",c:"MUS 101",k:"Class"},
-   {t:"4:00–5:00",c:"HPS 101",k:"Lab"} ],
- [ {t:"1:30–3:00",c:"CSC 101",k:"Section"},
-   {t:"3:15–4:15",c:"CRE 101",k:"Practicum"},
-   {t:"4:30–5:15",c:"RDG 101",k:"Lab"} ],
- [ {t:"1:30–2:30",c:"MAT 101",k:"Quiz section"},
-   {t:"2:45–4:15",c:"CMP 101",k:"Studio"},
-   {t:"4:30–5:00",c:"ALL",k:"Tutorial"} ],
+ [ {t:"1:30–2:30p",c:"MAT 101",k:"Lecture"},
+   {t:"2:45–3:45p",c:"MUS 101",k:"Class"},
+   {t:"4:00–5:00p",c:"AIM 101",k:"Lab"} ],
+ [ {t:"1:30–3:00p",c:"CSC 101",k:"Lecture"},
+   {t:"3:15–4:15p",c:"CRE 101",k:"Practicum"} ],
+ [ {t:"1:30–2:30p",c:"MAT 101",k:"Problem session"},
+   {t:"2:45–3:45p",c:"MUS 101",k:"Class"},
+   {t:"4:00–5:00p",c:"HPS 101",k:"Lab"} ],
+ [ {t:"1:30–3:00p",c:"CSC 101",k:"Section"},
+   {t:"3:15–4:15p",c:"CRE 101",k:"Practicum"},
+   {t:"4:30–5:15p",c:"RDG 101",k:"Lab"} ],
+ [ {t:"1:30–2:30p",c:"MAT 101",k:"Quiz section"},
+   {t:"2:45–4:15p",c:"CMP 101",k:"Studio"},
+   {t:"4:30–5:00p",c:"ALL",k:"Tutorial"} ],
  [], /* Saturday — no classes; written work due by end of day */
 ];
 const DAYNAMES=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -881,7 +881,7 @@ function syllabusHTML(c){
   <h3>${CO} — ${c.title}</h3>
   <div class="note" style="margin-top:2px">Renaissance Operator Institute · Term I, Fall 2026 · ${c.cr} credits</div>
   <h4>Organisation</h4>
-  <div style="font-size:13px">Course head: Ricky. Examiner of record: your AI, per AIM 101 and the Honor Code. Tutorial: Fri 4:30.</div>
+  <div style="font-size:13px">Course head: Ricky. Examiner of record: your AI, per AIM 101 and the Honor Code. Tutorial: Fri 4:30p.</div>
   <h4>Meets</h4>
   <div style="font-size:13px">${meetsLine(CO)||"No class meetings — checklist work on your own schedule."}</div>
   <h4>Textbook</h4>
