@@ -10,15 +10,15 @@
 :root{
   --paper:#f6f0e1; --card:#fffdf4; --ink:#161513;
   --red:#e3372e; --blue:#2456c4; --yellow:#f2b60f; --green:#1d8a4a;
-  --soft:#6f6a5e;
+  --soft:#6f6a5e; --hair:#e4dcc6;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{-webkit-text-size-adjust:100%;}
 body{background:var(--paper); color:var(--ink); font-family:"Space Grotesk", system-ui, sans-serif; font-size:15.5px; line-height:1.55; min-height:100vh;}
 .wrap{max-width:900px; margin:0 auto; padding:18px 14px 90px;}
-header{padding:8px 2px 12px;}
+header{padding:8px 2px 4px;}
 .logo{font-family:"Archivo Black", sans-serif; font-size:34px; line-height:1.02; letter-spacing:-.5px;}
-.shapes{display:flex; gap:8px; margin:10px 0 6px; align-items:flex-end;}
+.shapes{display:flex; gap:8px; margin:10px 0 8px; align-items:flex-end;}
 .shapes i{display:block; width:18px; height:18px;}
 .shapes .s1{background:var(--red);}
 .shapes .s2{background:var(--blue); border-radius:50%;}
@@ -26,55 +26,49 @@ header{padding:8px 2px 12px;}
 .shapes .s4{background:var(--green);}
 .shapes .s5{background:var(--ink); border-radius:50% 50% 0 0;}
 .sub{font-size:12.5px; text-transform:uppercase; letter-spacing:.14em; color:var(--soft);}
-nav{display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 18px;}
-nav button{font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:13.5px; background:var(--card); color:var(--ink); border:2px solid var(--ink); padding:8px 13px; cursor:pointer; box-shadow:3px 3px 0 var(--ink);}
-nav button.on{background:var(--yellow);}
-nav button:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink);}
+.key{font-size:12px; color:var(--soft); margin-top:6px;}
+.key b{font-weight:700;}
+.key .kb{color:var(--blue);} .key .kr{color:var(--red);} .key .ky{background:var(--yellow); color:var(--ink); padding:0 4px;} .key .kg{color:var(--green);}
+nav{display:flex; gap:18px; flex-wrap:wrap; margin:16px 0 20px; border-bottom:2px solid var(--ink); padding-bottom:0;}
+nav button{font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:14px; background:none; color:var(--ink); border:0; border-bottom:4px solid transparent; padding:6px 2px 8px; cursor:pointer; margin-bottom:-2px;}
+nav button.on{border-bottom-color:var(--blue); color:var(--blue);}
 nav button:focus-visible{outline:3px solid var(--blue); outline-offset:2px;}
-.panel{border:2px solid var(--ink); background:var(--card); padding:16px 18px; margin-bottom:18px; box-shadow:4px 4px 0 var(--ink);}
-.ph{font-family:"Archivo Black",sans-serif; font-size:16px; letter-spacing:.04em; text-transform:uppercase; display:inline-block; padding:3px 12px; margin-bottom:12px; color:#fff; background:var(--blue);}
-.ph.red{background:var(--red);} .ph.green{background:var(--green);} .ph.yellow{background:var(--yellow); color:var(--ink);} .ph.ink{background:var(--ink);}
-.mk{display:inline-block; width:13px; height:13px; vertical-align:-1px; margin-right:7px; flex:none;}
-.mk.ci{border-radius:50%;}
-.mk.r{background:var(--red);} .mk.b{background:var(--blue);} .mk.y{background:var(--yellow);} .mk.g{background:var(--green);} .mk.k{background:var(--ink);}
-.mk.tr{width:0; height:0; background:none !important; border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:14px solid var(--ink);}
-.mk.tr.r{border-bottom-color:var(--red);} .mk.tr.b{border-bottom-color:var(--blue);} .mk.tr.y{border-bottom-color:var(--yellow);} .mk.tr.g{border-bottom-color:var(--green);}
+.panel{border:2px solid var(--ink); background:var(--card); padding:16px 18px; margin-bottom:20px; box-shadow:4px 4px 0 var(--ink);}
+.ph{font-family:"Archivo Black",sans-serif; font-size:17px; letter-spacing:.02em; text-transform:uppercase; border-bottom:2px solid var(--ink); padding-bottom:6px; margin-bottom:12px;}
 .kv{display:flex; flex-wrap:wrap; gap:12px 28px;}
 .kv b{display:block; font-family:"Archivo Black",sans-serif; font-size:26px; line-height:1;}
 .kv span{font-size:11px; color:var(--soft); text-transform:uppercase; letter-spacing:.1em;}
-.bar{height:14px; border:2px solid var(--ink); margin-top:12px; position:relative; background:var(--card);}
+.bar{height:12px; border:2px solid var(--ink); margin-top:12px; position:relative; background:var(--card);}
 .bar i{position:absolute; inset:0; width:0%; background:var(--green); transition:width .4s;}
 .todaydate{font-family:"Archivo Black",sans-serif; font-size:26px; line-height:1.1;}
 .phase{color:var(--soft); font-size:13px; margin:4px 0 10px;}
-.plan li{list-style:none; padding:5px 0 5px 2px; font-size:14.5px; border-bottom:1px solid #e4dcc6; display:flex; gap:8px; align-items:baseline;}
+.plan li{list-style:none; padding:5px 0; font-size:14.5px; border-bottom:1px solid var(--hair);}
 .plan li:last-child{border-bottom:0;}
 .plan .cc2{font-weight:700;}
 .plan .life{color:var(--soft);}
-.next-card{border:2px solid var(--ink); background:var(--card); padding:10px 12px; margin-bottom:10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; box-shadow:3px 3px 0 var(--ink);}
-.next-card.od{border-color:var(--red); box-shadow:3px 3px 0 var(--red);}
-.next-card .cc{font-weight:700; min-width:96px; display:flex; align-items:center;}
-.next-card .duechip{font-size:12px; color:var(--soft); white-space:nowrap;}
-.next-card.od .duechip{color:var(--red); font-weight:700;}
-.next-card button{margin-left:auto; background:var(--blue); border:2px solid var(--ink); color:#fff; font-family:inherit; font-weight:700; font-size:13px; padding:6px 14px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);}
-.next-card button:active{transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink);}
-.term-h{display:flex; align-items:baseline; gap:12px; margin:24px 0 10px; flex-wrap:wrap;}
-.term-h h2{font-family:"Archivo Black",sans-serif; font-size:22px;}
+.next-card{border:1.5px solid var(--ink); background:var(--card); padding:10px 12px; margin-bottom:8px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+.next-card.od{border-color:var(--red); border-width:2px;}
+.next-card .cc{font-weight:700; min-width:84px;}
+.next-card .duechip{font-size:12px; color:var(--blue); font-weight:700; white-space:nowrap;}
+.next-card.od .duechip{color:var(--red);}
+.next-card button{margin-left:auto; background:var(--blue); border:0; color:#fff; font-family:inherit; font-weight:700; font-size:13px; padding:7px 15px; cursor:pointer;}
+.next-card button:active{transform:translate(1px,1px);}
+.term-h{display:flex; align-items:baseline; gap:12px; margin:26px 0 10px; flex-wrap:wrap;}
+.term-h h2{font-family:"Archivo Black",sans-serif; font-size:21px;}
 .term-h small{color:var(--soft); font-size:12.5px;}
-.lock{color:var(--red); font-weight:700;}
-.course{border:2px solid var(--ink); background:var(--card); margin-bottom:12px; box-shadow:4px 4px 0 var(--ink);}
+.course{border:1.5px solid var(--ink); background:var(--card); margin-bottom:10px;}
 .course>button.head{width:100%; text-align:left; background:none; border:0; color:inherit; font-family:inherit; padding:13px 15px; cursor:pointer; display:flex; gap:10px; align-items:center; font-size:15.5px; flex-wrap:wrap;}
 .course>button.head:focus-visible{outline:3px solid var(--blue); outline-offset:-3px;}
 .code{font-weight:700; min-width:80px;}
 .cred{margin-left:auto; color:var(--soft); font-size:12px; white-space:nowrap;}
-.grade-chip{font-family:"Archivo Black",sans-serif; font-size:13px; padding:3px 9px; border:2px solid var(--ink); background:var(--card); min-width:34px; text-align:center; white-space:nowrap;}
-.grade-chip.pass{background:var(--green); color:#fff;}
-.grade-chip.lk{border-style:dashed; color:var(--soft);}
-.body{display:none; padding:2px 15px 15px; border-top:2px dashed var(--ink);}
+.grade-chip{font-family:"Archivo Black",sans-serif; font-size:13px; padding:3px 9px; border:1.5px solid var(--ink); background:var(--card); min-width:34px; text-align:center; white-space:nowrap;}
+.grade-chip.pass{background:var(--green); border-color:var(--green); color:#fff;}
+.body{display:none; padding:2px 15px 15px; border-top:1.5px dashed var(--ink);}
 .course.open .body{display:block;}
-.spine{border-left:6px solid var(--blue); padding:9px 12px; margin:12px 0; background:#f1ead6; font-size:14px;}
+.spine{border-left:4px solid var(--ink); padding:9px 12px; margin:12px 0; background:#f1ead6; font-size:14px;}
 .spine b{font-weight:700;}
-.meets{border-left:6px solid var(--red); padding:9px 12px; margin:12px 0; background:#f1ead6; font-size:13.5px;}
-.meets b{color:var(--red);}
+.meets{border-left:4px solid var(--ink); padding:9px 12px; margin:12px 0; background:#f1ead6; font-size:13.5px;}
+.meets b{font-weight:700;}
 .free{color:#fff; background:var(--green); font-size:10px; padding:1px 6px; margin-left:6px; font-weight:700; letter-spacing:.05em;}
 .cat{font-size:13.5px; color:var(--soft); margin:10px 0 2px;}
 details.grading{margin:8px 0 12px; font-size:13.5px;}
@@ -82,97 +76,88 @@ details.grading summary{cursor:pointer; color:var(--blue); font-weight:700; list
 details.grading summary::before{content:"▸ ";}
 details[open].grading summary::before{content:"▾ ";}
 details.grading .gtxt{padding:8px 0 0 14px;}
-.week{border:2px solid var(--ink); margin-bottom:10px; background:var(--card);}
-.week.od{border-left:8px solid var(--red);}
-.week.now{border-left:8px solid var(--blue);}
+.week{border:1.5px solid var(--ink); margin-bottom:8px; background:var(--card);}
+.week.od{border-left:6px solid var(--red);}
+.week.now{border-left:6px solid var(--blue);}
 .week>button.wh{width:100%; text-align:left; background:none; border:0; color:inherit; font-family:inherit; font-size:14px; font-weight:500; padding:11px 13px; cursor:pointer; display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
 .week>button.wh:focus-visible{outline:3px solid var(--blue); outline-offset:-3px;}
 .week .wdates{color:var(--soft); font-size:12px;}
 .week .dots{margin-left:auto; letter-spacing:3px; font-size:11px; color:#cfc7ae;}
 .week .dots .on{color:var(--green);}
-.wk-body{display:none; padding:2px 13px 12px; border-top:2px dashed var(--ink);}
+.wk-body{display:none; padding:2px 13px 12px; border-top:1.5px dashed var(--ink);}
 .week.open .wk-body{display:block;}
-.task{display:flex; gap:10px; padding:10px 0; border-bottom:1px solid #e4dcc6; align-items:flex-start;}
+.task{display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--hair); align-items:flex-start;}
 .task:last-child{border-bottom:0;}
 .task .chk{width:20px; height:20px; accent-color:#1d8a4a; cursor:pointer; margin-top:1px; flex:none;}
 .task .tx{flex:1; font-size:14px;}
 .task .meta{display:flex; flex-direction:column; align-items:flex-end; gap:3px; flex:none;}
-.task .tag{color:#b5ad96; font-size:10.5px; white-space:nowrap; letter-spacing:.03em;}
+.task .tag{color:#bcb49c; font-size:10px; white-space:nowrap; letter-spacing:.03em;}
 .hwflag{color:var(--ink); background:var(--yellow); font-weight:700; font-size:10.5px; white-space:nowrap; padding:1px 6px;}
 .due{font-size:11px; color:var(--soft); white-space:nowrap;}
 .due.od{color:var(--red); font-weight:700;}
 .due.now{color:var(--blue); font-weight:700;}
 .qwrap{flex:1;}
 .qrow{display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:6px;}
-.qrow input[type=number]{width:70px; background:#fff; border:2px solid var(--ink); color:var(--ink); font-family:inherit; padding:5px 7px; font-size:14px;}
-.qrow button, .genbtn, .pl-btn{background:var(--card); border:2px solid var(--ink); color:var(--ink); font-family:inherit; font-weight:700; font-size:13px; padding:5px 11px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);}
-.qrow button:hover, .genbtn:hover, .pl-btn:hover{background:var(--yellow);}
-.qrow button:active, .genbtn:active, .pl-btn:active{transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink);}
+.qrow input[type=number]{width:70px; background:#fff; border:1.5px solid var(--ink); color:var(--ink); font-family:inherit; padding:5px 7px; font-size:14px;}
+.qrow button, .genbtn, .pl-btn{background:var(--card); border:1.5px solid var(--ink); color:var(--ink); font-family:inherit; font-weight:700; font-size:13px; padding:5px 11px; cursor:pointer;}
+.qrow button:hover, .genbtn:hover, .pl-btn:hover{background:var(--ink); color:var(--card);}
+.qrow button:active, .genbtn:active, .pl-btn:active{transform:translate(1px,1px);}
+button[data-log]{background:var(--blue); border-color:var(--blue); color:#fff;}
+button[data-log]:hover{background:var(--ink); border-color:var(--ink);}
 .stamp{font-weight:700; font-size:13.5px; margin-left:4px;}
 .stamp.p{color:var(--green);} .stamp.r{color:var(--red);} .stamp.d{color:var(--soft);}
 .gen{display:none; margin-top:8px;}
 .gen.show{display:block;}
-.gen textarea{width:100%; height:150px; background:#fff; color:var(--ink); border:2px solid var(--ink); font-family:"Space Grotesk",sans-serif; font-size:12.5px; padding:8px;}
-.plc{border:2px solid var(--ink); background:var(--card); padding:12px 14px; margin:14px 0; box-shadow:4px 4px 0 var(--blue);}
+.gen textarea{width:100%; height:150px; background:#fff; color:var(--ink); border:1.5px solid var(--ink); font-family:"Space Grotesk",sans-serif; font-size:12.5px; padding:8px;}
+.plc{border:2px solid var(--ink); background:var(--card); padding:12px 14px; margin:14px 0;}
 .plc h3{font-family:"Archivo Black",sans-serif; font-size:16px; margin-bottom:6px;}
-.plc .dom{font-family:"Archivo Black",sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:#fff; background:var(--blue); display:inline-block; padding:2px 9px; margin:12px 0 4px;}
-.plc .pq{padding:8px 0; border-bottom:1px solid #e4dcc6; font-size:14px;}
-.plc .pq pre{white-space:pre-wrap; background:#fff; border:2px solid var(--ink); padding:6px 8px; margin-top:5px; font-size:13px; font-family:ui-monospace,Menlo,monospace;}
+.plc .dom{font-family:"Archivo Black",sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.06em; border-bottom:2px solid var(--ink); display:inline-block; padding-bottom:2px; margin:14px 0 4px;}
+.plc .pq{padding:8px 0; border-bottom:1px solid var(--hair); font-size:14px;}
+.plc .pq pre{white-space:pre-wrap; background:#fff; border:1.5px solid var(--ink); padding:6px 8px; margin-top:5px; font-size:13px; font-family:ui-monospace,Menlo,monospace;}
 .plc .pq .ans{color:var(--green); font-weight:700; margin-top:4px;}
 .plc .pq label{display:flex; gap:8px; align-items:center; margin-top:5px; color:var(--soft); font-size:13px; cursor:pointer;}
 .plc .pq input{accent-color:#1d8a4a; width:18px; height:18px;}
-.plc .result{border:2px solid var(--ink); background:#fff; padding:10px 12px; margin-top:12px;}
+.plc .result{border:1.5px solid var(--ink); background:#fff; padding:10px 12px; margin-top:12px;}
 .plc .result b{font-family:"Archivo Black",sans-serif;}
 .plc .weak{color:var(--red); font-weight:700;}
-.gb{border:2px solid var(--ink); background:var(--card); padding:12px 14px; margin:14px 0; box-shadow:4px 4px 0 var(--red);}
-.gb h3{font-family:"Archivo Black",sans-serif; font-size:15px; text-transform:uppercase; display:inline-block; background:var(--red); color:#fff; padding:2px 10px; margin-bottom:8px;}
+.gb{border:2px solid var(--ink); background:var(--card); padding:12px 14px; margin:14px 0;}
+.gb h3{font-family:"Archivo Black",sans-serif; font-size:15px; text-transform:uppercase; border-bottom:2px solid var(--ink); padding-bottom:4px; margin-bottom:8px;}
 .gb table{width:100%; border-collapse:collapse; font-size:13.5px;}
 .gb th{color:var(--soft); font-size:11px; text-transform:uppercase; letter-spacing:.08em; text-align:left; padding:6px 4px; border-bottom:2px solid var(--ink);}
-.gb td{padding:8px 4px; border-bottom:1px solid #e4dcc6; vertical-align:top;}
+.gb td{padding:8px 4px; border-bottom:1px solid var(--hair); vertical-align:top;}
 .gb .pts{font-family:"Archivo Black",sans-serif; font-size:15px; white-space:nowrap;}
-.gb .total{font-family:"Archivo Black",sans-serif; font-size:20px; color:var(--red);}
-.syl{border:2px solid var(--ink); background:var(--card); padding:14px 16px; margin:12px 0; box-shadow:4px 4px 0 var(--yellow);}
+.gb .total{font-family:"Archivo Black",sans-serif; font-size:20px;}
+.syl{border:2px solid var(--ink); background:var(--card); padding:14px 16px; margin:12px 0;}
 .syl h3{font-family:"Archivo Black",sans-serif; font-size:19px;}
-.syl h4{font-family:"Archivo Black",sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; margin:14px 0 5px; display:flex; align-items:center; gap:7px;}
-.syl h4::before{content:""; width:11px; height:11px; background:var(--blue); display:inline-block;}
-.syl h4:nth-of-type(4n+2)::before{background:var(--red);}
-.syl h4:nth-of-type(4n+3)::before{background:var(--yellow);}
-.syl h4:nth-of-type(4n)::before{background:var(--green);}
+.syl h4{font-family:"Archivo Black",sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; margin:14px 0 5px; border-bottom:2px solid var(--ink); display:inline-block; padding-bottom:2px;}
 .syl table{width:100%; border-collapse:collapse; font-size:13px;}
-.syl td,.syl th{padding:5px 4px; border-bottom:1px solid #e4dcc6; text-align:left;}
-.syl .cal li{list-style:none; padding:3px 0 3px 16px; position:relative; font-size:13px; border-bottom:1px solid #eee6d0;}
-.syl .cal li::before{content:""; position:absolute; left:0; top:9px; width:8px; height:8px; background:var(--blue);}
+.syl td,.syl th{padding:5px 4px; border-bottom:1px solid var(--hair); text-align:left;}
+.syl .cal li{list-style:none; padding:3px 0; font-size:13px; border-bottom:1px solid #eee6d0;}
+.syl .hwmark{background:var(--yellow); color:var(--ink); font-weight:700; padding:0 4px;}
 .tr-table{width:100%; border-collapse:collapse; font-size:14px;}
 .tr-table th{color:var(--soft); font-size:11px; text-transform:uppercase; letter-spacing:.08em; text-align:left; padding:7px 6px; border-bottom:2px solid var(--ink);}
-.tr-table td{padding:8px 6px; border-bottom:1px solid #e4dcc6; vertical-align:top;}
+.tr-table td{padding:8px 6px; border-bottom:1px solid var(--hair); vertical-align:top;}
 .gpa-line{font-family:"Archivo Black",sans-serif; font-size:20px; margin-top:12px;}
-#eventlog{border:2px solid var(--ink); background:#fff; padding:10px 12px; height:150px; overflow-y:auto; font-size:12.5px; color:var(--soft);}
-#eventlog .t{color:#b5ad96; margin-right:8px;}
-#eventlog .hot{color:var(--blue); font-weight:500;} #eventlog .warn{color:var(--red); font-weight:700;}
+#eventlog{border:1.5px solid var(--ink); background:#fff; padding:10px 12px; height:150px; overflow-y:auto; font-size:12.5px; color:var(--soft);}
+#eventlog .t{color:#bcb49c; margin-right:8px;}
+#eventlog .hot{color:var(--ink); font-weight:500;} #eventlog .warn{color:var(--red); font-weight:700;}
 .rulelist{counter-reset:r; font-size:14px;}
-.rulelist li{list-style:none; padding:7px 0 7px 40px; position:relative; border-bottom:1px solid #e4dcc6;}
-.rulelist li::before{counter-increment:r; content:counter(r,decimal-leading-zero); position:absolute; left:0; top:6px; color:var(--red); font-family:"Archivo Black",sans-serif; font-size:15px;}
+.rulelist li{list-style:none; padding:7px 0 7px 40px; position:relative; border-bottom:1px solid var(--hair);}
+.rulelist li::before{counter-increment:r; content:counter(r,decimal-leading-zero); position:absolute; left:0; top:6px; font-family:"Archivo Black",sans-serif; font-size:15px;}
 .note{font-size:13px; color:var(--soft); margin-top:8px;}
-.repair-item{color:var(--ink); font-size:14px; padding:6px 0 6px 2px; border-bottom:1px solid #e4dcc6; display:flex; gap:8px; align-items:baseline;}
-.repair-item::before{content:""; width:10px; height:10px; background:var(--red); flex:none; align-self:center;}
-.flash{position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:var(--yellow); border:2px solid var(--ink); color:var(--ink); padding:9px 18px; font-family:"Archivo Black",sans-serif; font-size:15px; z-index:120; display:none; box-shadow:4px 4px 0 var(--ink); white-space:nowrap;}
+.repair-item{color:var(--ink); font-size:14px; padding:6px 0; border-bottom:1px solid var(--hair); display:flex; gap:8px; align-items:center;}
+.repair-item::before{content:""; width:10px; height:10px; background:var(--red); flex:none;}
+.flash{position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:var(--card); border:2px solid var(--ink); color:var(--ink); padding:9px 18px; font-family:"Archivo Black",sans-serif; font-size:15px; z-index:120; display:none; box-shadow:4px 4px 0 var(--ink); white-space:nowrap;}
 .lib-term{font-family:"Archivo Black",sans-serif; font-size:16px; margin:18px 0 6px;}
-.lib li{list-style:none; padding:6px 0 6px 22px; position:relative; font-size:14px; border-bottom:1px solid #e4dcc6;}
-.lib li::before{content:""; position:absolute; left:2px; top:12px; width:9px; height:9px; background:var(--blue);}
-.lib li:nth-child(4n+2)::before{background:var(--red);}
-.lib li:nth-child(4n+3)::before{background:var(--yellow);}
-.lib li:nth-child(4n)::before{background:var(--green); border-radius:50%;}
-.carver{border:2px solid var(--red); background:var(--card); padding:12px 14px; margin-top:16px; font-size:14px; box-shadow:4px 4px 0 var(--red);}
-.carver b{color:var(--red);}
-.grad li{list-style:none; padding:8px 0; border-bottom:1px solid #e4dcc6; font-size:14px;}
-.grad li b{font-weight:700;}
-.grad li .to{color:var(--soft);}
-.sched-day{border:2px solid var(--ink); background:var(--card); padding:10px 12px; margin-bottom:10px; box-shadow:3px 3px 0 var(--ink);}
-.sched-day h4{font-family:"Archivo Black",sans-serif; font-size:15px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px;}
-.sched-day .blk{display:flex; gap:10px; padding:4px 0; border-bottom:1px solid #eee6d0; font-size:13.5px; align-items:center;}
+.lib li{list-style:none; padding:6px 0; font-size:14px; border-bottom:1px solid var(--hair);}
+.carver{border:2px solid var(--ink); background:var(--card); padding:12px 14px; margin-top:16px; font-size:14px;}
+.carver b{font-weight:700;}
+.sched-day{border:1.5px solid var(--ink); background:var(--card); padding:10px 12px; margin-bottom:8px;}
+.sched-day h4{font-family:"Archivo Black",sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:.05em; border-bottom:1.5px solid var(--ink); padding-bottom:3px; margin-bottom:5px;}
+.sched-day .blk{display:flex; gap:10px; padding:4px 0; border-bottom:1px solid #eee6d0; font-size:13.5px; align-items:baseline;}
 .sched-day .blk:last-child{border-bottom:0;}
 .sched-day .bt{color:var(--soft); min-width:96px; white-space:nowrap; font-size:12.5px;}
-.sched-day .bc{font-weight:700; min-width:96px; display:flex; align-items:center;}
+.sched-day .bc{font-weight:700; min-width:76px;}
 .sched-day .life{color:var(--soft);}
 @media (prefers-reduced-motion:reduce){ .bar i{transition:none;} }
 @media (max-width:640px){ .kv b{font-size:22px;} .logo{font-size:27px;} }
@@ -185,6 +170,7 @@ details.grading .gtxt{padding:8px 0 0 14px;}
   <div class="logo">Renaissance Operator Institute</div>
   <div class="shapes" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><i class="s5"></i></div>
   <div class="sub">Ricky · Honors Foundation Year · Fall 2026 · "Do what is right in front of you."</div>
+  <div class="key">Color means one thing everywhere: <b class="kb">blue = now</b> · <b class="kr">red = late or needs repair</b> · <b class="ky">yellow = counts for points</b> · <b class="kg">green = done</b></div>
 </header>
 
 <nav>
@@ -193,7 +179,6 @@ details.grading .gtxt{padding:8px 0 0 14px;}
   <button data-v="courses">Courses</button>
   <button data-v="transcript">Transcript</button>
   <button data-v="library">Library</button>
-  <button data-v="charter">Charter</button>
 </nav>
 
 <main id="view"></main>
@@ -208,14 +193,6 @@ const store = {
   set(k,v){ try{localStorage.setItem(k,JSON.stringify(v));}catch(e){mem[k]=v;} }
 };
 const PASS = 80;
-
-/* ===== Course marks — every course gets its Byrne shape ===== */
-const MARKS={"ORI 000":["y","sq"],"MAT 101":["r","ci"],"CSC 101":["b","sq"],"MUS 101":["y","tr"],"CMP 101":["g","ci"],"CRE 101":["r","sq"],"HPS 101":["g","tr"],"AIM 101":["b","ci"],"RDG 101":["y","ci"],"QTR 090":["k","sq"],"STB 090":["r","tr"],
-"MAT 112":["r","ci"],"DSC 110":["b","tr"],"MUS 112":["y","tr"],"CMP 112":["g","ci"],"QTR 120":["k","sq"],"CRE 112":["r","sq"],"HPS 112":["g","tr"],
-"STA 210":["b","ci"],"CSC 210":["b","sq"],"MUS 210":["y","tr"],"ORC 210":["y","sq"],"QTR 210":["k","sq"],"STA 215":["b","ci"],"COM 210":["r","ci"],"CSC 250":["b","sq"],
-"CAL 301":["r","ci"],"LNA 301":["r","sq"],"PHY 301":["g","sq"],"CMP 310":["g","ci"],"QTR 310":["k","sq"],"FIN 310":["k","ci"],
-"QTR 499":["k","sq"],"MUS 499":["y","tr"],"ART 499":["r","sq"],"OPS 499":["g","sq"]};
-function mark(code){ const m=MARKS[code]||["k","sq"]; return `<span class="mk ${m[1]} ${m[0]}" aria-hidden="true"></span>`; }
 
 /* ================= THE ACADEMIC CALENDAR =================
    Matriculation: Jul 26 – Aug 8, 2026.  Term I: Aug 9 (Sun) – Oct 17 (Sat), ten weeks.
@@ -534,7 +511,7 @@ const GB_ITEMS={
 };
 
 const TERMS = [
-{ id:"T1", name:"Term I — Foundations", dates:"Aug 9 – Oct 17 · exams Oct 18–24", locked:false, pnp:true,
+{ id:"T1", name:"Term I — Foundations", dates:"Aug 9 – Oct 17 · exams Oct 18–24", begins:null, active:true,
   note:"Term I records Pass / No Pass — the MIT and Caltech first-year rule. Every course carries the same 100-point gradebook: 5 homework × 6 + midterm 20 + final 50. Every task has its real due date; work ahead any time.",
   courses:[
   C("ORI 000",0,"Matriculation","The two setup weeks that make Aug 9 possible. Everything here is due before the first day of class.","None.",
@@ -582,7 +559,7 @@ const TERMS = [
      finlabel:"Policy defense", finPrompt: defensePrompt("AIM 101 — my AI-use policy and prompt library"),
      note:"AI may explain, examine, and review after your attempt. It may not do work you cannot explain."}),
   C("RDG 101",1,"Reading Protocol",
-    "Adler's inspectional and analytical method, with Anki as the retention layer under every course. The ladder from the mind map runs through here: one hour a day → a book a week → a book a day.",
+    "Adler's inspectional and analytical method, with Anki as the retention layer under every course. The ladder runs through here: one hour a day, then a book a week; a book a day is a Year 3 target.",
     "None.",
     [["How to Read a Book — Adler + Van Doren",false],["Anki",true]], "items",
     {items:[["RDG101-ANK1","Install Anki and make your first 20 cards",0],["RDG101-INS1","Practice one inspectional-reading pass",1],["RDG101-LOG1","Start the book-per-week log",1],["RDG101-BRF1","A one-page brief per finished book","w"],["RDG101-ANK2","The daily 20-minute review","s"],["RDG101-DIV1","Divide each book by structure, not even time blocks","s"]],
@@ -599,45 +576,45 @@ const TERMS = [
     [["Your open-loops ledger",false]], "lab",
     {items:[["STB090-LED1","Write the open-loops ledger",0],["STB090-GA01","Initiate General Assistance",0],["STB090-BC01","Request the birth certificate (Merced)",0],["STB090-SS01","Request Social Security documentation",0],["STB090-DMV1","Check DMV status",0],["STB090-JOB1","Job-search sprints in the Tue/Thu blocks","w"],["STB090-MED1","Queue medical and dental appointments",1]]}),
 ]},
-{ id:"T2", name:"Term II — Methods", dates:"Oct 25 – Jan 2", locked:true,
-  note:"Locked for logging until Term I clears — but everything is readable now. Letter grades reach the transcript from this term.",
+{ id:"T2", name:"Term II — Methods", dates:"Oct 25 – Jan 2", begins:"Oct 25",
+  note:"Letter grades reach the transcript from this term.",
   courses:[
-  C("MAT 112",4,"Functions, Precalculus and Modeling","The same OpenStax book, chapters 5–13: polynomials, exponentials, logs, systems, and the trigonometry chapters.","MAT 101.",[["OpenStax — Algebra and Trigonometry 2e, ch. 5–13",true]],"locked"),
-  C("DSC 110",4,"Computational and Inferential Thinking","Berkeley's Data 8 in full — textbook, labs, projects — run on your own trade data. Berkeley's real sequence puts this before probability theory.","CSC 101.",[["Berkeley Data 8 — inferentialthinking.com",true]],"locked"),
-  C("MUS 112",2,"Harmony, Ear Training and Keyboard II","Diatonic harmony and voice leading through a standard conservatory text.","MUS 101 jury.",[["Kostka + Payne — Tonal Harmony",false]],"locked"),
-  C("CMP 112",2,"Composition Studio II","A two-to-five minute piano or chamber work through the full studio cycle. The sonata from the mind map is this course's natural target.","CMP 101.",[["Schoenberg, continued",false]],"locked"),
-  C("QTR 120",2,"Quantitative Research Methods I — Carver begins","Rob Carver's Starter System: your first fully specified rules-based system, plus formal preregistration of one trading hypothesis. Carver starts here, not Week 1, because the math under him is built in Term I.","MAT 101 + CSC 101.",[["Rob Carver — Leveraged Trading",false]],"locked"),
-  C("CRE 112",2,"Digital Products and Brand","Weight shifts from client work to owned assets: first product shipped, brand foundations laid.","CRE 101.",[["Austin Kleon — Show Your Work!",false]],"locked"),
-  C("HPS 112",1,"Cooking, Training and Regulation II","Stable batch-cooking and training routine; CBT tools deepened.","HPS 101.",[["Burns — Feeling Good",false],["López-Alt — The Food Lab",false]],"locked"),
+  C("MAT 112",4,"Functions, Precalculus and Modeling","The same OpenStax book, chapters 5–13: polynomials, exponentials, logs, systems, and the trigonometry chapters.","MAT 101.",[["OpenStax — Algebra and Trigonometry 2e, ch. 5–13",true]],"future"),
+  C("DSC 110",4,"Computational and Inferential Thinking","Berkeley's Data 8 in full — textbook, labs, projects — run on your own trade data. Berkeley's real sequence puts this before probability theory.","CSC 101.",[["Berkeley Data 8 — inferentialthinking.com",true]],"future"),
+  C("MUS 112",2,"Harmony, Ear Training and Keyboard II","Diatonic harmony and voice leading through a standard conservatory text.","MUS 101 jury.",[["Kostka + Payne — Tonal Harmony",false]],"future"),
+  C("CMP 112",2,"Composition Studio II","A two-to-five minute piano or chamber work through the full studio cycle. The sonata is this course's natural target.","CMP 101.",[["Schoenberg, continued",false]],"future"),
+  C("QTR 120",2,"Quantitative Research Methods I — Carver begins","Rob Carver's Starter System: your first fully specified rules-based system, plus formal preregistration of one trading hypothesis. Carver starts here, not Week 1, because the math under him is built in Term I.","MAT 101 + CSC 101.",[["Rob Carver — Leveraged Trading",false]],"future"),
+  C("CRE 112",2,"Digital Products and Brand","Weight shifts from client work to owned assets: first product shipped, brand foundations laid.","CRE 101.",[["Austin Kleon — Show Your Work!",false]],"future"),
+  C("HPS 112",1,"Cooking, Training and Regulation II","Stable batch-cooking and training routine; CBT tools deepened.","HPS 101.",[["Burns — Feeling Good",false],["López-Alt — The Food Lab",false]],"future"),
 ]},
-{ id:"T3", name:"Term III — Research and Craft", dates:"Jan 17 – Mar 27", locked:true,
+{ id:"T3", name:"Term III — Research and Craft", dates:"Jan 17 – Mar 27", begins:"Jan 17",
   courses:[
-  C("STA 210",4,"Probability and Statistical Inference","Harvard's Stat 110 lectures with the Blitzstein–Hwang text — the probability spine of the quant track.","MAT 112.",[["Blitzstein + Hwang — Introduction to Probability",true],["Harvard Stat 110 lectures",true]],"locked"),
-  C("CSC 210",3,"Software Engineering for Research","Version control, testing, shell, reproducibility — MIT's Missing Semester applied to your research code.","CSC 101.",[["MIT — The Missing Semester",true]],"locked"),
-  C("MUS 210",2,"Counterpoint and Form","Species counterpoint through Fux — the book Beethoven studied from.","MUS 112.",[["Fux — The Study of Counterpoint",false],["Kennan — Counterpoint",false]],"locked"),
-  C("ORC 210",2,"Orchestration I","Adler with its workbook and recordings; three orchestrated miniatures.","MUS 112 + CMP 112.",[["Adler — The Study of Orchestration",false],["Rimsky-Korsakov — Principles of Orchestration",true]],"locked"),
-  C("QTR 210",3,"Strategy Validation Lab — Carver II + Aronson","Take one of your own discretionary edges and statistically test whether it is real or curve-fit noise. Frozen fingerprint, dev/validation/holdout separation, midyear research report.","QTR 120 + DSC 110.",[["Aronson — Evidence-Based Technical Analysis",false],["Carver — Systematic Trading",false],["pysystemtrade — Carver's own engine",true]],"locked"),
-  C("STA 215",2,"Statistical Learning","ISLP, the Python edition: resampling, cross-validation, regularization on real market data.","DSC 110.",[["ISLP — Introduction to Statistical Learning",true]],"locked"),
-  C("COM 210",1,"Public Scholarship Seminar","A weekly public artifact — teaching in public, not motivational posting. The YouTube / Instagram / TikTok arm of the mind map, run with standards.","None.",[["Your weekly public artifact",false]],"locked"),
-  C("CSC 250",2,"Elective — Trading Interface Engineering","The black box: an arcade-button control surface and multi-chart heads-up layout. Risk engineering as industrial design. Simulated account only until validated.","CSC 101.",[["Arduino/QMK firmware docs",true],["TradingView charting docs",true]],"locked"),
+  C("STA 210",4,"Probability and Statistical Inference","Harvard's Stat 110 lectures with the Blitzstein–Hwang text — the probability spine of the quant track.","MAT 112.",[["Blitzstein + Hwang — Introduction to Probability",true],["Harvard Stat 110 lectures",true]],"future"),
+  C("CSC 210",3,"Software Engineering for Research","Version control, testing, shell, reproducibility — MIT's Missing Semester applied to your research code.","CSC 101.",[["MIT — The Missing Semester",true]],"future"),
+  C("MUS 210",2,"Counterpoint and Form","Species counterpoint through Fux — the book Beethoven studied from.","MUS 112.",[["Fux — The Study of Counterpoint",false],["Kennan — Counterpoint",false]],"future"),
+  C("ORC 210",2,"Orchestration I","Adler with its workbook and recordings; three orchestrated miniatures.","MUS 112 + CMP 112.",[["Adler — The Study of Orchestration",false],["Rimsky-Korsakov — Principles of Orchestration",true]],"future"),
+  C("QTR 210",3,"Strategy Validation Lab — Carver II + Aronson","Take one of your own discretionary edges and statistically test whether it is real or curve-fit noise. Frozen fingerprint, dev/validation/holdout separation, midyear research report.","QTR 120 + DSC 110.",[["Aronson — Evidence-Based Technical Analysis",false],["Carver — Systematic Trading",false],["pysystemtrade — Carver's own engine",true]],"future"),
+  C("STA 215",2,"Statistical Learning","ISLP, the Python edition: resampling, cross-validation, regularization on real market data.","DSC 110.",[["ISLP — Introduction to Statistical Learning",true]],"future"),
+  C("COM 210",1,"Public Scholarship Seminar","A weekly public artifact — the public channels, YouTube, Instagram, TikTok, run with standards. Teaching in public, not motivational posting.","None.",[["Your weekly public artifact",false]],"future"),
+  C("CSC 250",2,"Elective — Trading Interface Engineering","The black box: an arcade-button control surface and multi-chart heads-up layout. Risk engineering as industrial design. Simulated account only until validated.","CSC 101.",[["Arduino/QMK firmware docs",true],["TradingView charting docs",true]],"future"),
 ]},
-{ id:"T4", name:"Term IV — Advanced Foundations", dates:"Apr 4 – Jun 12", locked:true,
+{ id:"T4", name:"Term IV — Advanced Foundations", dates:"Apr 4 – Jun 12", begins:"Apr 4",
   note:"Calculus gate: CAL 301 and PHY 301 open only on 80%+ mastery of algebra, functions, exp/log, trig and graphs. Gate not passed → physics moves to Year 2. Integrity, not failure.",
   courses:[
-  C("CAL 301",4,"Single-Variable Calculus","MIT's 18.01SC — lectures, problem sets, exams, a ~150-hour design.","MAT 112 + the gate.",[["MIT OCW 18.01SC",true],["OpenStax — Calculus Vol. 1",true]],"locked"),
-  C("LNA 301",3,"Linear Algebra I","Strang's 18.06 — vectors through eigenvalues and least squares, straight into strategy work.","MAT 112.",[["MIT OCW 18.06 + Strang",false]],"locked"),
-  C("PHY 301",3,"Classical Mechanics I","MIT's 8.01 — force, energy, momentum, rotation, conservation. The physics node of the map, and the doorway to the engine-building shelf.","CAL 301 concurrent.",[["MIT OCW 8.01",true],["Kleppner + Kolenkow (stretch)",false]],"locked"),
-  C("CMP 310",3,"Large-Form Composition","Structural plan and first complete draft of the major work. A requiem is a legitimate candidate here.","MUS 210 + ORC 210.",[["Schoenberg + score study",false]],"locked"),
-  C("QTR 310",2,"Trading Systems and Risk — Carver III","Diversified futures strategies with rigorous anti-overfitting validation: Monte Carlo, drawdown, risk-of-ruin, and the evidence-based deploy / revise / reject decision.","QTR 210.",[["Carver — Advanced Futures Trading Strategies",false],["López de Prado — Advances in Financial ML",false]],"locked"),
-  C("FIN 310",2,"Derivatives and Arbitrage Theory","Hull as the entry to derivatives pricing — the road to Björk and Shreve in Year 2.","STA 210.",[["Hull — Options, Futures, and Other Derivatives",false]],"locked"),
+  C("CAL 301",4,"Single-Variable Calculus","MIT's 18.01SC — lectures, problem sets, exams, a ~150-hour design.","MAT 112 + the gate.",[["MIT OCW 18.01SC",true],["OpenStax — Calculus Vol. 1",true]],"future"),
+  C("LNA 301",3,"Linear Algebra I","Strang's 18.06 — vectors through eigenvalues and least squares, straight into strategy work.","MAT 112.",[["MIT OCW 18.06 + Strang",false]],"future"),
+  C("PHY 301",3,"Classical Mechanics I","MIT's 8.01 — force, energy, momentum, rotation, conservation. The doorway to the engine-building shelf.","CAL 301 concurrent.",[["MIT OCW 8.01",true],["Kleppner + Kolenkow (stretch)",false]],"future"),
+  C("CMP 310",3,"Large-Form Composition","Structural plan and first complete draft of the major work. A requiem is a legitimate candidate here.","MUS 210 + ORC 210.",[["Schoenberg + score study",false]],"future"),
+  C("QTR 310",2,"Trading Systems and Risk — Carver III","Diversified futures strategies with rigorous anti-overfitting validation: Monte Carlo, drawdown, risk-of-ruin, and the evidence-based deploy / revise / reject decision.","QTR 210.",[["Carver — Advanced Futures Trading Strategies",false],["López de Prado — Advances in Financial ML",false]],"future"),
+  C("FIN 310",2,"Derivatives and Arbitrage Theory","Hull as the entry to derivatives pricing — the road to Björk and Shreve in Year 2.","STA 210.",[["Hull — Options, Futures, and Other Derivatives",false]],"future"),
 ]},
-{ id:"T5", name:"Capstone Residency", dates:"Jun 13 – Jul 17", locked:true,
+{ id:"T5", name:"Capstone Residency", dates:"Jun 13 – Jul 17", begins:"Jun 13",
   note:"No new introductory courses. Five weeks to finish, revise, test, present, defend.",
   courses:[
-  C("QTR 499",5,"Quantitative Research Thesis","The reproducible strategy package, written paper, and oral defense.","All QTR.",[["Your research",false]],"locked"),
-  C("MUS 499",5,"Composition and Orchestral Production","Minimum: a 12–20 minute multi-movement work with score, mockup, program notes. Honors: Symphony No. 1 — the symphony node, by name.","CMP 310.",[["The score",false]],"locked"),
-  C("ART 499",3,"Visual IP Exhibition","A coherent collection, an owned product, a documented sales process, a final release.","CRE 112.",[["The collection",false]],"locked"),
-  C("OPS 499",2,"Defense of the Integrated Operator","Sleep, food, strength and regulation systems documented; the written personal constitution; the final defense.","HPS + STB.",[["Your constitution",false]],"locked"),
+  C("QTR 499",5,"Quantitative Research Thesis","The reproducible strategy package, written paper, and oral defense.","All QTR.",[["Your research",false]],"future"),
+  C("MUS 499",5,"Composition and Orchestral Production","Minimum: a 12–20 minute multi-movement work with score, mockup, program notes. Honors: Symphony No. 1.","CMP 310.",[["The score",false]],"future"),
+  C("ART 499",3,"Visual IP Exhibition","A coherent collection, an owned product, a documented sales process, a final release.","CRE 112.",[["The collection",false]],"future"),
+  C("OPS 499",2,"Defense of the Integrated Operator","Sleep, food, strength and regulation systems documented; the written personal constitution; the final defense.","HPS + STB.",[["Your constitution",false]],"future"),
 ]},
 ];
 
@@ -646,25 +623,10 @@ const LIBRARY = [
  {t:"Term II", items:[["Berkeley Data 8 — Computational and Inferential Thinking (DSC 110)",true],["Kostka + Payne — Tonal Harmony (MUS 112)",false],["Rob Carver — Leveraged Trading (QTR 120) ◂ Carver I",false],["Burns — Feeling Good (HPS 112)",false],["López-Alt — The Food Lab (HPS 112)",false]]},
  {t:"Term III", items:[["Blitzstein + Hwang — Introduction to Probability (STA 210)",true],["Harvard Stat 110 lectures (STA 210)",true],["MIT — The Missing Semester (CSC 210)",true],["Fux — The Study of Counterpoint (MUS 210)",false],["Kennan — Counterpoint (MUS 210)",false],["Adler — The Study of Orchestration (ORC 210)",false],["Rimsky-Korsakov — Principles of Orchestration (ORC 210)",true],["Rob Carver — Systematic Trading (QTR 210) ◂ Carver II",false],["Aronson — Evidence-Based Technical Analysis (QTR 210)",false],["pysystemtrade — Carver's open-source engine (QTR 210)",true],["ISLP — Introduction to Statistical Learning, Python edition (STA 215)",true]]},
  {t:"Term IV", items:[["MIT OCW 18.01SC + OpenStax Calculus Vol. 1 (CAL 301)",true],["MIT OCW 18.06 + Strang — Introduction to Linear Algebra (LNA 301)",false],["MIT OCW 8.01 (PHY 301)",true],["Kleppner + Kolenkow — An Introduction to Mechanics, stretch (PHY 301)",false],["Rob Carver — Advanced Futures Trading Strategies (QTR 310) ◂ Carver III",false],["López de Prado — Advances in Financial Machine Learning (QTR 310)",false],["Hull — Options, Futures, and Other Derivatives (FIN 310)",false]]},
- {t:"Year 2 shelf — named, not bought (the mind map's horizons live here)", items:[["Björk — Arbitrage Theory in Continuous Time",false],["Shreve — Stochastic Calculus for Finance I + II",false],["Multivariable calculus + real analysis (MIT OCW)",true],["French — the Paris ladder (language elective)",false],["Japanese — the Japan ladder (language elective)",false],["OpenStax — Astronomy",true],["OpenStax — Biology",true],["CAD + engine-building with math — opens after CAL 301 + PHY 301 (the sports-car node)",false],["Legal literacy — contracts, tax, defending yourself if sued",false],["The full symphony premiere",false]]},
+ {t:"Year 2 shelf — named, not bought", items:[["Björk — Arbitrage Theory in Continuous Time",false],["Shreve — Stochastic Calculus for Finance I + II",false],["Multivariable calculus + real analysis (MIT OCW)",true],["French — the Paris ladder (language elective)",false],["Japanese — the Japan ladder (language elective)",false],["OpenStax — Astronomy",true],["OpenStax — Biology",true],["CAD + engine-building with math — opens after CAL 301 + PHY 301",false],["Legal literacy — contracts, tax, defending yourself if sued",false],["The full symphony premiere",false]]},
 ];
 
 const RANKS = [[0,"MATRICULANT"],[300,"SCHOLAR"],[800,"PRACTITIONER"],[1600,"RESEARCHER"],[2600,"OPERATOR"]];
-const CONSTITUTION = ["No academic work after shutdown.","No advancing without prerequisite mastery.","No buying resources more than one term early.","No new strategy family during an active research term.","No AI-generated work that you cannot explain.","No untested code touching the live bot.","No treating trading profits as a course grade.","No treating emotions as moral failure.","No sacrificing meals or sleep to complete late work.","No redesigning the curriculum during emotional activation.","Every week ends with a finished artifact.","Every term ends with a defense.","Every failed method creates a recorded correction.","The curriculum may change only through scheduled academic review.","The institution exists to produce capability — not the appearance of being busy.","No daily profit target.","The Stabilization Lab outranks every academic course until its open loops are closed."];
-const HONOR = ["Attempt every problem set in full before opening any answer key. First-attempt target: 80%.","Every miss goes to Repairs, gets reworked fresh, and is retested before you advance.","Quizzes and exams are closed-book, timed, and cumulative — the MIT rhythm.","Placement exams are diagnostic, never punitive. They set your true starting point.","If you cannot explain submitted work out loud, unaided, you did not do it yet.","The AI Rule: AI may explain, examine, and review after your attempt. It may not produce work you then sign."];
-const TUTORIAL = ["What did you attempt?","Why did you choose that method?","Where did you become uncertain?","What error did you make?","What assumption did you use?","Could another method work?","Can you explain the result without notes?","What would change if one condition changed?","What did the assignment teach you?","What requires repair next week?"];
-const GRADUATE = [
- ["b","ci","Mind and spirit","meditation · spirituality · Bible reading · shadow work · ego death · anger management · mental programming","HPS 101 now, plus the evening contemplative-reading slot — Meditations or the Bible, reader's choice. Money manifestation converts honestly: the morning ritual stays; the mechanism is CRE revenue and QTR research."],
- ["g","tr","Body","nutrition · exercise, running, jump rope · 8-hour sleep · biology","HPS 101 running now — meals, strength, the sleep window. Biology proper joins the Year 2 shelf (OpenStax, free)."],
- ["y","tr","Music","pianist · read and write sheet music · write a sonata · a requiem · a symphony","MUS 101 → 112 → 210 → ORC 210. Sonata: CMP 112's natural target. Requiem: a CMP 310 candidate. Symphony: MUS 499 honors, by name. Grand piano: the rewards row."],
- ["k","sq","Quant and STEM","math · physics · quant · quantitative finance · trading, human and robot","The whole spine: MAT → CAL 301 + LNA 301 + PHY 301, QTR 090 → 120 → 210 → 310 → 499, FIN 310. The robot stays in read-only custody until the research earns it back."],
- ["r","sq","Art and craft","art · animation · self-promote — YouTube, Instagram, TikTok · Spotify, YouTube Music, Yandex","CRE 101 weekly publishing now; COM 210 makes it public scholarship in Term III; ART 499 is the exhibition. The streaming platforms are where the finished music ships after MUS 499."],
- ["b","sq","Systems","bullet journal · interstitial journal · organization · budget · finances · get debt free","The ORI container, the Shadow Ledger, STB 090's open-loops work, and CRE's money record. Debt-free is a Stabilization outcome, tracked, not wished."],
- ["y","sq","Conditions","focus · time · discipline · speed · silence · darkness · solitude","The monastic half of the timetable: the 4:30 deep blocks, early shutdown, Sunday recovery. The schedule is these words made physical."],
- ["g","ci","Languages and horizons","learn French, Paris · learn Japanese, Japan · astronomy · CAD, build an engine with math, sports car · law, tax law, defend myself if sued","The Year 2 shelf, named and waiting: language ladders, OpenStax Astronomy, the engine project (opens after CAL 301 + PHY 301), legal literacy. Named now so they stop floating."],
- ["r","ci","The reading ladder","read 1 hour per day → read a book a week → read a book a day","RDG 101 is the ladder's first two rungs, running now. A book a day is a Year 3 target — earned, not declared."],
- ["k","ci","The rewards row","get rich · nice suit · nice watch · nice car · nice house · grand piano","What the operator buys with proof, not hope — funded by CRE, QTR, and the capstones. The motive under all of it, per your own notebook: take care of the people who helped."],
-];
 const SCALE=[[97,"A+"],[94,"A"],[90,"A-"],[87,"B+"],[84,"B"],[80,"B-"],[77,"C+"],[74,"C"],[70,"C-"],[67,"D+"],[64,"D"],[60,"D-"],[0,"F"]];
 function letterOf(t){ for(const [x,l] of SCALE) if(t>=x) return l; return "F"; }
 
@@ -742,7 +704,7 @@ function flatChecks(c){ const out=[]; courseWeeks(c).forEach(w=>w.tasks.forEach(
 
 /* ================= GRADEBOOK — 5 HW × 6 + midterm 20 + final 50 = 100 ================= */
 function gbSpec(c){
-  if(c.kind==="lab"||c.kind==="locked") return null;
+  if(c.kind==="lab"||c.kind==="future") return null;
   const CO=c.code.replace(/\s/g,"");
   let hw=[];
   if(c.kind==="mat"||c.kind==="csc"||c.kind==="mus"){
@@ -838,7 +800,7 @@ let cur="dash", openCourses=store.get("roi5_open",{}), openWeeks=store.get("roi5
 function gradingDetails(){
   return `<details class="grading"><summary>How grading works (tap if you care)</summary><div class="gtxt">
   One system, from the real syllabi: <b>5 homework × 6 points + midterm 20 + final 50 = 100</b>. Letters run A+ to F.<br><br>
-  The five HWs are five of the assignments already in the weeks below — flagged in yellow. Everything else is classwork: it drives your progress, XP, and Repairs, exactly like attendance and sections at a real school.<br><br>
+  The five HWs are five of the assignments already in the weeks below — flagged in yellow, because yellow means it counts for points. Everything else is classwork: it drives your progress, XP, and Repairs, exactly like attendance and sections at a real school.<br><br>
   <b>80 = B− = pass.</b> Same gate as always. Under 80 on anything → Repairs: patch it, retest, cleared. Term I records simply <b>P</b> on the transcript — MIT's first-year rule — with your letter kept in the gradebook.</div></details>`;
 }
 function spineHTML(c){ return `<div class="spine">The book${c.spine.length>1?"s":""}: ${c.spine.map(s=>`<b>${s[0]}</b>${s[1]===true?'<span class="free">FREE</span>':''}`).join(" · ")}</div>`; }
@@ -893,17 +855,17 @@ function gradebookHTML(c){
   let rows="";
   g.hw.forEach((h,i)=>{
     const key="hw:"+c.code+":"+(i+1); const v=S.scores[key];
-    rows+=`<tr><td>HW${i+1} · ${h.label} <span class="tag">${h.ref}</span></td><td class="pts">${v!=null? (v*0.06).toFixed(1):"—"} / 6</td><td>${quizCell(key, v)}</td></tr>`;
+    rows+=`<tr><td><span class="hwflag">HW${i+1}</span> ${h.label} <span class="tag">${h.ref}</span></td><td class="pts">${v!=null? (v*0.06).toFixed(1):"—"} / 6</td><td>${quizCell(key, v)}</td></tr>`;
   });
   const mv=S.scores[g.mid.key];
-  rows+=`<tr><td>Midterm · ${g.mid.label} <span class="tag">due ${fshort(g.mid.date)}</span></td><td class="pts">${mv!=null? (mv*0.20).toFixed(1):"—"} / 20</td><td>${g.mid.shared? `<span class="note" style="margin:0">score lives in the Week 5 exam row</span>` : quizCell(g.mid.key, mv)+(g.mid.prompt? genBlock(P(g.mid.prompt), g.mid.essay?"grader":"midterm"):"")}</td></tr>`;
+  rows+=`<tr><td><span class="hwflag">MID</span> ${g.mid.label} <span class="tag">due ${fshort(g.mid.date)}</span></td><td class="pts">${mv!=null? (mv*0.20).toFixed(1):"—"} / 20</td><td>${g.mid.shared? `<span class="note" style="margin:0">score lives in the Week 5 exam row</span>` : quizCell(g.mid.key, mv)+(g.mid.prompt? genBlock(P(g.mid.prompt), g.mid.essay?"grader":"midterm"):"")}</td></tr>`;
   const fv=S.scores[g.finKey];
-  rows+=`<tr><td>${c.finlabel||"Final exam"} <span class="tag">${fdate(g.finDate)}</span></td><td class="pts">${fv!=null? (fv*0.50).toFixed(1):"—"} / 50</td><td><span class="note" style="margin:0">score lives in the Examination panel</span></td></tr>`;
+  rows+=`<tr><td><span class="hwflag">FIN</span> ${c.finlabel||"Final exam"} <span class="tag">${fdate(g.finDate)}</span></td><td class="pts">${fv!=null? (fv*0.50).toFixed(1):"—"} / 50</td><td><span class="note" style="margin:0">score lives in the Examination panel</span></td></tr>`;
   const tot=gbTotal(c);
   return `<div class="gb"><h3>Gradebook — 100 points</h3>
-  <div class="note" style="margin:0 0 6px">5 homework × 6 · midterm 20 · final 50. The five HWs are existing assignments, flagged in yellow above — nothing was cut to fit the points.</div>
+  <div class="note" style="margin:0 0 6px">5 homework × 6 · midterm 20 · final 50. The five HWs are existing assignments — nothing was cut to fit the points.</div>
   <table><tr><th>Item</th><th>Points</th><th>Score (0–100)</th></tr>${rows}
-  <tr><td><b style="color:var(--red)">TOTAL</b></td><td class="total">${tot.toFixed(1)} / 100</td><td class="total">${letterOf(tot)}${courseComplete(c,courseCalc(c))?" · P":""}</td></tr></table>
+  <tr><td><b>TOTAL</b></td><td class="total">${tot.toFixed(1)} / 100</td><td class="total">${letterOf(tot)}${courseComplete(c,courseCalc(c))?" · P":""}</td></tr></table>
   <div class="note">Pass = B− (80) or better, plus the oral defense passed. Term I transcript records P; the letter stays here.</div></div>`;
 }
 
@@ -914,7 +876,7 @@ function syllabusHTML(c){
   courseWeeks(c).forEach(w=>{
     if(w.wi==null) return;
     const hwWk=HW_WEEKS.includes(w.wi+1) && (c.kind==="mat"||c.kind==="csc"||c.kind==="mus");
-    cal+=`<li>Week ${w.wi+1} · ${fshort(wkDate(w.wi,0))}–${fshort(wkDate(w.wi,6))} · ${w.sub}${hwWk?' · <b style="color:var(--red)">HW collected Sat</b>':''}${w.wi===4?' · <b style="color:var(--red)">Midterm Fri</b>':''}</li>`;
+    cal+=`<li>Week ${w.wi+1} · ${fshort(wkDate(w.wi,0))}–${fshort(wkDate(w.wi,6))} · ${w.sub}${hwWk?' · <span class="hwmark">HW collected Sat</span>':''}${w.wi===4?' · <span class="hwmark">Midterm Fri</span>':''}</li>`;
   });
   if(c.items) cal = c.items.map(it=> typeof it[2]==="number"? `<li>${it[0]} · due ${fshort(dueForItem(it[2]))}</li>` : `<li>${it[0]} · ${it[2]==="w"?"weekly":it[2]==="m"?"monthly":"standing"}</li>`).join("");
   return `<div class="syl">
@@ -942,9 +904,9 @@ function syllabusHTML(c){
   </div>`;
 }
 
-function courseBody(c,k,locked){
-  let h=`<div class="cat">${c.desc}</div><div class="cat">Prereq: ${c.prereq}</div>`+spineHTML(c)+ (locked? "" : meetsHTML(c));
-  if(locked){ h+=`<div class="note">Opens after the prior term clears. Read everything now; buy the books only when the term begins — Constitution 3.</div>`; return h; }
+function courseBody(c,k,future,begins){
+  let h=`<div class="cat">${c.desc}</div><div class="cat">Prereq: ${c.prereq}</div>`+spineHTML(c)+ (future? "" : meetsHTML(c));
+  if(future){ h+=`<div class="note">Begins ${begins}. Buy the books only when the term begins — Constitution 3. Everything is open to read and plan against now.</div>`; return h; }
   const id=c.code.replace(/\s/g,"");
   if(c.kind!=="lab"){
     h+=`<div class="qrow" style="margin:8px 0"><button class="genbtn" data-syl="${id}">${openSyl[id]?"Close":"Open"} syllabus</button></div>`;
@@ -981,8 +943,8 @@ function courseBody(c,k,locked){
     const g=gbSpec(c);
     const examChip = `<span class="due ${curWeek()>=10?'now':''}">${fdate(g.finDate)}</span>`;
     h+=`<div class="week open"><button class="wh" style="cursor:default">Examination <span class="wdates">${fdate(g.finDate)} · defense follows the final</span></button><div class="wk-body" style="display:block">
-    <div class="task"><div style="width:20px;flex:none"></div><div class="qwrap"><div class="tx"><b style="color:var(--blue)">${finlabel}</b> — closed book, everything. 50 gradebook points.</div>${quizCell("f:"+c.code,S.scores["f:"+c.code])}${genBlock(P(fp),"exam")}</div><div class="meta">${examChip}</div></div>
-    <div class="task"><div style="width:20px;flex:none"></div><div class="qwrap"><div class="tx"><b style="color:var(--blue)">Oral defense</b> — the ten questions, out loud, unaided. Required to pass.</div>${quizCell("d:"+c.code,S.scores["d:"+c.code])}${genBlock(P(defensePrompt(c.code+" — "+c.title)),"defense")}</div><div class="meta">${examChip}</div></div>
+    <div class="task"><div style="width:20px;flex:none"></div><div class="qwrap"><div class="tx"><b>${finlabel}</b> — closed book, everything. 50 gradebook points.</div>${quizCell("f:"+c.code,S.scores["f:"+c.code])}${genBlock(P(fp),"exam")}</div><div class="meta">${examChip}</div></div>
+    <div class="task"><div style="width:20px;flex:none"></div><div class="qwrap"><div class="tx"><b>Oral defense</b> — the ten questions, out loud, unaided. Required to pass.</div>${quizCell("d:"+c.code,S.scores["d:"+c.code])}${genBlock(P(defensePrompt(c.code+" — "+c.title)),"defense")}</div><div class="meta">${examChip}</div></div>
     </div></div>`;
     h+=gradebookHTML(c);
   }
@@ -993,15 +955,16 @@ function courseBody(c,k,locked){
 function renderCourses(){
   let html="";
   TERMS.forEach(t=>{
-    html+=`<div class="term-h"><h2>${t.name}</h2><small>${t.dates}</small>${t.locked?'<small class="lock">locked for logging · fully readable</small>':''}</div>`;
+    html+=`<div class="term-h"><h2>${t.name}</h2><small>${t.dates}</small></div>`;
     if(t.note) html+=`<div class="note" style="margin:-2px 0 10px">${t.note}</div>`;
     t.courses.forEach(c=>{
       const k=courseCalc(c); const id=c.code.replace(/\s/g,"");
-      let chip;
-      if(t.locked) chip=`<span class="grade-chip lk">—</span>`;
-      else if(c.kind==="lab") chip=`<span class="grade-chip ${k.letter==="P"?"pass":""}">${k.letter}</span>`;
-      else { const tot=gbTotal(c); const done=courseComplete(c,k); chip=`<span class="grade-chip ${done?"pass":""}">${done?"P":Math.round(tot)+" pts"}</span>`; }
-      html+=`<div class="course ${openCourses[id]?'open':''}"><button class="head" data-c="${id}">${mark(c.code)}<span class="code">${c.code}</span><span>${c.title}</span><span class="cred">${c.cr} cr</span>${chip}</button><div class="body">${openCourses[id]?courseBody(c,k,t.locked):""}</div></div>`;
+      let chip="";
+      if(!t.begins){
+        if(c.kind==="lab") chip=`<span class="grade-chip ${k.letter==="P"?"pass":""}">${k.letter}</span>`;
+        else { const tot=gbTotal(c); const done=courseComplete(c,k); chip=`<span class="grade-chip ${done?"pass":""}">${done?"P":Math.round(tot)+" pts"}</span>`; }
+      }
+      html+=`<div class="course ${openCourses[id]?'open':''}"><button class="head" data-c="${id}"><span class="code">${c.code}</span><span>${c.title}</span><span class="cred">${c.cr} cr</span>${chip}</button><div class="body">${openCourses[id]?courseBody(c,k,!!t.begins,t.begins):""}</div></div>`;
     });
   });
   view.innerHTML=html;
@@ -1047,8 +1010,8 @@ function renderDash(){
     planHTML=[ todays.length? "Finals today: "+todays.join(", ")+" — defense follows each final." : "See the finals schedule in the Schedule tab.",
       "Sun Oct 18 · reading day. Sat Oct 24 · repairs and makeups.","No new material this week."].map(x=>`<li class="life">${x}</li>`).join("");
   }
-  else if(ph.p==="post"){ planHTML=["Term I is complete. Term II unlocks Oct 25.","Winter reading and repair — see the Charter."].map(x=>`<li class="life">${x}</li>`).join(""); }
-  else planHTML=GRID[dow].map(b=> b.c? `<li>${b.c!=="ALL"?mark(b.c):""}<span class="cc2">${b.t} · ${b.c}</span>&nbsp;${b.k||""}${b.l?" — "+b.l:""}</li>` : `<li class="life">${b.t} · ${b.l}</li>`).join("");
+  else if(ph.p==="post"){ planHTML=["Term I is complete. Term II begins Oct 25.","Winter reading and repair."].map(x=>`<li class="life">${x}</li>`).join(""); }
+  else planHTML=GRID[dow].map(b=> b.c? `<li><span class="cc2">${b.t} · ${b.c}</span>&nbsp;${b.k||""}${b.l?" — "+b.l:""}</li>` : `<li class="life">${b.t} · ${b.l}</li>`).join("");
 
   const due=dueList(); const shown=due.slice(0,7);
   const t1=TERMS[0]; let earned=0, possible=0;
@@ -1062,12 +1025,12 @@ function renderDash(){
     <ul class="plan">${planHTML}</ul>
     <div class="note">Every day: ${ANCHORS}.</div>
   </div>
-  <div class="panel"><div class="ph red">Due</div>
-    ${shown.length? shown.map(n=>`<div class="next-card ${n.od?'od':''}"><span class="cc">${mark(n.cc)}${n.cc}</span><span style="flex:1">${n.tx}</span><span class="duechip">${n.od?'overdue · was '+fdate(n.due):'due '+fdate(n.due)}</span><button data-go="${n.id}">Go</button></div>`).join("") : `<div class="note">Nothing due right now. ${ph.p==="term"?"This week is clear — work ahead if you want; the calendar brings the next week to you on "+fdate(wkDate(Math.min(curWeek()+1,9),0))+".":"The term calendar takes over on Aug 9."}</div>`}
+  <div class="panel"><div class="ph">Due</div>
+    ${shown.length? shown.map(n=>`<div class="next-card ${n.od?'od':''}"><span class="cc">${n.cc}</span><span style="flex:1">${n.tx}</span><span class="duechip">${n.od?'overdue · was '+fdate(n.due):'due '+fdate(n.due)}</span><button data-go="${n.id}">Go</button></div>`).join("") : `<div class="note">Nothing due right now. ${ph.p==="term"?"This week is clear — work ahead if you want; the calendar brings the next week to you on "+fdate(wkDate(Math.min(curWeek()+1,9),0))+".":"The term calendar takes over on Aug 9."}</div>`}
     ${due.length>7? `<div class="note">+ ${due.length-7} more in Courses.</div>`:""}
     <div class="note">Order is real: overdue first, then by date, with Stabilization outranking coursework — Constitution 17. Written work Saturdays · quizzes Fridays · midterms Fri ${fshort(MIDTERM_DATE)} · finals on fixed days, Oct 18–24 — see Schedule.</div>
   </div>
-  <div class="panel"><div class="ph green">Student status</div>
+  <div class="panel"><div class="ph">Student status</div>
     <div class="kv">
       <div><b>${rank()}</b><span>rank</span></div>
       <div><b>${S.xp}</b><span>xp</span></div>
@@ -1077,10 +1040,10 @@ function renderDash(){
     </div>
     <div class="bar" aria-hidden="true"><i style="width:${possible?earned/possible*100:0}%"></i></div>
   </div>
-  <div class="panel"><div class="ph yellow">Repairs</div>
+  <div class="panel"><div class="ph">Repairs</div>
     ${reps.length? reps.map(r=>`<div class="repair-item">${r.label} (${r.v})</div>`).join("") : `<div class="note">Empty. When a score lands under 80 it waits here — patch it, retest, cleared. Misses are fuel, not verdicts.</div>`}
   </div>
-  <div class="panel"><div class="ph ink">Ledger</div>
+  <div class="panel"><div class="ph">Ledger</div>
     <div id="eventlog" aria-live="polite">${S.log.map(e=>`<div><span class="t">${e.t}</span><span class="${e.cls||''}">${e.msg}</span></div>`).join("")||'<div><span class="t">--:--:--</span>System ready. First due date: Aug 8 — three placements and matriculation.</div>'}</div>
   </div>`;
   view.querySelectorAll("button[data-go]").forEach(b=>{ b.onclick=()=>{ openCourses[b.dataset.go]=true; store.set("roi5_open",openCourses);
@@ -1089,19 +1052,19 @@ function renderDash(){
 
 function renderSchedule(){
   let h=`<div class="panel"><div class="ph">The week — every class, fixed times, no conflicts</div>
-  <div class="note" style="margin:0 0 12px">The same grid drives Today and every course's Meets line — one source, so it cannot contradict itself. Course blocks carry their shapes; life blocks are dim. Predictability is the point: you always know when every class starts, so you can work ahead or trade hours deliberately.</div>`;
+  <div class="note" style="margin:0 0 12px">The same grid drives Today and every course's Meets line — one source, so it cannot contradict itself. Predictability is the point: you always know when every class starts, so you can work ahead or trade hours deliberately.</div>`;
   GRID.forEach((day,di)=>{
     h+=`<div class="sched-day"><h4>${DAYNAMES[di]}</h4>`;
     day.forEach(b=>{
-      h+= b.c? `<div class="blk"><span class="bt">${b.t}</span><span class="bc">${b.c!=="ALL"?mark(b.c):""}${b.c}</span><span>${b.k||""}${b.l?" — "+b.l:""}</span></div>`
-             : `<div class="blk life"><span class="bt">${b.t}</span><span style="min-width:96px"></span><span>${b.l}</span></div>`;
+      h+= b.c? `<div class="blk"><span class="bt">${b.t}</span><span class="bc">${b.c}</span><span>${b.k||""}${b.l?" — "+b.l:""}</span></div>`
+             : `<div class="blk life"><span class="bt">${b.t}</span><span style="min-width:76px"></span><span>${b.l}</span></div>`;
     });
     h+=`</div>`;
   });
   h+=`</div>
-  <div class="panel"><div class="ph red">Exam dates — fixed, visible from day one</div>
+  <div class="panel"><div class="ph">Exam dates — fixed, visible from day one</div>
   <table class="tr-table"><tr><th>Course</th><th>Midterm</th><th>Final</th></tr>
-  ${TERMS[0].courses.filter(c=>c.kind!=="lab").map(c=>`<tr><td>${mark(c.code)}<b>${c.code}</b></td><td>${fdate(MIDTERM_DATE)}</td><td>${fdate(FINALS[c.code])} · ${c.finlabel||"Final exam"} + defense</td></tr>`).join("")}
+  ${TERMS[0].courses.filter(c=>c.kind!=="lab").map(c=>`<tr><td><b>${c.code}</b></td><td>${fdate(MIDTERM_DATE)}</td><td>${fdate(FINALS[c.code])} · ${c.finlabel||"Final exam"} + defense</td></tr>`).join("")}
   </table>
   <div class="note">Sun Oct 18 · reading day. Sat Oct 24 · repairs and makeups. Knowing every date from today is what buys the flexibility you wanted — front-load homework, or spend the night before an exam studying. (Constitution 9 will side-eye the all-nighter; the schedule makes it possible anyway, because the dates never sneak up on you.)</div></div>`;
   view.innerHTML=h;
@@ -1112,12 +1075,12 @@ function renderTranscript(){
   TERMS.forEach(t=>{
     rows+=`<tr><td colspan="4" style="font-family:'Archivo Black',sans-serif;font-size:15px;padding-top:14px">${t.name}</td></tr>`;
     t.courses.forEach(c=>{ const k=courseCalc(c); let g="—";
-      if(!t.locked){
+      if(!t.begins){
         if(c.kind==="lab") g=k.letter;
         else { const tot=gbTotal(c); g = courseComplete(c,k)? "P · gradebook "+letterOf(tot) : Math.round(tot)+"/100 pts · in progress"; }
         if(courseComplete(c,k)) credEarned+=c.cr;
       }
-      rows+=`<tr><td>${mark(c.code)}<b>${c.code}</b></td><td>${c.title}</td><td>${c.cr}</td><td>${g}</td></tr>`; });
+      rows+=`<tr><td><b>${c.code}</b></td><td>${c.title}</td><td>${c.cr}</td><td>${g}</td></tr>`; });
   });
   view.innerHTML=`<div class="panel"><div class="ph">Transcript</div>
   <table class="tr-table"><tr><th>Code</th><th>Course</th><th>Cr</th><th>Grade</th></tr>${rows}</table>
@@ -1138,26 +1101,13 @@ function renderLibrary(){
   view.innerHTML=h;
 }
 
-function renderCharter(){
-  view.innerHTML=`
-  <div class="panel"><div class="ph">The graduate — who this institute produces</div>
-  <div class="note" style="margin:0 0 6px">Transcribed from the clipboard mind map, July 2026. Every node has a home — nothing on that page is floating anymore.</div>
-  <ul class="grad">${GRADUATE.map(g=>`<li><span class="mk ${g[1]} ${g[0]}"></span><b>${g[2]}.</b> <span class="to">${g[3]}</span><br>${g[4]}</li>`).join("")}</ul></div>
-  <div class="panel"><div class="ph green">Honor code — the first-attempt standard</div><ol class="rulelist">${HONOR.map(r=>`<li>${r}</li>`).join("")}</ol></div>
-  <div class="panel"><div class="ph red">The academic constitution</div><ol class="rulelist">${CONSTITUTION.map(r=>`<li>${r}</li>`).join("")}</ol></div>
-  <div class="panel"><div class="ph yellow">The ten tutorial questions</div><ol class="rulelist">${TUTORIAL.map(r=>`<li>${r}</li>`).join("")}</ol>
-  <div class="note">Once a week, one piece of work gets defended out loud. The work comes first, the conversation second — the Oxford rule.</div></div>
-  <div class="panel"><div class="ph ink">Graduation artifacts</div><ol class="rulelist"><li>Quantitative research thesis — reproducible package, paper, oral defense.</li><li>Composition capstone — a 12–20 minute multi-movement work; honors: Symphony No. 1.</li><li>Visual IP exhibition — collection, owned product, documented sales process.</li><li>Defense of the integrated operator — sleep, food, strength, regulation, and the personal constitution.</li></ol></div>`;
-}
-
 function render(){
   PROMPTS=[];
   if(cur==="dash") renderDash();
   else if(cur==="sched") renderSchedule();
   else if(cur==="courses") renderCourses();
   else if(cur==="transcript") renderTranscript();
-  else if(cur==="library") renderLibrary();
-  else renderCharter();
+  else renderLibrary();
 }
 document.querySelectorAll("nav button").forEach(b=>{ b.onclick=()=>{ document.querySelectorAll("nav button").forEach(x=>x.classList.remove("on")); b.classList.add("on"); cur=b.dataset.v; render(); }; });
 logEv("Session start · "+todayISO());
