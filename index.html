@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renaissance Operator Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f0e1; --card:#fffdf4; --ink:#161513;
+  --red:#e3372e; --blue:#2456c4; --yellow:#f2b60f; --green:#1d8a4a;
+  --soft:#6f6a5e;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{background:var(--paper); color:var(--ink); font-family:"Space Grotesk", system-ui, sans-serif; font-size:15.5px; line-height:1.55; min-height:100vh;}
+.wrap{max-width:900px; margin:0 auto; padding:18px 14px 90px;}
+header{padding:8px 2px 12px;}
+.logo{font-family:"Archivo Black", sans-serif; font-size:34px; line-height:1.02; letter-spacing:-.5px;}
+.shapes{display:flex; gap:8px; margin:10px 0 6px; align-items:flex-end;}
+.shapes i{display:block; width:18px; height:18px;}
+.shapes .s1{background:var(--red);}
+.shapes .s2{background:var(--blue); border-radius:50%;}
+.shapes .s3{width:0;height:0;background:none;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:18px solid var(--yellow);}
+.shapes .s4{background:var(--green);}
+.shapes .s5{background:var(--ink); border-radius:50% 50% 0 0;}
+.sub{font-size:12.5px; text-transform:uppercase; letter-spacing:.14em; color:var(--soft);}
+nav{display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 18px;}
+nav button{font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:13.5px; background:var(--card); color:var(--ink); border:2px solid var(--ink); padding:8px 13px; cursor:pointer; box-shadow:3px 3px 0 var(--ink);}
+nav button.on{background:var(--yellow);}
+nav button:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink);}
+nav button:focus-visible{outline:3px solid var(--blue); outline-offset:2px;}
+.panel{border:2px solid var(--ink); background:var(--card); padding:16px 18px; margin-bottom:18px; box-shadow:4px 4px 0 var(--ink);}
+.ph{font-family:"Archivo Black",sans-serif; font-size:16px; letter-spacing:.04em; text-transform:uppercase; display:inline-block; padding:3px 12px; margin-bottom:12px; color:#fff; background:var(--blue);}
+.ph.red{background:var(--red);} .ph.green{background:var(--green);} .ph.yellow{background:var(--yellow); color:var(--ink);} .ph.ink{background:var(--ink);}
+.mk{display:inline-block; width:13px; height:13px; vertical-align:-1px; margin-right:7px; flex:none;}
+.mk.ci{border-radius:50%;}
+.mk.r{background:var(--red);} .mk.b{background:var(--blue);} .mk.y{background:var(--yellow);} .mk.g{background:var(--green);} .mk.k{background:var(--ink);}
+.mk.tr{width:0; height:0; background:none !important; border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:14px solid var(--ink);}
+.mk.tr.r{border-bottom-color:var(--red);} .mk.tr.b{border-bottom-color:var(--blue);} .mk.tr.y{border-bottom-color:var(--yellow);} .mk.tr.g{border-bottom-color:var(--green);}
+.kv{display:flex; flex-wrap:wrap; gap:12px 28px;}
+.kv b{display:block; font-family:"Archivo Black",sans-serif; font-size:26px; line-height:1;}
+.kv span{font-size:11px; color:var(--soft); text-transform:uppercase; letter-spacing:.1em;}
+.bar{height:14px; border:2px solid var(--ink); margin-top:12px; position:relative; background:var(--card);}
+.bar i{position:absolute; inset:0; width:0%; background:var(--green); transition:width .4s;}
+.todaydate{font-family:"Archivo Black",sans-serif; font-size:26px; line-height:1.1;}
+.phase{color:var(--soft); font-size:13px; margin:4px 0 10px;}
+.plan li{list-style:none; padding:5px 0 5px 2px; font-size:14.5px; border-bottom:1px solid #e4dcc6; display:flex; gap:8px; align-items:baseline;}
+.plan li:last-child{border-bottom:0;}
+.plan .cc2{font-weight:700;}
+.plan .life{color:var(--soft);}
+.next-card{border:2px solid var(--ink); background:var(--card); padding:10px 12px; margin-bottom:10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; box-shadow:3px 3px 0 var(--ink);}
+.next-card.od{border-color:var(--red); box-shadow:3px 3px 0 var(--red);}
+.next-card .cc{font-weight:700; min-width:96px; display:flex; align-items:center;}
+.next-card .duechip{font-size:12px; color:var(--soft); white-space:nowrap;}
+.next-card.od .duechip{color:var(--red); font-weight:700;}
+.next-card button{margin-left:auto; background:var(--blue); border:2px solid var(--ink); color:#fff; font-family:inherit; font-weight:700; font-size:13px; padding:6px 14px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);}
+.next-card button:active{transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink);}
+.term-h{display:flex; align-items:baseline; gap:12px; margin:24px 0 10px; flex-wrap:wrap;}
+.term-h h2{font-family:"Archivo Black",sans-serif; font-size:22px;}
+.term-h small{color:var(--soft); font-size:12.5px;}
+.lock{color:var(--red); font-weight:700;}
+.course{border:2px solid var(--ink); background:var(--card); margin-bottom:12px; box-shadow:4px 4px 0 var(--ink);}
+.course>button.head{width:100%; text-align:left; background:none; border:0; color:inherit; font-family:inherit; padding:13px 15px; cursor:pointer; display:flex; gap:10px; align-items:center; font-size:15.5px; flex-wrap:wrap;}
+.course>button.head:focus-visible{outline:3px solid var(--blue); outline-offset:-3px;}
+.code{font-weight:700; min-width:80px;}
+.cred{margin-left:auto; color:var(--soft); font-size:12px; white-space:nowrap;}
+.grade-chip{font-family:"Archivo Black",sans-serif; font-size:13px; padding:3px 9px; border:2px solid var(--ink); background:var(--card); min-width:34px; text-align:center; white-space:nowrap;}
+.grade-chip.pass{background:var(--green); color:#fff;}
+.grade-chip.lk{border-style:dashed; color:var(--soft);}
+.body{display:none; padding:2px 15px 15px; border-top:2px dashed var(--ink);}
+.course.open .body{display:block;}
+.spine{border-left:6px solid var(--blue); padding:9px 12px; margin:12px 0; background:#f1ead6; font-size:14px;}
+.spine b{font-weight:700;}
+.meets{border-left:6px solid var(--red); padding:9px 12px; margin:12px 0; background:#f1ead6; font-size:13.5px;}
+.meets b{color:var(--red);}
+.free{color:#fff; background:var(--green); font-size:10px; padding:1px 6px; margin-left:6px; font-weight:700; letter-spacing:.05em;}
+.cat{font-size:13.5px; color:var(--soft); margin:10px 0 2px;}
+details.grading{margin:8px 0 12px; font-size:13.5px;}
+details.grading summary{cursor:pointer; color:var(--blue); font-weight:700; list-style:none;}
+details.grading summary::before{content:"▸ ";}
+details[open].grading summary::before{content:"▾ ";}
+details.grading .gtxt{padding:8px 0 0 14px;}
+.week{border:2px solid var(--ink); margin-bottom:10px; background:var(--card);}
+.week.od{border-left:8px solid var(--red);}
+.week.now{border-left:8px solid var(--blue);}
+.week>button.wh{width:100%; text-align:left; background:none; border:0; color:inherit; font-family:inherit; font-size:14px; font-weight:500; padding:11px 13px; cursor:pointer; display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+.week>button.wh:focus-visible{outline:3px solid var(--blue); outline-offset:-3px;}
+.week .wdates{color:var(--soft); font-size:12px;}
+.week .dots{margin-left:auto; letter-spacing:3px; font-size:11px; color:#cfc7ae;}
+.week .dots .on{color:var(--green);}
+.wk-body{display:none; padding:2px 13px 12px; border-top:2px dashed var(--ink);}
+.week.open .wk-body{display:block;}
+.task{display:flex; gap:10px; padding:10px 0; border-bottom:1px solid #e4dcc6; align-items:flex-start;}
+.task:last-child{border-bottom:0;}
+.task .chk{width:20px; height:20px; accent-color:#1d8a4a; cursor:pointer; margin-top:1px; flex:none;}
+.task .tx{flex:1; font-size:14px;}
+.task .meta{display:flex; flex-direction:column; align-items:flex-end; gap:3px; flex:none;}
+.task .tag{color:#b5ad96; font-size:10.5px; white-space:nowrap; letter-spacing:.03em;}
+.hwflag{color:var(--ink); background:var(--yellow); font-weight:700; font-size:10.5px; white-space:nowrap; padding:1px 6px;}
+.due{font-size:11px; color:var(--soft); white-space:nowrap;}
+.due.od{color:var(--red); font-weight:700;}
+.due.now{color:var(--blue); font-weight:700;}
+.qwrap{flex:1;}
+.qrow{display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-top:6px;}
+.qrow input[type=number]{width:70px; background:#fff; border:2px solid var(--ink); color:var(--ink); font-family:inherit; padding:5px 7px; font-size:14px;}
+.qrow button, .genbtn, .pl-btn{background:var(--card); border:2px solid var(--ink); color:var(--ink); font-family:inherit; font-weight:700; font-size:13px; padding:5px 11px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);}
+.qrow button:hover, .genbtn:hover, .pl-btn:hover{background:var(--yellow);}
+.qrow button:active, .genbtn:active, .pl-btn:active{transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink);}
+.stamp{font-weight:700; font-size:13.5px; margin-left:4px;}
+.stamp.p{color:var(--green);} .stamp.r{color:var(--red);} .stamp.d{color:var(--soft);}
+.gen{display:none; margin-top:8px;}
+.gen.show{display:block;}
+.gen textarea{width:100%; height:150px; background:#fff; color:var(--ink); border:2px solid var(--ink); font-family:"Space Grotesk",sans-serif; font-size:12.5px; padding:8px;}
+.plc{border:2px solid var(--ink); background:var(--card); padding:12px 14px; margin:14px 0; box-shadow:4px 4px 0 var(--blue);}
+.plc h3{font-family:"Archivo Black",sans-serif; font-size:16px; margin-bottom:6px;}
+.plc .dom{font-family:"Archivo Black",sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:#fff; background:var(--blue); display:inline-block; padding:2px 9px; margin:12px 0 4px;}
+.plc .pq{padding:8px 0; border-bottom:1px solid #e4dcc6; font-size:14px;}
+.plc .pq pre{white-space:pre-wrap; background:#fff; border:2px solid var(--ink); padding:6px 8px; margin-top:5px; font-size:13px; font-family:ui-monospace,Menlo,monospace;}
+.plc .pq .ans{color:var(--green); font-weight:700; margin-top:4px;}
+.plc .pq label{display:flex; gap:8px; align-items:center; margin-top:5px; color:var(--soft); font-size:13px; cursor:pointer;}
+.plc .pq input{accent-color:#1d8a4a; width:18px; height:18px;}
+.plc .result{border:2px solid var(--ink); background:#fff; padding:10px 12px; margin-top:12px;}
+.plc .result b{font-family:"Archivo Black",sans-serif;}
+.plc .weak{color:var(--red); font-weight:700;}
+.gb{border:2px solid var(--ink); background:var(--card); padding:12px 14px; margin:14px 0; box-shadow:4px 4px 0 var(--red);}
+.gb h3{font-family:"Archivo Black",sans-serif; font-size:15px; text-transform:uppercase; display:inline-block; background:var(--red); color:#fff; padding:2px 10px; margin-bottom:8px;}
+.gb table{width:100%; border-collapse:collapse; font-size:13.5px;}
+.gb th{color:var(--soft); font-size:11px; text-transform:uppercase; letter-spacing:.08em; text-align:left; padding:6px 4px; border-bottom:2px solid var(--ink);}
+.gb td{padding:8px 4px; border-bottom:1px solid #e4dcc6; vertical-align:top;}
+.gb .pts{font-family:"Archivo Black",sans-serif; font-size:15px; white-space:nowrap;}
+.gb .total{font-family:"Archivo Black",sans-serif; font-size:20px; color:var(--red);}
+.syl{border:2px solid var(--ink); background:var(--card); padding:14px 16px; margin:12px 0; box-shadow:4px 4px 0 var(--yellow);}
+.syl h3{font-family:"Archivo Black",sans-serif; font-size:19px;}
+.syl h4{font-family:"Archivo Black",sans-serif; font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; margin:14px 0 5px; display:flex; align-items:center; gap:7px;}
+.syl h4::before{content:""; width:11px; height:11px; background:var(--blue); display:inline-block;}
+.syl h4:nth-of-type(4n+2)::before{background:var(--red);}
+.syl h4:nth-of-type(4n+3)::before{background:var(--yellow);}
+.syl h4:nth-of-type(4n)::before{background:var(--green);}
+.syl table{width:100%; border-collapse:collapse; font-size:13px;}
+.syl td,.syl th{padding:5px 4px; border-bottom:1px solid #e4dcc6; text-align:left;}
+.syl .cal li{list-style:none; padding:3px 0 3px 16px; position:relative; font-size:13px; border-bottom:1px solid #eee6d0;}
+.syl .cal li::before{content:""; position:absolute; left:0; top:9px; width:8px; height:8px; background:var(--blue);}
+.tr-table{width:100%; border-collapse:collapse; font-size:14px;}
+.tr-table th{color:var(--soft); font-size:11px; text-transform:uppercase; letter-spacing:.08em; text-align:left; padding:7px 6px; border-bottom:2px solid var(--ink);}
+.tr-table td{padding:8px 6px; border-bottom:1px solid #e4dcc6; vertical-align:top;}
+.gpa-line{font-family:"Archivo Black",sans-serif; font-size:20px; margin-top:12px;}
+#eventlog{border:2px solid var(--ink); background:#fff; padding:10px 12px; height:150px; overflow-y:auto; font-size:12.5px; color:var(--soft);}
+#eventlog .t{color:#b5ad96; margin-right:8px;}
+#eventlog .hot{color:var(--blue); font-weight:500;} #eventlog .warn{color:var(--red); font-weight:700;}
+.rulelist{counter-reset:r; font-size:14px;}
+.rulelist li{list-style:none; padding:7px 0 7px 40px; position:relative; border-bottom:1px solid #e4dcc6;}
+.rulelist li::before{counter-increment:r; content:counter(r,decimal-leading-zero); position:absolute; left:0; top:6px; color:var(--red); font-family:"Archivo Black",sans-serif; font-size:15px;}
+.note{font-size:13px; color:var(--soft); margin-top:8px;}
+.repair-item{color:var(--ink); font-size:14px; padding:6px 0 6px 2px; border-bottom:1px solid #e4dcc6; display:flex; gap:8px; align-items:baseline;}
+.repair-item::before{content:""; width:10px; height:10px; background:var(--red); flex:none; align-self:center;}
+.flash{position:fixed; left:50%; bottom:26px; transform:translateX(-50%); background:var(--yellow); border:2px solid var(--ink); color:var(--ink); padding:9px 18px; font-family:"Archivo Black",sans-serif; font-size:15px; z-index:120; display:none; box-shadow:4px 4px 0 var(--ink); white-space:nowrap;}
+.lib-term{font-family:"Archivo Black",sans-serif; font-size:16px; margin:18px 0 6px;}
+.lib li{list-style:none; padding:6px 0 6px 22px; position:relative; font-size:14px; border-bottom:1px solid #e4dcc6;}
+.lib li::before{content:""; position:absolute; left:2px; top:12px; width:9px; height:9px; background:var(--blue);}
+.lib li:nth-child(4n+2)::before{background:var(--red);}
+.lib li:nth-child(4n+3)::before{background:var(--yellow);}
+.lib li:nth-child(4n)::before{background:var(--green); border-radius:50%;}
+.carver{border:2px solid var(--red); background:var(--card); padding:12px 14px; margin-top:16px; font-size:14px; box-shadow:4px 4px 0 var(--red);}
+.carver b{color:var(--red);}
+.grad li{list-style:none; padding:8px 0; border-bottom:1px solid #e4dcc6; font-size:14px;}
+.grad li b{font-weight:700;}
+.grad li .to{color:var(--soft);}
+.sched-day{border:2px solid var(--ink); background:var(--card); padding:10px 12px; margin-bottom:10px; box-shadow:3px 3px 0 var(--ink);}
+.sched-day h4{font-family:"Archivo Black",sans-serif; font-size:15px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px;}
+.sched-day .blk{display:flex; gap:10px; padding:4px 0; border-bottom:1px solid #eee6d0; font-size:13.5px; align-items:center;}
+.sched-day .blk:last-child{border-bottom:0;}
+.sched-day .bt{color:var(--soft); min-width:96px; white-space:nowrap; font-size:12.5px;}
+.sched-day .bc{font-weight:700; min-width:96px; display:flex; align-items:center;}
+.sched-day .life{color:var(--soft);}
+@media (prefers-reduced-motion:reduce){ .bar i{transition:none;} }
+@media (max-width:640px){ .kv b{font-size:22px;} .logo{font-size:27px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">Renaissance Operator Institute</div>
+  <div class="shapes" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><i class="s5"></i></div>
+  <div class="sub">Ricky · Honors Foundation Year · Fall 2026 · "Do what is right in front of you."</div>
+</header>
+
+<nav>
+  <button data-v="dash" class="on">Today</button>
+  <button data-v="sched">Schedule</button>
+  <button data-v="courses">Courses</button>
+  <button data-v="transcript">Transcript</button>
+  <button data-v="library">Library</button>
+  <button data-v="charter">Charter</button>
+</nav>
+
+<main id="view"></main>
+</div>
+<div class="flash" id="flash"></div>
+
+<script>
+/* ===== Safe storage: persists on GitHub Pages or as a local file; memory-only in sandboxed previews ===== */
+const mem = {};
+const store = {
+  get(k,d){ try{const v=localStorage.getItem(k); return v===null?d:JSON.parse(v);}catch(e){return (k in mem)?mem[k]:d;} },
+  set(k,v){ try{localStorage.setItem(k,JSON.stringify(v));}catch(e){mem[k]=v;} }
+};
+const PASS = 80;
+
+/* ===== Course marks — every course gets its Byrne shape ===== */
+const MARKS={"ORI 000":["y","sq"],"MAT 101":["r","ci"],"CSC 101":["b","sq"],"MUS 101":["y","tr"],"CMP 101":["g","ci"],"CRE 101":["r","sq"],"HPS 101":["g","tr"],"AIM 101":["b","ci"],"RDG 101":["y","ci"],"QTR 090":["k","sq"],"STB 090":["r","tr"],
+"MAT 112":["r","ci"],"DSC 110":["b","tr"],"MUS 112":["y","tr"],"CMP 112":["g","ci"],"QTR 120":["k","sq"],"CRE 112":["r","sq"],"HPS 112":["g","tr"],
+"STA 210":["b","ci"],"CSC 210":["b","sq"],"MUS 210":["y","tr"],"ORC 210":["y","sq"],"QTR 210":["k","sq"],"STA 215":["b","ci"],"COM 210":["r","ci"],"CSC 250":["b","sq"],
+"CAL 301":["r","ci"],"LNA 301":["r","sq"],"PHY 301":["g","sq"],"CMP 310":["g","ci"],"QTR 310":["k","sq"],"FIN 310":["k","ci"],
+"QTR 499":["k","sq"],"MUS 499":["y","tr"],"ART 499":["r","sq"],"OPS 499":["g","sq"]};
+function mark(code){ const m=MARKS[code]||["k","sq"]; return `<span class="mk ${m[1]} ${m[0]}" aria-hidden="true"></span>`; }
+
+/* ================= THE ACADEMIC CALENDAR =================
+   Matriculation: Jul 26 – Aug 8, 2026.  Term I: Aug 9 (Sun) – Oct 17 (Sat), ten weeks.
+   Written work due Saturdays. Quizzes Friday. Midterms Fri of Week 5 (Sep 11).
+   Finals on fixed days in the Examination Week, Oct 18–24. */
+const T1START = new Date(2026,7,9);
+const MATRIC  = new Date(2026,6,26);
+const EXAM_E  = new Date(2026,9,24);
+function strip(d){ return new Date(d.getFullYear(),d.getMonth(),d.getDate()); }
+function wkDate(i,off){ return new Date(2026,7,9+i*7+off); }
+function fdate(d){ return d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}); }
+function fshort(d){ return d.toLocaleDateString("en-US",{month:"short",day:"numeric"}); }
+function todayD(){ return strip(new Date()); }
+function curWeek(){ const dd=Math.floor((todayD()-strip(T1START))/864e5); return dd<0? -1 : Math.floor(dd/7); }
+function phase(){
+  const t=todayD();
+  if(t<strip(MATRIC)) return {p:"before", label:"Matriculation begins "+fdate(MATRIC)+". Term I begins "+fdate(T1START)+"."};
+  if(t<strip(T1START)) return {p:"matric", label:"Matriculation · "+fshort(MATRIC)+" – Aug 8 · Term I begins "+fdate(T1START)};
+  const w=curWeek();
+  if(w<=9) return {p:"term", w, label:"Term I · Week "+(w+1)+" of 10 · "+fshort(wkDate(w,0))+" – "+fshort(wkDate(w,6))};
+  if(t<=strip(EXAM_E)) return {p:"exam", label:"Examination and Repair Week · Oct 18 – 24 · see the finals schedule"};
+  return {p:"post", label:"Term I complete · Term II begins Oct 25"};
+}
+function dueForWeekTask(wi,isQuiz){ return wkDate(wi, isQuiz?5:6); }
+function dueForItem(n){ return n===0? new Date(2026,7,8) : wkDate(n-1,6); }
+function dueChip(d,done){
+  if(done) return `<span class="due">done</span>`;
+  const t=todayD();
+  if(t>strip(d)) return `<span class="due od">overdue · was ${fdate(d)}</span>`;
+  const w=curWeek();
+  const inThisWeek = w>=0 && strip(d)<=strip(wkDate(Math.min(w,9),6));
+  return `<span class="due ${inThisWeek?'now':''}">due ${fdate(d)}</span>`;
+}
+function recChip(kind){ return `<span class="due">${kind==="w"?"every week":kind==="m"?"every month":"standing"}</span>`; }
+
+/* ===== FINALS SCHEDULE — fixed days, like a registrar ===== */
+const FINALS = {
+ "MAT 101": new Date(2026,9,19), "CSC 101": new Date(2026,9,20),
+ "MUS 101": new Date(2026,9,21), "CMP 101": new Date(2026,9,21),
+ "CRE 101": new Date(2026,9,22), "HPS 101": new Date(2026,9,22),
+ "AIM 101": new Date(2026,9,23), "RDG 101": new Date(2026,9,23),
+};
+const MIDTERM_DATE = wkDate(4,5); /* Fri Sep 11 */
+
+/* ===== THE WEEK GRID — single source of truth for class meetings. ===== */
+const GRID = [
+ [ {t:"early",c:null,l:"Light mixed review over coffee"},
+   {t:"7:00–9:00",c:"HPS 101",k:"Kitchen lab",l:"Batch cooking"},
+   {t:"9:00",c:null,l:"House, car and workspace reset"},
+   {t:"10:30",c:null,l:"Money and admin review"},
+   {t:"11:30–12:30",c:"ALL",k:"Tutorial",l:"Weekly tutorial or discussion"},
+   {t:"pm",c:null,l:"Reading, walking, recovery"},
+   {t:"3:30",c:null,l:"Inner Council + plan the week"},
+   {t:"eve",c:null,l:"No new projects tonight"} ],
+ [ {t:"4:30–7:00",c:"MAT 101",k:"Lecture"},
+   {t:"8:00–11:00",c:"CRE 101",k:"Production",l:"Paid art and commissions"},
+   {t:"11:00",c:"CRE 101",k:"Outreach",l:"Sales contacts"},
+   {t:"1:00–2:30",c:"MUS 101",k:"Theory + ear"},
+   {t:"2:45–4:15",c:"CSC 101",k:"Lab"},
+   {t:"4:30–5:30",c:"HPS 101",k:"Strength"},
+   {t:"eve",c:null,l:"Shadow Ledger, prep tomorrow"} ],
+ [ {t:"4:30–7:00",c:"CSC 101",k:"Lecture"},
+   {t:"8:00–12:00",c:"STB 090",k:"Agency block",l:"GA, documents, DMV, job search"},
+   {t:"1:00–3:00",c:"CRE 101",k:"Enterprise"},
+   {t:"3:15–4:15",c:"MUS 101",k:"Keyboard"},
+   {t:"4:15",c:null,l:"Walk"},
+   {t:"eve",c:null,l:"Cook, file paperwork, ledger"} ],
+ [ {t:"4:30–7:00",c:"MAT 101",k:"Problem session"},
+   {t:"8:00–11:00",c:"CRE 101",k:"Production",l:"Art and portfolio production"},
+   {t:"11:00",c:"CRE 101",k:"Outreach",l:"Sales contacts"},
+   {t:"12:30–2:00",c:"CMP 101",k:"Studio"},
+   {t:"2:15–4:15",c:"CSC 101",k:"Project"},
+   {t:"4:30–5:30",c:"HPS 101",k:"Strength"},
+   {t:"eve",c:null,l:"Low-stimulation review"} ],
+ [ {t:"4:30–6:30",c:"MAT 101",k:"Review"},
+   {t:"6:45–7:45",c:"MUS 101",k:"Musicianship"},
+   {t:"8:00–12:00",c:"STB 090",k:"Agency block",l:"Follow-ups"},
+   {t:"1:00–3:00",c:"CRE 101",k:"Enterprise"},
+   {t:"3:15–4:45",c:"CSC 101",k:"Pset section"},
+   {t:"eve",c:null,l:"Cooking + inner work"} ],
+ [ {t:"4:30–7:00",c:"CSC 101",k:"Deep work"},
+   {t:"8:00–10:00",c:"MAT 101",k:"Quiz section",l:"Weekly quiz — assessment day"},
+   {t:"10:15–11:15",c:"AIM 101",k:"AI lab",l:"Prompt library + tutorial prep"},
+   {t:"11:30–12:30",c:"ALL",k:"Oral defense",l:"Defend one piece of work"},
+   {t:"1:30–3:00",c:"CMP 101",k:"Studio"},
+   {t:"3:15–4:15",c:"QTR 090",k:"Read-only review"},
+   {t:"4:30–5:30",c:"HPS 101",k:"Strength"},
+   {t:"eve",c:null,l:"Weekly review"} ],
+ [ {t:"4:30–7:00",c:null,l:"Integrated math + Python project"},
+   {t:"8:00–10:00",c:"CRE 101",k:"Delivery",l:"Finish and deliver visual work"},
+   {t:"10:30–12:30",c:"CMP 101",k:"Studio"},
+   {t:"1:30–3:00",c:null,l:"Export scores, audio, code"},
+   {t:"3:15–4:15",c:"ALL",k:"Jury",l:"Weekly jury"},
+   {t:"4:15–5:00",c:"RDG 101",k:"Reading lab",l:"Public post + book brief"},
+   {t:"eve",c:null,l:"Early shutdown"} ],
+];
+const DAYNAMES=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function meetsLine(code){
+  const parts=[];
+  GRID.forEach((day,di)=>{ day.forEach(b=>{ if(b.c===code) parts.push(DAYNAMES[di].slice(0,3)+" "+b.t+" ("+b.k+")"); }); });
+  return parts.join(" · ");
+}
+const MATRICPLAN = ["Record baselines — sleep, food, money, environment","Stand up the container: binder, calendar, one spreadsheet","Set the workspace and clean the car","Tue/Thu 8:00–12:00 · Agency block — GA, birth certificate, Social Security, DMV","Take the three placement exams — inside MAT, CSC and MUS","Install Anki, first 20 cards","Set the sleep window: 8:30p – 4:00a","No formal coursework yet — that starts Aug 9"];
+const ANCHORS = "Anki 20 minutes, first thing · one finished thing before shutdown · sleep window holds, 8:30p – 4:00a";
+
+/* ================= THE PLACEMENT ENGINE ================= */
+const PLC = {
+"MAT 101":{ title:"MAT101-PLACEMENT01", n:32, time:"aim for 60 minutes",
+ intro:"Six domains, closed book. Work on paper, then reveal the answers and check yourself honestly.",
+ doms:[
+  {name:"Arithmetic and order of operations", repair:"§1.1 — drill until fluent before Week 1"},
+  {name:"Fractions, ratios and percents", repair:"§1.1–1.3 with extra fraction drills in Week 1"},
+  {name:"Signed numbers and expressions", repair:"§1.4–1.5 gets double time in Weeks 2–3"},
+  {name:"Linear equations and formulas", repair:"§2.2–2.3 gets double time in Weeks 4–5"},
+  {name:"Inequalities and interval notation", repair:"§2.7 gets double time in Week 7"},
+  {name:"Graphs, slope and functions", repair:"§3.1 and §4.1 get double time in Weeks 8–9"}],
+ pass:"Clean sweep across every domain. Start Week 1 at full speed.",
+ qs:[
+  {d:0,q:"17 + 6 × 4 = ?", a:"41 — multiply first: 17 + 24."},
+  {d:0,q:"(35 − 15) ÷ 4 + 3² = ?", a:"14 — 20 ÷ 4 = 5, plus 9."},
+  {d:0,q:"2.5 × 0.4 = ?", a:"1.0"},
+  {d:0,q:"1000 − 10³ ÷ 5 = ?", a:"800 — 10³ = 1000, ÷5 = 200, then subtract."},
+  {d:0,q:"√144 + 4² = ?", a:"28 — 12 + 16."},
+  {d:1,q:"3/4 + 5/8 = ?", a:"11/8, i.e. 1 3/8 — common denominator 8."},
+  {d:1,q:"2/3 × 9/10 = ?", a:"3/5 — 18/30 reduced."},
+  {d:1,q:"5/6 ÷ 1/3 = ?", a:"5/2, i.e. 2 1/2 — multiply by the reciprocal."},
+  {d:1,q:"What is 35% of 240?", a:"84"},
+  {d:1,q:"18 is what percent of 45?", a:"40%"},
+  {d:1,q:"A trade risks $50 to make $175. What is the reward-to-risk ratio?", a:"3.5 to 1"},
+  {d:2,q:"−7 + 12 − (−5) = ?", a:"10 — subtracting a negative adds."},
+  {d:2,q:"(−4)(−6) − 8 = ?", a:"16 — 24 minus 8."},
+  {d:2,q:"Simplify: 3x + 5 − 7x + 2", a:"−4x + 7"},
+  {d:2,q:"Simplify: 4(2a − 3) − (a + 6)", a:"7a − 18 — 8a − 12 − a − 6."},
+  {d:2,q:"Evaluate x² − 3x when x = −2", a:"10 — 4 + 6. Watch the sign: −3(−2) = +6."},
+  {d:3,q:"Solve: 3x − 7 = 20", a:"x = 9"},
+  {d:3,q:"Solve: 5(x + 2) = 3x + 18", a:"x = 4 — 5x + 10 = 3x + 18."},
+  {d:3,q:"Solve: x/4 + 3 = 11", a:"x = 32"},
+  {d:3,q:"Solve for w:  P = 2l + 2w", a:"w = (P − 2l) / 2"},
+  {d:3,q:"MNQ moves $2 per point. Your max loss on a trade is $150. How many points against you until you hit it?", a:"75 points — 150 ÷ 2."},
+  {d:3,q:"Solve: 2(3x − 1) = 4x + 10", a:"x = 6 — 6x − 2 = 4x + 10."},
+  {d:4,q:"Solve: −3x + 5 > 14", a:"x < −3 — dividing by a negative flips the inequality."},
+  {d:4,q:"Write in interval notation: −2 < x ≤ 7", a:"(−2, 7]"},
+  {d:4,q:"Solve and write in interval notation: 2x − 4 ≤ 10", a:"x ≤ 7, i.e. (−∞, 7]"},
+  {d:4,q:"Your account starts at $50,000 with a $2,000 max drawdown. Write the inequality for an allowed balance b.", a:"b ≥ 48,000"},
+  {d:5,q:"Slope of the line through (1, 2) and (5, 10)?", a:"2 — rise 8 over run 4."},
+  {d:5,q:"For y = −3x + 7, give the slope and y-intercept.", a:"slope −3, intercept 7"},
+  {d:5,q:"If f(x) = 2x² − 1, what is f(−3)?", a:"17 — 2(9) − 1."},
+  {d:5,q:"Equation of the line through (0, 4) with slope 1/2?", a:"y = x/2 + 4"},
+  {d:5,q:"Does x = y² define y as a function of x?", a:"No — one x gives two y values (x = 4 → y = ±2)."},
+  {d:5,q:"An equity curve rises $600 over 12 trading days. Average rate of change per day?", a:"$50 per day"}]},
+"CSC 101":{ title:"CSC101-PLACEMENT01", n:12, time:"aim for 25 minutes",
+ intro:"Three domains, no running the code — predict on paper first, then reveal. Pass 80+ overall and Weeks 1–3 run at review speed. Optional stretch afterwards: attempt CS50P Problem Set 2 cold on Harvard's site to confirm.",
+ doms:[
+  {name:"Reading code — predict the output", repair:"Start at Lecture 0 in full, no skipping"},
+  {name:"Conditionals and loops", repair:"Weeks 1–3 at full pace, no review speed"},
+  {name:"Bugs and concepts", repair:"Add the CS50P debugging short before Week 4"}],
+ pass:"Strong across all three. Weeks 1–3 at review speed — spend the saved hours on the builds.",
+ qs:[
+  {d:0,q:"What prints?", code:"x = 3\ny = x * 2 + 1\nprint(y)", a:"7"},
+  {d:0,q:"What prints?", code:"print(\"ab\" * 3)", a:"ababab"},
+  {d:0,q:"What prints?", code:"n = 10\nn = n + 5\nprint(n)", a:"15"},
+  {d:0,q:"What prints?", code:"print(len(\"trade\"))", a:"5"},
+  {d:1,q:"What prints, exactly?", code:"for i in range(3):\n    print(i)", a:"0, 1 and 2 — each on its own line. range(3) stops before 3."},
+  {d:1,q:"What prints?", code:"x = 5\nif x > 3:\n    print(\"yes\")\nelse:\n    print(\"no\")", a:"yes"},
+  {d:1,q:"What prints?", code:"total = 0\nfor n in [2, 4, 6]:\n    total += n\nprint(total)", a:"12"},
+  {d:1,q:"What prints?", code:"i = 0\nwhile i < 2:\n    i += 1\nprint(i)", a:"2"},
+  {d:2,q:"Spot the bug:", code:"if x = 5:\n    print(\"five\")", a:"= assigns; comparison needs ==. Python refuses to run this."},
+  {d:2,q:"In one sentence: what does return do that print does not?", a:"return hands the value back to the caller so other code can use it; print only displays it."},
+  {d:2,q:"What happens?", code:"nums = [1, 2, 3]\nprint(nums[3])", a:"IndexError — indexes start at 0, so the last item is nums[2]."},
+  {d:2,q:"Why wrap int(input(...)) in try/except?", a:"The user can type anything; catching ValueError keeps bad input from crashing the program."}]},
+"MUS 101":{ title:"MUS101-PLACEMENT01", n:20, time:"aim for 20 minutes",
+ intro:"Four domains: both clefs, rhythm, and the keyboard itself. Answer on paper (sit at the keyboard for the last five), then reveal and check honestly.",
+ doms:[
+  {name:"Treble clef — name the note", repair:"Week 1 note drills get double time, plus daily flashcards"},
+  {name:"Bass clef — name the note", repair:"Week 1 note drills get double time on bass clef especially"},
+  {name:"Rhythm and note values", repair:"Week 2 rhythm work gets double time"},
+  {name:"Keyboard geography", repair:"Alfred's Unit 1 keyboard geography before Week 1"}],
+ pass:"You already read and find your way. Weeks 1–2 run at review speed — bank the hours for ear training.",
+ qs:[
+  {d:0,q:"Treble clef: the note sitting on the bottom line.", a:"E — the lines are E G B D F, bottom to top."},
+  {d:0,q:"Treble clef: the note in the second space from the bottom.", a:"A — the spaces spell F A C E."},
+  {d:0,q:"Treble clef: the note on the third line.", a:"B"},
+  {d:0,q:"Treble clef: the note on the top line.", a:"F"},
+  {d:0,q:"Treble clef: the note in the third space.", a:"C"},
+  {d:1,q:"Bass clef: the note on the bottom line.", a:"G — the lines are G B D F A, bottom to top."},
+  {d:1,q:"Bass clef: the note in the second space from the bottom.", a:"C — the spaces spell A C E G."},
+  {d:1,q:"Bass clef: the note on the middle line.", a:"D"},
+  {d:1,q:"Bass clef: the note on the top line.", a:"A"},
+  {d:1,q:"Bass clef: the note in the fourth space.", a:"G"},
+  {d:2,q:"In 4/4 time, how many beats does a whole note get?", a:"4"},
+  {d:2,q:"How many quarter notes equal one half note?", a:"2"},
+  {d:2,q:"In 4/4, how many eighth notes fill one beat?", a:"2"},
+  {d:2,q:"In 3/4 time, how many quarter-note beats per measure?", a:"3"},
+  {d:2,q:"How many beats does a dotted half note last in 4/4?", a:"3 — the dot adds half the value."},
+  {d:3,q:"At the keyboard: middle C sits just to the left of which group of black keys?", a:"The group of two."},
+  {d:3,q:"Going up the white keys from C: C, D, then?", a:"E"},
+  {d:3,q:"F sits just to the left of which group of black keys?", a:"The group of three."},
+  {d:3,q:"From one C up to the next C, how many white keys, counting both?", a:"8 — the octave."},
+  {d:3,q:"Which white key sits between the two black keys in the group of two?", a:"D"}]},
+};
+
+/* ================= EXAM OFFICE PROMPTS ================= */
+function matQuizPrompt(n,cumEnd,sec,topic){
+return "Act as my strict closed-book examiner for OpenStax Algebra and Trigonometry 2e.\n"+
+"Write a 20-question cumulative quiz covering sections 1.1 through "+cumEnd+", weighted about 60% toward this week ("+sec+": "+topic+").\n"+
+"Mix: 12 computation, 5 applied word problems (use futures-trading contexts where natural — ticks, reward-to-risk, drawdown), 3 short explain-why questions.\n"+
+"Show the questions only, numbered. Start a 30-minute clock when I say begin. When I say done, grade strictly out of 100, then show a full answer key with worked solutions, and tell me exactly which sections to repair.";
+}
+function matMidPrompt(){
+return "Act as my strict closed-book examiner for OpenStax Algebra and Trigonometry 2e.\n"+
+"Write a 40-question MIDTERM covering sections 1.1 through 2.4: 24 computation, 10 applied word problems (futures-trading contexts welcome), 6 explain-why.\n"+
+"Questions only, numbered. 60-minute clock from when I say begin. When I say done: strict score out of 100, full worked answer key, and a repair list by section.";
+}
+function matFinalPrompt(){
+return "Act as my strict closed-book examiner for MAT 101 (OpenStax Algebra and Trigonometry 2e, sections 1.1 through 4.2).\n"+
+"Write a 50-question FINAL EXAM across the whole course: 28 computation, 14 applied problems (trading contexts welcome), 8 explain-why.\n"+
+"Questions only, numbered. 90-minute clock from when I say begin. When I say done: strict score out of 100, full worked answer key, and a repair list by section.";
+}
+function cscMidPrompt(){
+return "Act as my strict closed-book examiner for CS50P, Lectures 0 through 4 (functions, variables, conditionals, loops, exceptions, libraries).\n"+
+"Write a 25-question MIDTERM: 10 predict-the-output, 8 write-short-code-on-paper, 7 explain-why. Questions only, numbered.\n"+
+"60-minute clock from when I say begin. When I say done: strict score out of 100, full answer key with working code, and a repair list by lecture.";
+}
+function musMidPrompt(){
+return "Act as my music theory and ear-training examiner for a cumulative MIDTERM over: notation, rhythm, major scales, intervals, and triads.\n"+
+"Give a 20-item test: written spelling and identification in text, plus keyboard tasks you dictate (I play and report). One item at a time.\n"+
+"When I say done: strict score out of 100, corrections, and a repair list by topic.";
+}
+function cscCheckPrompt(build){
+return "I am going to paste my Python code for this week's build: "+build+".\n"+
+"Act as an oral examiner. First have me explain the code line by line in my own words. Then ask 8 probing questions, one at a time — edge cases, why this structure, what input breaks it, what I would change. No hints while I answer.\n"+
+"Then score me 0–100 with specific reasons and list exactly what to repair.";
+}
+function cscFinalPrompt(){
+return "I am going to walk you through my Trade Analyzer v1 (CS50P final project).\n"+
+"Act as a project examiner: have me explain every function unaided, then stress-test me — malformed CSVs, division-by-zero cases, commission handling, why each metric formula is right.\n"+
+"Ask one question at a time, 10 questions total. Then score 0–100 with reasons and a repair list.";
+}
+function musTestPrompt(topic){
+return "Act as my music theory and ear-training examiner. This week's topic: "+topic+".\n"+
+"Give me a 15-item test: spelling and identification in text (for example, 'Treble clef, note on the second line — name it' or 'Spell the F major triad'), plus aural items where you tell me exactly what to play at my keyboard and what to identify by ear.\n"+
+"One item at a time. When I say done, grade 0–100 with corrections and what to drill next.";
+}
+function musJuryPrompt(){
+return "Act as a conservatory jury panel for a first-term musicianship student.\n"+
+"Test me across the whole term: note naming, rhythm, major scales, intervals, triads, scale degrees, harmonic function, cadences, phrase structure. Mix written-style items with keyboard tasks you dictate (I will play and report). 20 items, one at a time.\n"+
+"Then score 0–100, name my three weakest skills, and prescribe the repair plan.";
+}
+function defensePrompt(course){
+return "Act as my Oxford-style tutor for "+course+". Ask me the ten tutorial questions about my submitted work, one at a time, pressing hard where my answers are weak:\n"+
+"1 What did you attempt? 2 Why that method? 3 Where did you become uncertain? 4 What error did you make? 5 What assumption did you use? 6 Could another method work? 7 Explain the result without notes. 8 What changes if one condition changes? 9 What did this teach you? 10 What needs repair next week?\n"+
+"Then score the defense 0–100 with reasons.";
+}
+function juryGeneric(kind){
+return "Act as a strict but fair review panel for my "+kind+".\n"+
+"I will describe or share the work. Press on intent versus execution, ask one question at a time (8 total), then score 0–100 with specific feedback and the repair list.";
+}
+function essayGraderPrompt(course, brief){
+return "I am going to paste my midterm essay for "+course+". The assignment was: "+brief+"\n"+
+"Grade it strictly out of 100 against: a clear thesis, evidence drawn from my own actual work, specificity over vagueness, honesty about what failed, and one concrete change I commit to.\n"+
+"Give the score, then comments, then the single most important revision.";
+}
+
+/* ================= COURSE DATA ================= */
+const MATW = [
+ {sec:"§1.1–1.2", end:"1.2", t:"Real numbers and exponents", ps:"the odd exercises at the end of §1.1 and §1.2", ex:"Why do the exponent rules follow from repeated multiplication?"},
+ {sec:"§1.3–1.4", end:"1.4", t:"Radicals and polynomials", ps:"the odd exercises at the end of §1.3 and §1.4", ex:"When does √(a²) equal |a|, and why?"},
+ {sec:"§1.5–1.6", end:"1.6", t:"Factoring and rational expressions", ps:"the odd exercises at the end of §1.5 and §1.6, plus a short error-analysis of your ten worst misses so far", ex:"Explain factoring as un-distributing. Where do errors actually happen?"},
+ {sec:"§2.1–2.2", end:"2.2", t:"The coordinate plane and linear equations", ps:"the odd exercises at the end of §2.1 and §2.2, plus a trading breakeven worksheet", ex:"What makes an equation linear? Give one non-example and show why it fails."},
+ {sec:"§2.3 (skim 2.4)", end:"2.4", t:"Models and applications", ps:"the odd exercises at the end of §2.3, plus rearranging ten financial formulas", ex:"Translate one real trading situation into an equation and defend every term.", mid:true},
+ {sec:"§2.5–2.6", end:"2.6", t:"Quadratics and other equations", ps:"the odd exercises at the end of §2.5 and §2.6", ex:"Why does the quadratic formula work? Sketch the completing-the-square idea."},
+ {sec:"§2.7", end:"2.7", t:"Inequalities and absolute value", ps:"the odd exercises at the end of §2.7, plus drawdown and account-limit problems", ex:"Explain interval notation to a trader using drawdown limits."},
+ {sec:"§3.1–3.2", end:"3.2", t:"Functions, domain and range", ps:"the odd exercises at the end of §3.1 and §3.2", ex:"What is a function? One trading example, one non-function, and why."},
+ {sec:"§3.3 + §4.1–4.2", end:"4.2", t:"Rates of change and linear models", ps:"the odd exercises at the end of §3.3, §4.1 and §4.2, plus modeling your equity curve as a line", ex:"Interpret the slope of your equity curve as a rate of change."},
+ {sec:"Everything", end:"4.2", t:"Review week", ps:"your error log, reworked fresh until every item passes", ex:"One page: the five ideas that organize this whole course.", noquiz:true},
+];
+const CSCW = [
+ {lec:"Lecture 0 — Functions, variables", pset:"CS50P Problem Set 0", b:"an MNQ tick-value calculator"},
+ {lec:"Lecture 1 — Conditionals", pset:"CS50P Problem Set 1", b:"a rule-compliance checker"},
+ {lec:"Lecture 2 — Loops", pset:"CS50P Problem Set 2", b:"a win/loss counter"},
+ {lec:"Lecture 3 — Exceptions", pset:"CS50P Problem Set 3", b:"an input-safe trade calculator"},
+ {lec:"Lecture 4 — Libraries", pset:"CS50P Problem Set 4", b:"a reusable statistics module"},
+ {lec:"Lecture 5 — Unit tests", pset:"CS50P Problem Set 5", b:"tests for expected value and profit factor"},
+ {lec:"Lecture 6 — File I/O", pset:"CS50P Problem Set 6", b:"a trade-CSV reader and writer"},
+ {lec:"Lecture 7 — Regular expressions", pset:"CS50P Problem Set 7", b:"a timestamp and field validator"},
+ {lec:"Lecture 8 — Object-oriented programming", pset:"CS50P Problem Set 8", b:"Trade and StrategyResult classes"},
+ {lec:"Final project", pset:"the CS50P final project spec", b:"Trade Analyzer v1 — the full metric suite"},
+];
+const MUSW = [
+ {t:"The staff, clefs and note values", w:"the chapter exercises, written out", kb:"keyboard geography", q:"Note naming"},
+ {t:"Meter and rhythm", w:"rhythm-writing exercises", kb:"clapping and counting sets", q:"Rhythm dictation"},
+ {t:"Major scales", w:"a scale-spelling worksheet", kb:"C, G and F major, hands separate", q:"Scale spelling"},
+ {t:"Intervals", w:"an interval-spelling worksheet", kb:"playing and singing 2nds through 5ths", q:"Interval identification"},
+ {t:"Triads", w:"a triad-spelling worksheet", kb:"major and minor triads on white keys", q:"Triad quality by ear"},
+ {t:"Scale degrees and tendency tones", w:"degree-labeling exercises", kb:"solfège foundations", q:"Solfège sing-back"},
+ {t:"Harmonic function", w:"function-analysis exercises", kb:"I–IV–V progressions", q:"Chord function"},
+ {t:"Cadences", w:"cadence-writing exercises", kb:"authentic and half cadences", q:"Cadence identification"},
+ {t:"Phrase structure", w:"phrase-analysis exercises", kb:"antecedent and consequent playing", q:"Phrase analysis"},
+ {t:"Jury preparation", w:"a self-diagnosis of your three weakest skills", kb:"sight reading and aural review", q:null},
+];
+
+function C(code,cr,title,desc,prereq,spine,kind,extra){ return Object.assign({code,cr,title,desc,prereq,spine,kind},extra||{}); }
+
+const HW_WEEKS=[2,4,6,8,9];
+const GB_ITEMS={
+ "CMP 101":{hw:["CMP101-M01","CMP101-M02","CMP101-M03","CMP101-M04","CMP101-REV1"],
+   mid:"Midterm essay, 500–750 words: analyze your first two miniatures — what worked, what failed, what changes in the next two."},
+ "CRE 101":{hw:["CRE101-OF01","CRE101-OF02","CRE101-TRK1","CRE101-PRD1","CRE101-EX01"],
+   mid:"Midterm sales report, 500–750 words: the numbers so far, the objections you heard, and what you will change."},
+ "HPS 101":{hw:["HPS101-ANG1","HPS101-AUD1","HPS101-MEA1","HPS101-MED1","HPS101-STR1"],
+   mid:"Midpoint essay, 500–750 words: what the food audit, sleep log, and Shadow Ledger actually reveal."},
+ "AIM 101":{hw:["AIM101-POL1","AIM101-LIB1","AIM101-EX01","AIM101-TPL1","AIM101-VER1"],
+   mid:"Midterm essay, 500–750 words: your AI verification protocol, defended with two real cases where it caught something."},
+ "RDG 101":{hw:["RDG101-ANK1","RDG101-INS1","RDG101-LOG1","RDG101-BRF1","RDG101-DIV1"],
+   mid:"Midterm essay, 500–750 words: an analytical reading of one finished book, answering Adler's four questions."},
+};
+
+const TERMS = [
+{ id:"T1", name:"Term I — Foundations", dates:"Aug 9 – Oct 17 · exams Oct 18–24", locked:false, pnp:true,
+  note:"Term I records Pass / No Pass — the MIT and Caltech first-year rule. Every course carries the same 100-point gradebook: 5 homework × 6 + midterm 20 + final 50. Every task has its real due date; work ahead any time.",
+  courses:[
+  C("ORI 000",0,"Matriculation","The two setup weeks that make Aug 9 possible. Everything here is due before the first day of class.","None.",
+    [["The charter, Week 0A–0B",false]], "lab",
+    {items:[["ORI000-CNT1","Stand up the container: one binder, one calendar, one spreadsheet",0],["ORI000-WSP1","Set the workspace and clean the car",0],["ORI000-SLP1","Set the sleep window: 8:30p – 4:00a",0],["ORI000-DG01","Take all three placement exams — they are inside MAT 101, CSC 101 and MUS 101",0],["ORI000-D1R1","Record the Day 1 statement and baselines",0]]}),
+  C("MAT 101",4,"Foundations of Algebraic Reasoning",
+    "Arithmetic through functions, straight through the book in order. This course covers chapters 1–4; the same book continues as MAT 112 next term (chapters 5–13). One text, two courses — the Calc I / Calc II pattern.",
+    "None. The placement exam below sets your true starting point — due by Aug 8.",
+    [["OpenStax — Algebra and Trigonometry 2e",true]], "mat", {placement:true}),
+  C("CSC 101",4,"Python and Computational Thinking I",
+    "Harvard's CS50P in full — its lectures and its actual problem sets — plus one trading build a week that applies each lecture.",
+    "None. The placement exam below is due by Aug 8 — pass 80+ and Weeks 1–3 run at review speed.",
+    [["Harvard CS50P",true]], "csc", {placement:true}),
+  C("MUS 101",2,"Musicianship, Keyboard and Ear Training I",
+    "Notation to phrase structure through Open Music Theory, with a daily keyboard and ear prescription, ending in a jury.",
+    "None. The placement exam below is due by Aug 8.",
+    [["Open Music Theory",true],["Alfred's Basic Adult All-in-One (piano method)",false]], "mus",
+    {placement:true, daily:"Daily, six days a week, 60 minutes: technique 15 · reading 10 · rhythm 10 · ear and singing 10 · repertoire 15."}),
+  C("CMP 101",2,"Composition Studio I",
+    "Four finished miniatures and one revision, each through the full cycle: idea → sketch → draft → critique → revision → export. Each milestone has its week.",
+    "Alongside MUS 101.",
+    [["Schoenberg — Fundamentals of Musical Composition",false]], "items",
+    {items:[["CMP101-M01","Write Miniature No. 1 — 8 to 16 measures",2],["CMP101-M02","Write Miniature No. 2 — melody with accompaniment",4],["CMP101-M03","Write Miniature No. 3 — contrasting A and B material",6],["CMP101-M04","Write Miniature No. 4 — a complete 60–90 second piece",8],["CMP101-REV1","Revise one earlier miniature after critique",9],["CMP101-EXP1","Export score and audio for every piece",10]],
+     finlabel:"Studio jury", finPrompt: juryGeneric("four composition miniatures (Composition Studio I)"),
+     note:"Graded on completion, intent, response to feedback, and improvement — never on pretending beginner music is masterwork."}),
+  C("CRE 101",2,"Creative Enterprise Practicum I",
+    "Your art practice run as the economic engine of the year. Offers and tracker land in the first two weeks; the outreach and publishing rhythm is weekly after that.",
+    "None — you enter as a working professional.",
+    [["Lisa Congdon — Art, Inc.",false],["Austin Kleon — Show Your Work!",false]], "items",
+    {items:[["CRE101-OF01","Publish three standardized art offers",1],["CRE101-TRK1","Get the lead and follow-up tracker live",1],["CRE101-OF02","Publish one commercial-art offer",2],["CRE101-OUT1","Ten personalized contacts, five weekdays","w"],["CRE101-PUB1","One portfolio or sales post","w"],["CRE101-WRK1","Two finished visual works","m"],["CRE101-EX01","Objection-analysis memo","m"],["CRE101-PRD1","Prototype one digital product",8],["CRE101-LOG1","Keep the time and revenue record","s"]],
+     finlabel:"Portfolio review", finPrompt: juryGeneric("commercial art portfolio and sales process (Creative Enterprise I)"),
+     note:"Revenue is recorded, not solely graded — customers are not fully controllable."}),
+  C("HPS 101",1,"Human Performance and Self-Governance Lab",
+    "The biological and psychological lab that keeps everything else possible. A process course — never a moral judgment.",
+    "None.",
+    [["Mind Over Mood — Greenberger + Padesky",false],["Starting Strength — Rippetoe",false],["Salt, Fat, Acid, Heat — Nosrat",false]], "items",
+    {items:[["HPS101-ANG1","Write the anger-interruption card",1],["HPS101-MED1","Inventory the medical and dental open loops",1],["HPS101-AUD1","Finish the 14-day food audit",2],["HPS101-MEA1","Establish six permanent meals",4],["HPS101-STR1","Log four weeks of strength training",4],["HPS101-CK01","Batch-cook once","w"],["HPS101-FEA1","One controlled fear exposure","w"],["HPS101-LED1","Shadow Ledger, five days","w"],["HPS101-SLP1","Keep the sleep log — 8:30p to 4:00a window","s"]],
+     finlabel:"Quarter review", finPrompt: juryGeneric("human-performance quarter: sleep, food, strength, and regulation records"),
+     note:"You are never graded for feeling angry, frightened, or discouraged."}),
+  C("AIM 101",1,"AI Methods and Research Tooling",
+    "Prompting, verification, and AI-as-examiner — the skill that powers every Get exam button in this site.",
+    "None.",
+    [["Anthropic + OpenAI official prompt docs",true]], "items",
+    {items:[["AIM101-POL1","Sign your personal AI-use policy — the AI Rule",1],["AIM101-LIB1","Start your personal prompt library",1],["AIM101-EX01","Write positive and negative example prompts",2],["AIM101-SOC1","Use the Socratic-examiner workflow once",2],["AIM101-TPL1","Save structured-output templates",3],["AIM101-VER1","Write your verification protocol for AI claims",3]],
+     finlabel:"Policy defense", finPrompt: defensePrompt("AIM 101 — my AI-use policy and prompt library"),
+     note:"AI may explain, examine, and review after your attempt. It may not do work you cannot explain."}),
+  C("RDG 101",1,"Reading Protocol",
+    "Adler's inspectional and analytical method, with Anki as the retention layer under every course. The ladder from the mind map runs through here: one hour a day → a book a week → a book a day.",
+    "None.",
+    [["How to Read a Book — Adler + Van Doren",false],["Anki",true]], "items",
+    {items:[["RDG101-ANK1","Install Anki and make your first 20 cards",0],["RDG101-INS1","Practice one inspectional-reading pass",1],["RDG101-LOG1","Start the book-per-week log",1],["RDG101-BRF1","A one-page brief per finished book","w"],["RDG101-ANK2","The daily 20-minute review","s"],["RDG101-DIV1","Divide each book by structure, not even time blocks","s"]],
+     finlabel:"Method defense", finPrompt: defensePrompt("RDG 101 — my reading and retention method"),
+     note:"Anki is infrastructure. Twenty minutes daily, first thing."}),
+  C("QTR 090",0,"Trading Systems Maintenance Lab",
+    "Read-only custody of the live systems while the foundations get built. Not a doorway into bot reconstruction.",
+    "Standing systems only.",
+    [["Your locked risk protocol",false]], "lab",
+    {items:[["QTR090-LCK1","Three accounts on identical locked risk settings",0],["QTR090-REC1","Settings recorded in writing",0],["QTR090-REV1","Read-only log review","w"],["QTR090-PRT1","Zero unauthorized edits to protected bot files","s"],["QTR090-C16","No daily profit target — Constitution 16","s"]]}),
+  C("STB 090",0,"Stabilization Lab",
+    "The open loops that make everything else physically possible. Outranks every academic course until closed — Constitution 17. Government timelines slip; your deadline is to have every loop initiated and tracked by Aug 8.",
+    "None. Front-loaded.",
+    [["Your open-loops ledger",false]], "lab",
+    {items:[["STB090-LED1","Write the open-loops ledger",0],["STB090-GA01","Initiate General Assistance",0],["STB090-BC01","Request the birth certificate (Merced)",0],["STB090-SS01","Request Social Security documentation",0],["STB090-DMV1","Check DMV status",0],["STB090-JOB1","Job-search sprints in the Tue/Thu blocks","w"],["STB090-MED1","Queue medical and dental appointments",1]]}),
+]},
+{ id:"T2", name:"Term II — Methods", dates:"Oct 25 – Jan 2", locked:true,
+  note:"Locked for logging until Term I clears — but everything is readable now. Letter grades reach the transcript from this term.",
+  courses:[
+  C("MAT 112",4,"Functions, Precalculus and Modeling","The same OpenStax book, chapters 5–13: polynomials, exponentials, logs, systems, and the trigonometry chapters.","MAT 101.",[["OpenStax — Algebra and Trigonometry 2e, ch. 5–13",true]],"locked"),
+  C("DSC 110",4,"Computational and Inferential Thinking","Berkeley's Data 8 in full — textbook, labs, projects — run on your own trade data. Berkeley's real sequence puts this before probability theory.","CSC 101.",[["Berkeley Data 8 — inferentialthinking.com",true]],"locked"),
+  C("MUS 112",2,"Harmony, Ear Training and Keyboard II","Diatonic harmony and voice leading through a standard conservatory text.","MUS 101 jury.",[["Kostka + Payne — Tonal Harmony",false]],"locked"),
+  C("CMP 112",2,"Composition Studio II","A two-to-five minute piano or chamber work through the full studio cycle. The sonata from the mind map is this course's natural target.","CMP 101.",[["Schoenberg, continued",false]],"locked"),
+  C("QTR 120",2,"Quantitative Research Methods I — Carver begins","Rob Carver's Starter System: your first fully specified rules-based system, plus formal preregistration of one trading hypothesis. Carver starts here, not Week 1, because the math under him is built in Term I.","MAT 101 + CSC 101.",[["Rob Carver — Leveraged Trading",false]],"locked"),
+  C("CRE 112",2,"Digital Products and Brand","Weight shifts from client work to owned assets: first product shipped, brand foundations laid.","CRE 101.",[["Austin Kleon — Show Your Work!",false]],"locked"),
+  C("HPS 112",1,"Cooking, Training and Regulation II","Stable batch-cooking and training routine; CBT tools deepened.","HPS 101.",[["Burns — Feeling Good",false],["López-Alt — The Food Lab",false]],"locked"),
+]},
+{ id:"T3", name:"Term III — Research and Craft", dates:"Jan 17 – Mar 27", locked:true,
+  courses:[
+  C("STA 210",4,"Probability and Statistical Inference","Harvard's Stat 110 lectures with the Blitzstein–Hwang text — the probability spine of the quant track.","MAT 112.",[["Blitzstein + Hwang — Introduction to Probability",true],["Harvard Stat 110 lectures",true]],"locked"),
+  C("CSC 210",3,"Software Engineering for Research","Version control, testing, shell, reproducibility — MIT's Missing Semester applied to your research code.","CSC 101.",[["MIT — The Missing Semester",true]],"locked"),
+  C("MUS 210",2,"Counterpoint and Form","Species counterpoint through Fux — the book Beethoven studied from.","MUS 112.",[["Fux — The Study of Counterpoint",false],["Kennan — Counterpoint",false]],"locked"),
+  C("ORC 210",2,"Orchestration I","Adler with its workbook and recordings; three orchestrated miniatures.","MUS 112 + CMP 112.",[["Adler — The Study of Orchestration",false],["Rimsky-Korsakov — Principles of Orchestration",true]],"locked"),
+  C("QTR 210",3,"Strategy Validation Lab — Carver II + Aronson","Take one of your own discretionary edges and statistically test whether it is real or curve-fit noise. Frozen fingerprint, dev/validation/holdout separation, midyear research report.","QTR 120 + DSC 110.",[["Aronson — Evidence-Based Technical Analysis",false],["Carver — Systematic Trading",false],["pysystemtrade — Carver's own engine",true]],"locked"),
+  C("STA 215",2,"Statistical Learning","ISLP, the Python edition: resampling, cross-validation, regularization on real market data.","DSC 110.",[["ISLP — Introduction to Statistical Learning",true]],"locked"),
+  C("COM 210",1,"Public Scholarship Seminar","A weekly public artifact — teaching in public, not motivational posting. The YouTube / Instagram / TikTok arm of the mind map, run with standards.","None.",[["Your weekly public artifact",false]],"locked"),
+  C("CSC 250",2,"Elective — Trading Interface Engineering","The black box: an arcade-button control surface and multi-chart heads-up layout. Risk engineering as industrial design. Simulated account only until validated.","CSC 101.",[["Arduino/QMK firmware docs",true],["TradingView charting docs",true]],"locked"),
+]},
+{ id:"T4", name:"Term IV — Advanced Foundations", dates:"Apr 4 – Jun 12", locked:true,
+  note:"Calculus gate: CAL 301 and PHY 301 open only on 80%+ mastery of algebra, functions, exp/log, trig and graphs. Gate not passed → physics moves to Year 2. Integrity, not failure.",
+  courses:[
+  C("CAL 301",4,"Single-Variable Calculus","MIT's 18.01SC — lectures, problem sets, exams, a ~150-hour design.","MAT 112 + the gate.",[["MIT OCW 18.01SC",true],["OpenStax — Calculus Vol. 1",true]],"locked"),
+  C("LNA 301",3,"Linear Algebra I","Strang's 18.06 — vectors through eigenvalues and least squares, straight into strategy work.","MAT 112.",[["MIT OCW 18.06 + Strang",false]],"locked"),
+  C("PHY 301",3,"Classical Mechanics I","MIT's 8.01 — force, energy, momentum, rotation, conservation. The physics node of the map, and the doorway to the engine-building shelf.","CAL 301 concurrent.",[["MIT OCW 8.01",true],["Kleppner + Kolenkow (stretch)",false]],"locked"),
+  C("CMP 310",3,"Large-Form Composition","Structural plan and first complete draft of the major work. A requiem is a legitimate candidate here.","MUS 210 + ORC 210.",[["Schoenberg + score study",false]],"locked"),
+  C("QTR 310",2,"Trading Systems and Risk — Carver III","Diversified futures strategies with rigorous anti-overfitting validation: Monte Carlo, drawdown, risk-of-ruin, and the evidence-based deploy / revise / reject decision.","QTR 210.",[["Carver — Advanced Futures Trading Strategies",false],["López de Prado — Advances in Financial ML",false]],"locked"),
+  C("FIN 310",2,"Derivatives and Arbitrage Theory","Hull as the entry to derivatives pricing — the road to Björk and Shreve in Year 2.","STA 210.",[["Hull — Options, Futures, and Other Derivatives",false]],"locked"),
+]},
+{ id:"T5", name:"Capstone Residency", dates:"Jun 13 – Jul 17", locked:true,
+  note:"No new introductory courses. Five weeks to finish, revise, test, present, defend.",
+  courses:[
+  C("QTR 499",5,"Quantitative Research Thesis","The reproducible strategy package, written paper, and oral defense.","All QTR.",[["Your research",false]],"locked"),
+  C("MUS 499",5,"Composition and Orchestral Production","Minimum: a 12–20 minute multi-movement work with score, mockup, program notes. Honors: Symphony No. 1 — the symphony node, by name.","CMP 310.",[["The score",false]],"locked"),
+  C("ART 499",3,"Visual IP Exhibition","A coherent collection, an owned product, a documented sales process, a final release.","CRE 112.",[["The collection",false]],"locked"),
+  C("OPS 499",2,"Defense of the Integrated Operator","Sleep, food, strength and regulation systems documented; the written personal constitution; the final defense.","HPS + STB.",[["Your constitution",false]],"locked"),
+]},
+];
+
+const LIBRARY = [
+ {t:"Term I", items:[["OpenStax — Algebra and Trigonometry 2e (MAT 101 + 112)",true],["Harvard CS50P (CSC 101)",true],["Open Music Theory (MUS 101)",true],["Alfred's Basic Adult All-in-One piano method (MUS 101)",false],["Schoenberg — Fundamentals of Musical Composition (CMP 101)",false],["Congdon — Art, Inc. (CRE 101)",false],["Kleon — Show Your Work! (CRE 101)",false],["Greenberger + Padesky — Mind Over Mood (HPS 101)",false],["Rippetoe — Starting Strength (HPS 101)",false],["Nosrat — Salt, Fat, Acid, Heat (HPS 101)",false],["Adler + Van Doren — How to Read a Book (RDG 101)",false],["Anki (RDG 101)",true],["Marcus Aurelius — Meditations, Hays translation (evening reading)",true],["Anthropic + OpenAI prompt docs (AIM 101)",true]]},
+ {t:"Term II", items:[["Berkeley Data 8 — Computational and Inferential Thinking (DSC 110)",true],["Kostka + Payne — Tonal Harmony (MUS 112)",false],["Rob Carver — Leveraged Trading (QTR 120) ◂ Carver I",false],["Burns — Feeling Good (HPS 112)",false],["López-Alt — The Food Lab (HPS 112)",false]]},
+ {t:"Term III", items:[["Blitzstein + Hwang — Introduction to Probability (STA 210)",true],["Harvard Stat 110 lectures (STA 210)",true],["MIT — The Missing Semester (CSC 210)",true],["Fux — The Study of Counterpoint (MUS 210)",false],["Kennan — Counterpoint (MUS 210)",false],["Adler — The Study of Orchestration (ORC 210)",false],["Rimsky-Korsakov — Principles of Orchestration (ORC 210)",true],["Rob Carver — Systematic Trading (QTR 210) ◂ Carver II",false],["Aronson — Evidence-Based Technical Analysis (QTR 210)",false],["pysystemtrade — Carver's open-source engine (QTR 210)",true],["ISLP — Introduction to Statistical Learning, Python edition (STA 215)",true]]},
+ {t:"Term IV", items:[["MIT OCW 18.01SC + OpenStax Calculus Vol. 1 (CAL 301)",true],["MIT OCW 18.06 + Strang — Introduction to Linear Algebra (LNA 301)",false],["MIT OCW 8.01 (PHY 301)",true],["Kleppner + Kolenkow — An Introduction to Mechanics, stretch (PHY 301)",false],["Rob Carver — Advanced Futures Trading Strategies (QTR 310) ◂ Carver III",false],["López de Prado — Advances in Financial Machine Learning (QTR 310)",false],["Hull — Options, Futures, and Other Derivatives (FIN 310)",false]]},
+ {t:"Year 2 shelf — named, not bought (the mind map's horizons live here)", items:[["Björk — Arbitrage Theory in Continuous Time",false],["Shreve — Stochastic Calculus for Finance I + II",false],["Multivariable calculus + real analysis (MIT OCW)",true],["French — the Paris ladder (language elective)",false],["Japanese — the Japan ladder (language elective)",false],["OpenStax — Astronomy",true],["OpenStax — Biology",true],["CAD + engine-building with math — opens after CAL 301 + PHY 301 (the sports-car node)",false],["Legal literacy — contracts, tax, defending yourself if sued",false],["The full symphony premiere",false]]},
+];
+
+const RANKS = [[0,"MATRICULANT"],[300,"SCHOLAR"],[800,"PRACTITIONER"],[1600,"RESEARCHER"],[2600,"OPERATOR"]];
+const CONSTITUTION = ["No academic work after shutdown.","No advancing without prerequisite mastery.","No buying resources more than one term early.","No new strategy family during an active research term.","No AI-generated work that you cannot explain.","No untested code touching the live bot.","No treating trading profits as a course grade.","No treating emotions as moral failure.","No sacrificing meals or sleep to complete late work.","No redesigning the curriculum during emotional activation.","Every week ends with a finished artifact.","Every term ends with a defense.","Every failed method creates a recorded correction.","The curriculum may change only through scheduled academic review.","The institution exists to produce capability — not the appearance of being busy.","No daily profit target.","The Stabilization Lab outranks every academic course until its open loops are closed."];
+const HONOR = ["Attempt every problem set in full before opening any answer key. First-attempt target: 80%.","Every miss goes to Repairs, gets reworked fresh, and is retested before you advance.","Quizzes and exams are closed-book, timed, and cumulative — the MIT rhythm.","Placement exams are diagnostic, never punitive. They set your true starting point.","If you cannot explain submitted work out loud, unaided, you did not do it yet.","The AI Rule: AI may explain, examine, and review after your attempt. It may not produce work you then sign."];
+const TUTORIAL = ["What did you attempt?","Why did you choose that method?","Where did you become uncertain?","What error did you make?","What assumption did you use?","Could another method work?","Can you explain the result without notes?","What would change if one condition changed?","What did the assignment teach you?","What requires repair next week?"];
+const GRADUATE = [
+ ["b","ci","Mind and spirit","meditation · spirituality · Bible reading · shadow work · ego death · anger management · mental programming","HPS 101 now, plus the evening contemplative-reading slot — Meditations or the Bible, reader's choice. Money manifestation converts honestly: the morning ritual stays; the mechanism is CRE revenue and QTR research."],
+ ["g","tr","Body","nutrition · exercise, running, jump rope · 8-hour sleep · biology","HPS 101 running now — meals, strength, the sleep window. Biology proper joins the Year 2 shelf (OpenStax, free)."],
+ ["y","tr","Music","pianist · read and write sheet music · write a sonata · a requiem · a symphony","MUS 101 → 112 → 210 → ORC 210. Sonata: CMP 112's natural target. Requiem: a CMP 310 candidate. Symphony: MUS 499 honors, by name. Grand piano: the rewards row."],
+ ["k","sq","Quant and STEM","math · physics · quant · quantitative finance · trading, human and robot","The whole spine: MAT → CAL 301 + LNA 301 + PHY 301, QTR 090 → 120 → 210 → 310 → 499, FIN 310. The robot stays in read-only custody until the research earns it back."],
+ ["r","sq","Art and craft","art · animation · self-promote — YouTube, Instagram, TikTok · Spotify, YouTube Music, Yandex","CRE 101 weekly publishing now; COM 210 makes it public scholarship in Term III; ART 499 is the exhibition. The streaming platforms are where the finished music ships after MUS 499."],
+ ["b","sq","Systems","bullet journal · interstitial journal · organization · budget · finances · get debt free","The ORI container, the Shadow Ledger, STB 090's open-loops work, and CRE's money record. Debt-free is a Stabilization outcome, tracked, not wished."],
+ ["y","sq","Conditions","focus · time · discipline · speed · silence · darkness · solitude","The monastic half of the timetable: the 4:30 deep blocks, early shutdown, Sunday recovery. The schedule is these words made physical."],
+ ["g","ci","Languages and horizons","learn French, Paris · learn Japanese, Japan · astronomy · CAD, build an engine with math, sports car · law, tax law, defend myself if sued","The Year 2 shelf, named and waiting: language ladders, OpenStax Astronomy, the engine project (opens after CAL 301 + PHY 301), legal literacy. Named now so they stop floating."],
+ ["r","ci","The reading ladder","read 1 hour per day → read a book a week → read a book a day","RDG 101 is the ladder's first two rungs, running now. A book a day is a Year 3 target — earned, not declared."],
+ ["k","ci","The rewards row","get rich · nice suit · nice watch · nice car · nice house · grand piano","What the operator buys with proof, not hope — funded by CRE, QTR, and the capstones. The motive under all of it, per your own notebook: take care of the people who helped."],
+];
+const SCALE=[[97,"A+"],[94,"A"],[90,"A-"],[87,"B+"],[84,"B"],[80,"B-"],[77,"C+"],[74,"C"],[70,"C-"],[67,"D+"],[64,"D"],[60,"D-"],[0,"F"]];
+function letterOf(t){ for(const [x,l] of SCALE) if(t>=x) return l; return "F"; }
+
+/* ================= STATE ================= */
+let S = store.get("roi5_state", null);
+if(!S){
+  const old = store.get("roi4_state", null);
+  if(old){
+    S = {checks:old.checks||{}, scores:old.scores||{}, xp:old.xp||0, log:old.log||[], lastDay:old.lastDay||null, streak:old.streak||0, plc:{}};
+    if(old.plc && (old.plc.revealed || old.plc.logged || Object.keys(old.plc.right||{}).length)) S.plc["MAT 101"]=old.plc;
+  } else {
+    S = {checks:{}, scores:{}, xp:0, log:[], lastDay:null, streak:0, plc:{}};
+  }
+  store.set("roi5_state", S);
+}
+if(!S.plc) S.plc={};
+function plcState(code){ if(!S.plc[code]) S.plc[code]={revealed:false, right:{}, logged:false}; return S.plc[code]; }
+function save(){ store.set("roi5_state", S); }
+function todayISO(){ return new Date().toISOString().slice(0,10); }
+function touchStreak(){ const t=todayISO(); if(S.lastDay===t) return; const y=new Date(Date.now()-864e5).toISOString().slice(0,10); S.streak=(S.lastDay===y)?S.streak+1:1; S.lastDay=t; }
+function logEv(msg,cls){ const t=new Date().toTimeString().slice(0,8); S.log.unshift({t,msg,cls}); if(S.log.length>90) S.log.length=90; }
+function flash(msg){ const f=document.getElementById("flash"); f.textContent=msg; f.style.display="block"; clearTimeout(f._t); f._t=setTimeout(()=>f.style.display="none",1900); }
+function award(xp){ const before=rank(); S.xp+=xp; if(rank()!==before){ logEv("Rank up · "+rank(),"hot"); setTimeout(()=>flash("RANK UP: "+rank()),400);} }
+function rank(){ let r=RANKS[0][1]; for(const [x,t] of RANKS) if(S.xp>=x) r=t; return r; }
+
+/* ================= TASKS + SCHEDULE ================= */
+let PROMPTS=[];
+function P(t){ PROMPTS.push(t); return PROMPTS.length-1; }
+function isHW(c, code){
+  if(c.kind==="mat"||c.kind==="csc"||c.kind==="mus"){
+    const i=HW_WEEKS.indexOf(parseInt((code.match(/-W(\d\d)-/)||[])[1],10));
+    if(i>=0 && (code.endsWith(c.kind==="mus"?"-W01":"-PS01"))) return i+1;
+    return 0;
+  }
+  const g=GB_ITEMS[c.code]; if(!g) return 0;
+  const i=g.hw.indexOf(code); return i>=0? i+1 : 0;
+}
+
+function courseWeeks(c){
+  const CO=c.code.replace(/\s/g,""); const W=n=>CO+"-W"+String(n).padStart(2,"0");
+  const weeks=[];
+  if(c.kind==="mat"){
+    MATW.forEach((w,i)=>{ const n=i+1; const tasks=[
+      {type:"chk", code:W(n)+"-R01", tx:"Read "+w.sec+" and drop the key ideas into Anki.", due:dueForWeekTask(i,false)},
+      {type:"chk", code:W(n)+"-PS01", tx:"Do "+w.ps+". Full attempt before checking any answers — they are in your book.", due:dueForWeekTask(i,false)},
+      {type:"chk", code:W(n)+"-EX01", tx:"Write 300–500 words: "+w.ex, due:dueForWeekTask(i,false)},
+    ];
+    if(!w.noquiz) tasks.push({type:"quiz", code:W(n)+(w.mid?"-MID":"-Q01"), tx:(w.mid?"Midterm — Friday, "+fshort(MIDTERM_DATE)+". 40 questions, 60 minutes, everything so far. Worth 20 gradebook points.":"Quiz — Friday. 20 questions, 30 minutes, everything so far."), qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(w.mid?matMidPrompt():matQuizPrompt(n,w.end,w.sec,w.t))});
+    weeks.push({title:"Week "+n, sub:w.t, wi:i, tasks});});
+  } else if(c.kind==="csc"){
+    CSCW.forEach((w,i)=>{ const n=i+1; weeks.push({title:"Week "+n, sub:w.lec.replace(/Lecture \d+ — /,""), wi:i, tasks:[
+      {type:"chk", code:W(n)+"-R01", tx:"Watch "+w.lec+" and note the key moves into Anki.", due:dueForWeekTask(i,false)},
+      {type:"chk", code:W(n)+"-PS01", tx:"Do "+w.pset+" — the real one on Harvard's site. Full attempt before any help.", due:dueForWeekTask(i,false)},
+      {type:"chk", code:W(n)+"-B01", tx:"Build "+w.b+".", due:dueForWeekTask(i,false)},
+      {type:"chk", code:W(n)+"-EX01", tx:"Code journal, 150 words: what broke, why, and the fix.", due:dueForWeekTask(i,false)},
+      {type:"quiz", code:W(n)+"-Q01", tx:"Concept check — Friday. Explain your build line by line, examined.", qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(cscCheckPrompt(w.b))},
+    ]});});
+  } else if(c.kind==="mus"){
+    MUSW.forEach((w,i)=>{ const n=i+1; const tasks=[
+      {type:"chk", code:W(n)+"-R01", tx:"Read the Open Music Theory chapter: "+w.t+".", due:dueForWeekTask(i,false)},
+      {type:"chk", code:W(n)+"-W01", tx:"Do "+w.w+".", due:dueForWeekTask(i,false)},
+      {type:"chk", code:W(n)+"-KB01", tx:"Keyboard: "+w.kb+".", due:dueForWeekTask(i,false)},
+    ];
+    if(w.q) tasks.push({type:"quiz", code:W(n)+"-Q01", tx:"Test — Friday. "+w.q+".", qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(musTestPrompt(w.t))});
+    weeks.push({title:"Week "+n, sub:w.t, wi:i, tasks});});
+  } else if(c.items){
+    weeks.push({title:"The work", sub:"", wi:null, tasks:c.items.map(it=>{
+      const d=it[2];
+      return (typeof d==="number") ? {type:"chk", code:it[0], tx:it[1], due:dueForItem(d)} : {type:"chk", code:it[0], tx:it[1], rec:d};
+    })});
+  }
+  return weeks;
+}
+function flatChecks(c){ const out=[]; courseWeeks(c).forEach(w=>w.tasks.forEach(t=>{ if(t.type==="chk") out.push(t); })); return out; }
+
+/* ================= GRADEBOOK — 5 HW × 6 + midterm 20 + final 50 = 100 ================= */
+function gbSpec(c){
+  if(c.kind==="lab"||c.kind==="locked") return null;
+  const CO=c.code.replace(/\s/g,"");
+  let hw=[];
+  if(c.kind==="mat"||c.kind==="csc"||c.kind==="mus"){
+    hw=HW_WEEKS.map((w,i)=>({n:i+1, ref:CO+"-W0"+w+(c.kind==="mus"?"-W01":"-PS01"), label:"Week "+w+" "+(c.kind==="mus"?"written worksheet":"problem set")}));
+  } else {
+    const g=GB_ITEMS[c.code];
+    hw=g.hw.map((ref,i)=>{ const it=(c.items||[]).find(x=>x[0]===ref); return {n:i+1, ref, label: it? it[1] : ref}; });
+  }
+  let mid;
+  if(c.kind==="mat") mid={key:c.code+"#q5", label:"Midterm exam — the Week 5 exam row, one shared score", date:MIDTERM_DATE, shared:true};
+  else if(c.kind==="csc") mid={key:"m:"+c.code, label:"Midterm exam — Lectures 0–4, written, 60 minutes", date:MIDTERM_DATE, prompt:cscMidPrompt()};
+  else if(c.kind==="mus") mid={key:"m:"+c.code, label:"Midterm — cumulative test, notation through triads", date:MIDTERM_DATE, prompt:musMidPrompt()};
+  else mid={key:"m:"+c.code, label:GB_ITEMS[c.code].mid, date:MIDTERM_DATE, prompt:essayGraderPrompt(c.code, GB_ITEMS[c.code].mid), essay:true};
+  return {hw, mid, finKey:"f:"+c.code, finDate:FINALS[c.code]};
+}
+function gbTotal(c){
+  const g=gbSpec(c); if(!g) return null;
+  let t=0;
+  g.hw.forEach((h,i)=>{ const v=S.scores["hw:"+c.code+":"+(i+1)]; if(v!=null) t+=v*0.06; });
+  const m=S.scores[g.mid.key]; if(m!=null) t+=m*0.20;
+  const f=S.scores[g.finKey]; if(f!=null) t+=f*0.50;
+  return t;
+}
+
+/* ================= PROGRESS + COMPLETION ================= */
+function courseCalc(c){
+  const chks=flatChecks(c); let done=0; chks.forEach((t,i)=>{ if(S.checks[c.code+"#c"+i]) done++; });
+  const workPct=chks.length? done/chks.length*100:0;
+  if(c.kind==="lab") return {done, total:chks.length, workPct, letter: workPct>=100?"P":"…"};
+  return {done, total:chks.length, workPct};
+}
+function courseComplete(c,k){
+  if(c.kind==="lab") return k.workPct>=100;
+  const g=gbSpec(c); if(!g) return false;
+  const defOK = (S.scores["d:"+c.code]??-1) >= PASS;
+  const finOK = S.scores[g.finKey]!=null;
+  return k.done===k.total && k.total>0 && finOK && defOK && (gbTotal(c)>=PASS);
+}
+function repairList(){
+  const out=[];
+  for(const k in S.scores){ const v=S.scores[k]; if(v==null||v>=PASS) continue;
+    let label;
+    if(k.startsWith("diag:")) label=k.slice(5)+" placement — follow your repair plan, then move on";
+    else if(k.startsWith("f:")) label=k.slice(2)+" final — rework it, then retest";
+    else if(k.startsWith("d:")) label=k.slice(2)+" oral defense — re-defend when ready";
+    else if(k.startsWith("m:")) label=k.slice(2)+" midterm — rework the misses, retest fresh";
+    else if(k.startsWith("hw:")){ const p=k.split(":"); label=p[1]+" HW "+p[2]+" — rework and regrade"; }
+    else { const m=k.split("#q"); label=m[0]+" week "+m[1]+" quiz — rework the misses, retest fresh"; }
+    out.push({label,v});
+  }
+  return out;
+}
+
+/* ================= DUE — authority from real dates ================= */
+function dueList(){
+  const out=[]; const t=todayD(); const w=curWeek(); const weekEnd = w>=0? strip(wkDate(Math.min(w,9),6)) : strip(new Date(2026,7,8));
+  const t1=TERMS[0];
+  t1.courses.forEach(c=>{
+    if(c.placement && !plcState(c.code).logged){
+      out.push({cc:c.code, tx:"Take the placement exam — "+PLC[c.code].n+" real questions, sitting in the course.", id:c.code.replace(/\s/g,""), due:new Date(2026,7,8), prio:1, od:t>strip(new Date(2026,7,8))});
+    }
+    const chks=flatChecks(c);
+    chks.forEach((task,i)=>{
+      if(S.checks[c.code+"#c"+i]) return;
+      if(task.rec) return;
+      if(!task.due) return;
+      const d=strip(task.due);
+      if(d<=weekEnd) out.push({cc:c.code, tx:task.tx, id:c.code.replace(/\s/g,""), due:task.due, prio:(c.code==="STB 090"||c.code==="ORI 000")?0:2, od:d<t});
+    });
+    courseWeeks(c).forEach(wk=>wk.tasks.forEach(task=>{
+      if(task.type!=="quiz") return;
+      if(S.scores[task.qkey]!=null) return;
+      const d=strip(task.due);
+      if(d<=weekEnd) out.push({cc:c.code, tx:task.tx, id:c.code.replace(/\s/g,""), due:task.due, prio:2, od:d<t});
+    }));
+    const g=gbSpec(c);
+    if(g && !g.mid.shared && S.scores[g.mid.key]==null){
+      const d=strip(g.mid.date);
+      if(d<=weekEnd) out.push({cc:c.code, tx:"Midterm ("+ (g.mid.essay?"essay":"exam") +") — 20 gradebook points.", id:c.code.replace(/\s/g,""), due:g.mid.date, prio:2, od:d<t});
+    }
+    if(g && curWeek()>=10 && t<=strip(EXAM_E) && S.scores[g.finKey]==null){
+      out.push({cc:c.code, tx:(c.finlabel||"Final exam")+" — 50 gradebook points.", id:c.code.replace(/\s/g,""), due:g.finDate, prio:2, od:t>strip(g.finDate)});
+    }
+  });
+  out.sort((a,b)=> (b.od?1:0)-(a.od?1:0) || a.due-b.due || a.prio-b.prio);
+  return out;
+}
+
+/* ================= RENDER ================= */
+const view=document.getElementById("view");
+let cur="dash", openCourses=store.get("roi5_open",{}), openWeeks=store.get("roi5_wk",{}), openSyl=store.get("roi5_syl",{});
+
+function gradingDetails(){
+  return `<details class="grading"><summary>How grading works (tap if you care)</summary><div class="gtxt">
+  One system, from the real syllabi: <b>5 homework × 6 points + midterm 20 + final 50 = 100</b>. Letters run A+ to F.<br><br>
+  The five HWs are five of the assignments already in the weeks below — flagged in yellow. Everything else is classwork: it drives your progress, XP, and Repairs, exactly like attendance and sections at a real school.<br><br>
+  <b>80 = B− = pass.</b> Same gate as always. Under 80 on anything → Repairs: patch it, retest, cleared. Term I records simply <b>P</b> on the transcript — MIT's first-year rule — with your letter kept in the gradebook.</div></details>`;
+}
+function spineHTML(c){ return `<div class="spine">The book${c.spine.length>1?"s":""}: ${c.spine.map(s=>`<b>${s[0]}</b>${s[1]===true?'<span class="free">FREE</span>':''}`).join(" · ")}</div>`; }
+function meetsHTML(c){ const m=meetsLine(c.code); return m? `<div class="meets"><b>Meets:</b> ${m}</div>` : ""; }
+function quizCell(qkey, sc, diag){
+  const stamp = sc==null? "" : diag? `<span class="stamp d">logged ${sc}${sc<PASS?" — see your repair plan":""}</span>` : sc>=PASS? `<span class="stamp p">Cleared ✓ ${sc}</span>` : `<span class="stamp r">Needs repair · ${sc}</span>`;
+  return `<div class="qrow"><input type="number" min="0" max="100" placeholder="score" data-q="${qkey}" aria-label="score"><button data-log="${qkey}" data-diag="${diag?1:0}">Log</button>${stamp}</div>`;
+}
+function genBlock(pIdx, kind){
+  return `<div class="qrow" style="margin-top:6px"><button class="genbtn" data-gen="${pIdx}">Get ${kind}</button></div>
+  <div class="gen" id="gen-${pIdx}"><textarea readonly>${PROMPTS[pIdx]}</textarea>
+  <div class="qrow"><button class="genbtn" data-copy="${pIdx}">Copy</button><span class="note" style="margin:0">Paste this to Claude or ChatGPT — your examiner writes the real thing on the spot, fresh every time, so there is no answer key to peek at.</span></div></div>`;
+}
+
+/* ---- placement engine ---- */
+function placementHTML(code){
+  const spec=PLC[code]; const p=plcState(code);
+  let h=`<div class="plc"><h3>${spec.title} — the real thing, right here</h3>
+  <div class="note" style="margin-top:0">${spec.n} questions, ${spec.time}, closed book. Due by ${fdate(new Date(2026,7,8))}. Diagnostic — it cannot hurt you, it only places you. ${spec.intro}</div>`;
+  let lastD=-1;
+  spec.qs.forEach((it,i)=>{
+    if(it.d!==lastD){ h+=`<div class="dom">${spec.doms[it.d].name}</div>`; lastD=it.d; }
+    h+=`<div class="pq"><div>${i+1}. ${it.q}</div>`;
+    if(it.code) h+=`<pre>${it.code}</pre>`;
+    if(p.revealed){ h+=`<div class="ans">Answer: ${it.a}</div><label><input type="checkbox" data-plc="${code}|${i}" ${p.right[i]?"checked":""}> I got this one right</label>`; }
+    h+=`</div>`;
+  });
+  if(!p.revealed){ h+=`<div class="qrow" style="margin-top:12px"><button class="pl-btn" data-plreveal="${code}">I am done — show the answers</button></div>`; }
+  else {
+    const res=placementScore(code);
+    h+=`<div class="result"><b>${res.right} / ${spec.n} (${res.pct}%)</b><br>`;
+    if(res.weak.length){ h+=`<span class="weak">Repair plan before Week 1:</span><br>`+res.weak.map(d=>"· "+spec.doms[d].name+" → "+spec.doms[d].repair).join("<br>"); }
+    else h+=spec.pass;
+    h+=`</div>`;
+    if(!p.logged) h+=`<div class="qrow" style="margin-top:10px"><button class="pl-btn" data-pllog="${code}">Log my placement</button></div>`;
+    else h+=`<div class="note">Placement logged. It is diagnostic — it never touches your grade.</div>`;
+  }
+  h+=`</div>`;
+  return h;
+}
+function placementScore(code){
+  const spec=PLC[code]; const p=plcState(code);
+  let right=0; const perD=spec.doms.map(()=>({r:0,n:0}));
+  spec.qs.forEach((it,i)=>{ perD[it.d].n++; if(p.right[i]){right++; perD[it.d].r++;} });
+  const weak=[]; perD.forEach((d,i)=>{ if(d.r/d.n<0.8) weak.push(i); });
+  return {right, pct:Math.round(right/spec.n*100), weak};
+}
+
+/* ---- gradebook UI ---- */
+function gradebookHTML(c){
+  const g=gbSpec(c); if(!g) return "";
+  let rows="";
+  g.hw.forEach((h,i)=>{
+    const key="hw:"+c.code+":"+(i+1); const v=S.scores[key];
+    rows+=`<tr><td>HW${i+1} · ${h.label} <span class="tag">${h.ref}</span></td><td class="pts">${v!=null? (v*0.06).toFixed(1):"—"} / 6</td><td>${quizCell(key, v)}</td></tr>`;
+  });
+  const mv=S.scores[g.mid.key];
+  rows+=`<tr><td>Midterm · ${g.mid.label} <span class="tag">due ${fshort(g.mid.date)}</span></td><td class="pts">${mv!=null? (mv*0.20).toFixed(1):"—"} / 20</td><td>${g.mid.shared? `<span class="note" style="margin:0">score lives in the Week 5 exam row</span>` : quizCell(g.mid.key, mv)+(g.mid.prompt? genBlock(P(g.mid.prompt), g.mid.essay?"grader":"midterm"):"")}</td></tr>`;
+  const fv=S.scores[g.finKey];
+  rows+=`<tr><td>${c.finlabel||"Final exam"} <span class="tag">${fdate(g.finDate)}</span></td><td class="pts">${fv!=null? (fv*0.50).toFixed(1):"—"} / 50</td><td><span class="note" style="margin:0">score lives in the Examination panel</span></td></tr>`;
+  const tot=gbTotal(c);
+  return `<div class="gb"><h3>Gradebook — 100 points</h3>
+  <div class="note" style="margin:0 0 6px">5 homework × 6 · midterm 20 · final 50. The five HWs are existing assignments, flagged in yellow above — nothing was cut to fit the points.</div>
+  <table><tr><th>Item</th><th>Points</th><th>Score (0–100)</th></tr>${rows}
+  <tr><td><b style="color:var(--red)">TOTAL</b></td><td class="total">${tot.toFixed(1)} / 100</td><td class="total">${letterOf(tot)}${courseComplete(c,courseCalc(c))?" · P":""}</td></tr></table>
+  <div class="note">Pass = B− (80) or better, plus the oral defense passed. Term I transcript records P; the letter stays here.</div></div>`;
+}
+
+/* ---- syllabus page ---- */
+function syllabusHTML(c){
+  const g=gbSpec(c); const CO=c.code;
+  let cal="";
+  courseWeeks(c).forEach(w=>{
+    if(w.wi==null) return;
+    const hwWk=HW_WEEKS.includes(w.wi+1) && (c.kind==="mat"||c.kind==="csc"||c.kind==="mus");
+    cal+=`<li>Week ${w.wi+1} · ${fshort(wkDate(w.wi,0))}–${fshort(wkDate(w.wi,6))} · ${w.sub}${hwWk?' · <b style="color:var(--red)">HW collected Sat</b>':''}${w.wi===4?' · <b style="color:var(--red)">Midterm Fri</b>':''}</li>`;
+  });
+  if(c.items) cal = c.items.map(it=> typeof it[2]==="number"? `<li>${it[0]} · due ${fshort(dueForItem(it[2]))}</li>` : `<li>${it[0]} · ${it[2]==="w"?"weekly":it[2]==="m"?"monthly":"standing"}</li>`).join("");
+  return `<div class="syl">
+  <h3>${CO} — ${c.title}</h3>
+  <div class="note" style="margin-top:2px">Renaissance Operator Institute · Term I, Fall 2026 · ${c.cr} credits</div>
+  <h4>Organisation</h4>
+  <div style="font-size:13px">Course head: Ricky. Examiner of record: your AI, per AIM 101 and the Honor Code. Tutorials: Fri 11:30 and Sun 11:30.</div>
+  <h4>Meets</h4>
+  <div style="font-size:13px">${meetsLine(CO)||"By arrangement — see Schedule."}</div>
+  <h4>Textbook</h4>
+  <div style="font-size:13px">${c.spine.map(s=>s[0]+(s[1]===true?" (free)":"")).join(" · ")}</div>
+  <h4>Description</h4>
+  <div style="font-size:13px">${c.desc}</div>
+  <h4>Grades</h4>
+  <table><tr><th>Part</th><th>Points</th></tr>
+  <tr><td>Homework (5 × 6)</td><td>30</td></tr>
+  <tr><td>${g&&g.mid.essay?"Midterm essay":"Midterm exam"} · ${fshort(MIDTERM_DATE)}</td><td>20</td></tr>
+  <tr><td>${c.finlabel||"Final exam"} · ${g?fdate(g.finDate):""}</td><td>50</td></tr>
+  <tr><td><b>Total</b></td><td><b>100</b></td></tr></table>
+  <div class="note">A+ 97–100 · A 94–96 · A− 90–93 · B+ 87–89 · B 84–86 · B− 80–83 · C+ 77–79 · C 74–76 · C− 70–73 · D+ 67–69 · D 64–66 · D− 60–63 · F below 60. Pass = B−. Oral defense required to pass. Term I records P/NP.</div>
+  <h4>Calendar</h4>
+  <ul class="cal">${cal}</ul>
+  <h4>Policies</h4>
+  <div style="font-size:13px">Full attempt before answer keys (first-attempt target 80). Misses go to Repairs and are retested. Exams closed-book and timed. Work ahead freely — dates are the floor. Constitution 9 would like a word before any all-nighter.</div>
+  </div>`;
+}
+
+function courseBody(c,k,locked){
+  let h=`<div class="cat">${c.desc}</div><div class="cat">Prereq: ${c.prereq}</div>`+spineHTML(c)+ (locked? "" : meetsHTML(c));
+  if(locked){ h+=`<div class="note">Opens after the prior term clears. Read everything now; buy the books only when the term begins — Constitution 3.</div>`; return h; }
+  const id=c.code.replace(/\s/g,"");
+  if(c.kind!=="lab"){
+    h+=`<div class="qrow" style="margin:8px 0"><button class="genbtn" data-syl="${id}">${openSyl[id]?"Close":"Open"} syllabus</button></div>`;
+    if(openSyl[id]) h+=syllabusHTML(c);
+    h+=gradingDetails();
+  }
+  if(c.daily) h+=`<div class="note" style="margin-bottom:8px">${c.daily}</div>`;
+  if(c.placement) h+=placementHTML(c.code);
+  const weeks=courseWeeks(c); const cw=curWeek();
+  let ci=0;
+  weeks.forEach((w,wi)=>{
+    const wid=id+"-wk"+wi;
+    const total=w.tasks.length;
+    let done=0;
+    const inner=w.tasks.map(t=>{
+      if(t.type==="chk"){ const key=c.code+"#c"+ci; ci++; const ck=!!S.checks[key]; if(ck)done++;
+        const chip = t.rec? recChip(t.rec) : dueChip(t.due, ck);
+        const hwN=isHW(c, t.code);
+        return `<div class="task"><input type="checkbox" class="chk" data-k="${key}" data-code="${t.code}" ${ck?"checked":""} aria-label="done"><div class="tx">${t.tx}</div><div class="meta"><span class="tag">${t.code}</span>${hwN?`<span class="hwflag">HW${hwN} · 6 pts</span>`:""}${chip}</div></div>`; }
+      const sc=S.scores[t.qkey]; if(sc!=null&&sc>=PASS)done++;
+      return `<div class="task"><div style="width:20px;flex:none"></div><div class="qwrap"><div class="tx">${t.tx}</div>${quizCell(t.qkey,sc)}${genBlock(t.p, t.code.includes("MID")?"midterm":"quiz")}</div><div class="meta"><span class="tag">${t.code}</span>${dueChip(t.due, sc!=null&&sc>=PASS)}</div></div>`;
+    }).join("");
+    const dots=Array.from({length:total},(_,i)=>`<span class="${i<done?'on':''}">●</span>`).join("");
+    const dates = w.wi==null? "" : `<span class="wdates">${fshort(wkDate(w.wi,0))} – ${fshort(wkDate(w.wi,6))}</span>`;
+    const isNow = w.wi!=null && w.wi===cw;
+    const isOd = w.wi!=null && cw>w.wi && done<total;
+    const userOpen = openWeeks[wid];
+    const open = userOpen===true || (userOpen===undefined && (w.wi==null ? true : (cw<0? w.wi===0 : isNow)));
+    h+=`<div class="week ${open?'open':''} ${isNow?'now':''} ${isOd?'od':''}"><button class="wh" data-wk="${wid}">${w.title}${w.sub?" · "+w.sub:""} ${dates}<span class="dots">${dots}</span></button><div class="wk-body">${inner}</div></div>`;
+  });
+  if(c.kind!=="lab"){
+    const finlabel=c.finlabel||"Final exam";
+    const fp = c.finPrompt? c.finPrompt : (c.kind==="mat"? matFinalPrompt() : c.kind==="csc"? cscFinalPrompt() : musJuryPrompt());
+    const g=gbSpec(c);
+    const examChip = `<span class="due ${curWeek()>=10?'now':''}">${fdate(g.finDate)}</span>`;
+    h+=`<div class="week open"><button class="wh" style="cursor:default">Examination <span class="wdates">${fdate(g.finDate)} · defense follows the final</span></button><div class="wk-body" style="display:block">
+    <div class="task"><div style="width:20px;flex:none"></div><div class="qwrap"><div class="tx"><b style="color:var(--blue)">${finlabel}</b> — closed book, everything. 50 gradebook points.</div>${quizCell("f:"+c.code,S.scores["f:"+c.code])}${genBlock(P(fp),"exam")}</div><div class="meta">${examChip}</div></div>
+    <div class="task"><div style="width:20px;flex:none"></div><div class="qwrap"><div class="tx"><b style="color:var(--blue)">Oral defense</b> — the ten questions, out loud, unaided. Required to pass.</div>${quizCell("d:"+c.code,S.scores["d:"+c.code])}${genBlock(P(defensePrompt(c.code+" — "+c.title)),"defense")}</div><div class="meta">${examChip}</div></div>
+    </div></div>`;
+    h+=gradebookHTML(c);
+  }
+  if(c.note) h+=`<div class="note">${c.note}</div>`;
+  return h;
+}
+
+function renderCourses(){
+  let html="";
+  TERMS.forEach(t=>{
+    html+=`<div class="term-h"><h2>${t.name}</h2><small>${t.dates}</small>${t.locked?'<small class="lock">locked for logging · fully readable</small>':''}</div>`;
+    if(t.note) html+=`<div class="note" style="margin:-2px 0 10px">${t.note}</div>`;
+    t.courses.forEach(c=>{
+      const k=courseCalc(c); const id=c.code.replace(/\s/g,"");
+      let chip;
+      if(t.locked) chip=`<span class="grade-chip lk">—</span>`;
+      else if(c.kind==="lab") chip=`<span class="grade-chip ${k.letter==="P"?"pass":""}">${k.letter}</span>`;
+      else { const tot=gbTotal(c); const done=courseComplete(c,k); chip=`<span class="grade-chip ${done?"pass":""}">${done?"P":Math.round(tot)+" pts"}</span>`; }
+      html+=`<div class="course ${openCourses[id]?'open':''}"><button class="head" data-c="${id}">${mark(c.code)}<span class="code">${c.code}</span><span>${c.title}</span><span class="cred">${c.cr} cr</span>${chip}</button><div class="body">${openCourses[id]?courseBody(c,k,t.locked):""}</div></div>`;
+    });
+  });
+  view.innerHTML=html;
+  view.querySelectorAll("button.head").forEach(b=>{ b.onclick=()=>{ const id=b.dataset.c; openCourses[id]=!openCourses[id]; store.set("roi5_open",openCourses); render(); }; });
+  bindInputs();
+}
+
+function bindInputs(){
+  view.querySelectorAll("button[data-syl]").forEach(b=>{ b.onclick=()=>{ const id=b.dataset.syl; openSyl[id]=!openSyl[id]; store.set("roi5_syl",openSyl); render(); }; });
+  view.querySelectorAll("button.wh[data-wk]").forEach(b=>{ b.onclick=()=>{ const id=b.dataset.wk; const el=b.parentElement; const now=!el.classList.contains("open"); el.classList.toggle("open"); openWeeks[id]=now; store.set("roi5_wk",openWeeks); }; });
+  view.querySelectorAll(".chk").forEach(ch=>{ ch.onchange=()=>{ S.checks[ch.dataset.k]=ch.checked;
+    if(ch.checked){ award(10); touchStreak(); logEv((ch.dataset.code||"item")+" done · +10 xp","hot"); flash("Done ✓ +10 xp"); }
+    save(); render(); }; });
+  view.querySelectorAll("button[data-log]").forEach(b=>{ b.onclick=()=>{ const key=b.dataset.log, diag=b.dataset.diag==="1";
+    const inp=view.querySelector(`input[data-q="${CSS.escape(key)}"]`); const v=Math.max(0,Math.min(100,Number(inp.value)));
+    if(inp.value===""||isNaN(v)) return;
+    S.scores[key]=v; award(v); touchStreak();
+    if(diag){ logEv(key+" diagnostic "+v,"hot"); flash("Placement logged · "+v); }
+    else if(v>=PASS){ logEv(key+" scored "+v+" · cleared","hot"); flash("Cleared ✓ "+v+" · +"+v+" xp"); }
+    else { logEv(key+" scored "+v+" · to Repairs","warn"); flash("To Repairs · "+v+" — patch it, retest"); }
+    save(); render(); }; });
+  view.querySelectorAll("button[data-gen]").forEach(b=>{ b.onclick=()=>{ document.getElementById("gen-"+b.dataset.gen).classList.toggle("show"); }; });
+  view.querySelectorAll("button[data-copy]").forEach(b=>{ b.onclick=()=>{ const t=PROMPTS[b.dataset.copy];
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(()=>flash("Copied — paste to your examiner")); }
+    else { const ta=document.querySelector("#gen-"+b.dataset.copy+" textarea"); ta.select(); try{document.execCommand("copy"); flash("Copied — paste to your examiner");}catch(e){} } }; });
+  view.querySelectorAll("input[data-plc]").forEach(ch=>{ ch.onchange=()=>{ const [code,idx]=ch.dataset.plc.split("|"); plcState(code).right[idx]=ch.checked; save(); }; });
+  view.querySelectorAll("button[data-plreveal]").forEach(b=>{ b.onclick=()=>{ const code=b.dataset.plreveal; plcState(code).revealed=true; save(); logEv(PLC[code].title+" answers revealed — self-check honestly","hot"); render(); }; });
+  view.querySelectorAll("button[data-pllog]").forEach(b=>{ b.onclick=()=>{ const code=b.dataset.pllog; const res=placementScore(code); S.scores["diag:"+code]=res.pct; plcState(code).logged=true; award(50); touchStreak();
+    logEv(PLC[code].title+" logged · "+res.pct+"%"+(res.weak.length?" · repair plan issued":" · clean sweep"),"hot"); flash("Placement logged · "+res.pct+"%"); save(); render(); }; });
+}
+
+function renderDash(){
+  const ph=phase();
+  const now=new Date();
+  const dateLine=now.toLocaleDateString("en-US",{weekday:"long", month:"long", day:"numeric"});
+  const dow=now.getDay();
+  let planHTML;
+  if(ph.p==="before"){ planHTML=["Tonight, write one line: Matriculation begins after sleep.","Then close the university for the night."].map(x=>`<li class="life">${x}</li>`).join(""); }
+  else if(ph.p==="matric"){ planHTML=MATRICPLAN.map(x=>`<li class="life">${x}</li>`).join(""); }
+  else if(ph.p==="exam"){
+    const t=todayD();
+    const todays=Object.entries(FINALS).filter(([code,d])=>strip(d).getTime()===t.getTime()).map(([code])=>code);
+    planHTML=[ todays.length? "Finals today: "+todays.join(", ")+" — defense follows each final." : "See the finals schedule in the Schedule tab.",
+      "Sun Oct 18 · reading day. Sat Oct 24 · repairs and makeups.","No new material this week."].map(x=>`<li class="life">${x}</li>`).join("");
+  }
+  else if(ph.p==="post"){ planHTML=["Term I is complete. Term II unlocks Oct 25.","Winter reading and repair — see the Charter."].map(x=>`<li class="life">${x}</li>`).join(""); }
+  else planHTML=GRID[dow].map(b=> b.c? `<li>${b.c!=="ALL"?mark(b.c):""}<span class="cc2">${b.t} · ${b.c}</span>&nbsp;${b.k||""}${b.l?" — "+b.l:""}</li>` : `<li class="life">${b.t} · ${b.l}</li>`).join("");
+
+  const due=dueList(); const shown=due.slice(0,7);
+  const t1=TERMS[0]; let earned=0, possible=0;
+  t1.courses.forEach(c=>{ possible+=c.cr; const k=courseCalc(c); if(courseComplete(c,k)) earned+=c.cr; });
+  const reps=repairList();
+
+  view.innerHTML=`
+  <div class="panel">
+    <div class="todaydate">${dateLine}</div>
+    <div class="phase">${ph.label}</div>
+    <ul class="plan">${planHTML}</ul>
+    <div class="note">Every day: ${ANCHORS}.</div>
+  </div>
+  <div class="panel"><div class="ph red">Due</div>
+    ${shown.length? shown.map(n=>`<div class="next-card ${n.od?'od':''}"><span class="cc">${mark(n.cc)}${n.cc}</span><span style="flex:1">${n.tx}</span><span class="duechip">${n.od?'overdue · was '+fdate(n.due):'due '+fdate(n.due)}</span><button data-go="${n.id}">Go</button></div>`).join("") : `<div class="note">Nothing due right now. ${ph.p==="term"?"This week is clear — work ahead if you want; the calendar brings the next week to you on "+fdate(wkDate(Math.min(curWeek()+1,9),0))+".":"The term calendar takes over on Aug 9."}</div>`}
+    ${due.length>7? `<div class="note">+ ${due.length-7} more in Courses.</div>`:""}
+    <div class="note">Order is real: overdue first, then by date, with Stabilization outranking coursework — Constitution 17. Written work Saturdays · quizzes Fridays · midterms Fri ${fshort(MIDTERM_DATE)} · finals on fixed days, Oct 18–24 — see Schedule.</div>
+  </div>
+  <div class="panel"><div class="ph green">Student status</div>
+    <div class="kv">
+      <div><b>${rank()}</b><span>rank</span></div>
+      <div><b>${S.xp}</b><span>xp</span></div>
+      <div><b>${S.streak||0}</b><span>day streak</span></div>
+      <div><b>${earned}/${possible}</b><span>Term I credits</span></div>
+      <div><b style="${reps.length?'color:var(--red)':''}">${reps.length}</b><span>repairs</span></div>
+    </div>
+    <div class="bar" aria-hidden="true"><i style="width:${possible?earned/possible*100:0}%"></i></div>
+  </div>
+  <div class="panel"><div class="ph yellow">Repairs</div>
+    ${reps.length? reps.map(r=>`<div class="repair-item">${r.label} (${r.v})</div>`).join("") : `<div class="note">Empty. When a score lands under 80 it waits here — patch it, retest, cleared. Misses are fuel, not verdicts.</div>`}
+  </div>
+  <div class="panel"><div class="ph ink">Ledger</div>
+    <div id="eventlog" aria-live="polite">${S.log.map(e=>`<div><span class="t">${e.t}</span><span class="${e.cls||''}">${e.msg}</span></div>`).join("")||'<div><span class="t">--:--:--</span>System ready. First due date: Aug 8 — three placements and matriculation.</div>'}</div>
+  </div>`;
+  view.querySelectorAll("button[data-go]").forEach(b=>{ b.onclick=()=>{ openCourses[b.dataset.go]=true; store.set("roi5_open",openCourses);
+    document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x.dataset.v==="courses")); cur="courses"; render(); window.scrollTo(0,0); }; });
+}
+
+function renderSchedule(){
+  let h=`<div class="panel"><div class="ph">The week — every class, fixed times, no conflicts</div>
+  <div class="note" style="margin:0 0 12px">The same grid drives Today and every course's Meets line — one source, so it cannot contradict itself. Course blocks carry their shapes; life blocks are dim. Predictability is the point: you always know when every class starts, so you can work ahead or trade hours deliberately.</div>`;
+  GRID.forEach((day,di)=>{
+    h+=`<div class="sched-day"><h4>${DAYNAMES[di]}</h4>`;
+    day.forEach(b=>{
+      h+= b.c? `<div class="blk"><span class="bt">${b.t}</span><span class="bc">${b.c!=="ALL"?mark(b.c):""}${b.c}</span><span>${b.k||""}${b.l?" — "+b.l:""}</span></div>`
+             : `<div class="blk life"><span class="bt">${b.t}</span><span style="min-width:96px"></span><span>${b.l}</span></div>`;
+    });
+    h+=`</div>`;
+  });
+  h+=`</div>
+  <div class="panel"><div class="ph red">Exam dates — fixed, visible from day one</div>
+  <table class="tr-table"><tr><th>Course</th><th>Midterm</th><th>Final</th></tr>
+  ${TERMS[0].courses.filter(c=>c.kind!=="lab").map(c=>`<tr><td>${mark(c.code)}<b>${c.code}</b></td><td>${fdate(MIDTERM_DATE)}</td><td>${fdate(FINALS[c.code])} · ${c.finlabel||"Final exam"} + defense</td></tr>`).join("")}
+  </table>
+  <div class="note">Sun Oct 18 · reading day. Sat Oct 24 · repairs and makeups. Knowing every date from today is what buys the flexibility you wanted — front-load homework, or spend the night before an exam studying. (Constitution 9 will side-eye the all-nighter; the schedule makes it possible anyway, because the dates never sneak up on you.)</div></div>`;
+  view.innerHTML=h;
+}
+
+function renderTranscript(){
+  let rows="", credEarned=0;
+  TERMS.forEach(t=>{
+    rows+=`<tr><td colspan="4" style="font-family:'Archivo Black',sans-serif;font-size:15px;padding-top:14px">${t.name}</td></tr>`;
+    t.courses.forEach(c=>{ const k=courseCalc(c); let g="—";
+      if(!t.locked){
+        if(c.kind==="lab") g=k.letter;
+        else { const tot=gbTotal(c); g = courseComplete(c,k)? "P · gradebook "+letterOf(tot) : Math.round(tot)+"/100 pts · in progress"; }
+        if(courseComplete(c,k)) credEarned+=c.cr;
+      }
+      rows+=`<tr><td>${mark(c.code)}<b>${c.code}</b></td><td>${c.title}</td><td>${c.cr}</td><td>${g}</td></tr>`; });
+  });
+  view.innerHTML=`<div class="panel"><div class="ph">Transcript</div>
+  <table class="tr-table"><tr><th>Code</th><th>Course</th><th>Cr</th><th>Grade</th></tr>${rows}</table>
+  <div class="gpa-line">Credits earned: ${credEarned}</div>
+  <div class="note">Term I records Pass / No Pass — the MIT and Caltech first-year rule — with the A+–F letter kept in each course's 100-point gradebook. Pass = B− (80) plus the oral defense. Labs grade P on completion. Letters reach the transcript and GPA from Term II.</div></div>`;
+}
+
+function renderLibrary(){
+  let h=`<div class="panel"><div class="ph">The library — every book, every term</div>
+  <div class="note" style="margin:0 0 6px">Buy only when the term begins — Constitution 3. Everything marked FREE costs nothing: the entire quantitative spine is $0.</div>`;
+  LIBRARY.forEach(sec=>{ h+=`<div class="lib-term">${sec.t}</div><ul class="lib">`;
+    sec.items.forEach(([n,f])=>{ h+=`<li>${n}${f?'<span class="free">FREE</span>':''}</li>`; }); h+=`</ul>`; });
+  h+=`<div class="carver"><b>The Carver sequence</b> — the applied quant spine, in reading order:<br>
+  I · <b>Leveraged Trading</b> (Term II) — the Starter System, your first fully specified rules-based system.<br>
+  II · <b>Systematic Trading</b> (Term III) — the full design framework, run through pysystemtrade, his own open-source engine.<br>
+  III · <b>Advanced Futures Trading Strategies</b> (Term IV) — thirty-plus diversified futures systems. The "multiple profitable trading bots" book.<br>
+  Paired with Aronson (Term III) and López de Prado (Term IV) so every edge is proven real before it is trusted.</div></div>`;
+  view.innerHTML=h;
+}
+
+function renderCharter(){
+  view.innerHTML=`
+  <div class="panel"><div class="ph">The graduate — who this institute produces</div>
+  <div class="note" style="margin:0 0 6px">Transcribed from the clipboard mind map, July 2026. Every node has a home — nothing on that page is floating anymore.</div>
+  <ul class="grad">${GRADUATE.map(g=>`<li><span class="mk ${g[1]} ${g[0]}"></span><b>${g[2]}.</b> <span class="to">${g[3]}</span><br>${g[4]}</li>`).join("")}</ul></div>
+  <div class="panel"><div class="ph green">Honor code — the first-attempt standard</div><ol class="rulelist">${HONOR.map(r=>`<li>${r}</li>`).join("")}</ol></div>
+  <div class="panel"><div class="ph red">The academic constitution</div><ol class="rulelist">${CONSTITUTION.map(r=>`<li>${r}</li>`).join("")}</ol></div>
+  <div class="panel"><div class="ph yellow">The ten tutorial questions</div><ol class="rulelist">${TUTORIAL.map(r=>`<li>${r}</li>`).join("")}</ol>
+  <div class="note">Once a week, one piece of work gets defended out loud. The work comes first, the conversation second — the Oxford rule.</div></div>
+  <div class="panel"><div class="ph ink">Graduation artifacts</div><ol class="rulelist"><li>Quantitative research thesis — reproducible package, paper, oral defense.</li><li>Composition capstone — a 12–20 minute multi-movement work; honors: Symphony No. 1.</li><li>Visual IP exhibition — collection, owned product, documented sales process.</li><li>Defense of the integrated operator — sleep, food, strength, regulation, and the personal constitution.</li></ol></div>`;
+}
+
+function render(){
+  PROMPTS=[];
+  if(cur==="dash") renderDash();
+  else if(cur==="sched") renderSchedule();
+  else if(cur==="courses") renderCourses();
+  else if(cur==="transcript") renderTranscript();
+  else if(cur==="library") renderLibrary();
+  else renderCharter();
+}
+document.querySelectorAll("nav button").forEach(b=>{ b.onclick=()=>{ document.querySelectorAll("nav button").forEach(x=>x.classList.remove("on")); b.classList.add("on"); cur=b.dataset.v; render(); }; });
+logEv("Session start · "+todayISO());
+render();
+</script>
+</body>
+</html>
