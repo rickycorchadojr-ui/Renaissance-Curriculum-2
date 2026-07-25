@@ -166,7 +166,7 @@ button[data-log]:hover{background:var(--ink); border-color:var(--ink);}
 <header>
   <div class="logo">Renaissance Operator Institute</div>
   <div class="shapes" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><i class="s5"></i></div>
-  <div class="sub">Ricky · Honors Foundation Year · Fall 2026 · BUILD 10 · "Do what is right in front of you."</div>
+  <div class="sub">Ricky · Honors Foundation Year · Fall 2026 · BUILD 11 · "Do what is right in front of you."</div>
   <div class="key">Color means one thing everywhere: <b class="kb">blue = now</b> · <b class="kr">red = late or needs repair</b> · <b class="ky">yellow = counts for points</b> · <b class="kg">green = done</b></div>
 </header>
 
@@ -193,7 +193,7 @@ const PASS = 80;
 
 /* ================= THE ACADEMIC CALENDAR =================
    Matriculation: Jul 26 – Aug 8, 2026.  Term I: Aug 9 (Sun) – Oct 17 (Sat), ten weeks.
-   Written work due Saturdays. Quizzes in Friday's quiz section. Midterms Fri of Week 5 (Sep 11).
+   Everything lands on Saturday — written work and the quiz sections. Midterms Sat of Week 5 (Sep 12).
    Finals on fixed days in the Examination Week, Oct 18–24. */
 const T1START = new Date(2026,7,9);
 const MATRIC  = new Date(2026,6,26);
@@ -213,7 +213,7 @@ function phase(){
   if(t<=strip(EXAM_E)) return {p:"exam", label:"Examination and Repair Week · Oct 18 – 24 · see the finals schedule"};
   return {p:"post", label:"Term I complete · Term II begins Oct 25"};
 }
-function dueForWeekTask(wi,isQuiz){ return wkDate(wi, isQuiz?5:6); }
+function dueForWeekTask(wi,isQuiz){ return wkDate(wi,6); }
 function dueForItem(n){ return n===0? new Date(2026,7,8) : wkDate(n-1,6); }
 function dueChip(d,done){
   if(done) return `<span class="due">done</span>`;
@@ -232,31 +232,34 @@ const FINALS = {
  "CRE 101": new Date(2026,9,22), "HPS 101": new Date(2026,9,22),
  "AIM 101": new Date(2026,9,23), "RDG 101": new Date(2026,9,23),
 };
-const MIDTERM_DATE = wkDate(4,5); /* Fri Sep 11 */
+const MIDTERM_DATE = wkDate(4,6); /* Sat Sep 12 */
 
 /* ===== THE CLASS SCHEDULE — single source of truth.
-   Real college model: short meetings proportional to credits, ~15 in-class
-   hours a week, Mon–Fri afternoons only, placed OUTSIDE MNQ market hours
-   (RTH 6:30a–1:00p PT). Mornings and weekends carry no classes.
-   Everything not listed here is homework — you place it yourself.
-   Times are defaults: edit this block to move any class. ===== */
+   Weekend-anchored, because weekends are the non-trading days: Sunday opens
+   the week (the lectures, new material), Saturday closes it (quiz sections,
+   studio, tutorial — everything due). Weekdays carry one light block after
+   the MNQ close (RTH ends 1:00p PT). Every block avoids the market by
+   construction: Saturday it is closed, Sunday classes end before the Globex
+   open (3:00p PT), weekday classes start after 1:00p. ~16 class hours a
+   week, over half on the weekend. Times are defaults — edit this block to
+   move any class. ===== */
 const GRID = [
- [], /* Sunday — no classes */
- [ {t:"1:30–2:30p",c:"MAT 101",k:"Lecture"},
-   {t:"2:45–3:45p",c:"MUS 101",k:"Class"},
-   {t:"4:00–5:00p",c:"AIM 101",k:"Lab"} ],
- [ {t:"1:30–3:00p",c:"CSC 101",k:"Lecture"},
-   {t:"3:15–4:15p",c:"CRE 101",k:"Practicum"} ],
- [ {t:"1:30–2:30p",c:"MAT 101",k:"Problem session"},
-   {t:"2:45–3:45p",c:"MUS 101",k:"Class"},
-   {t:"4:00–5:00p",c:"HPS 101",k:"Lab"} ],
- [ {t:"1:30–3:00p",c:"CSC 101",k:"Section"},
-   {t:"3:15–4:15p",c:"CRE 101",k:"Practicum"},
-   {t:"4:30–5:15p",c:"RDG 101",k:"Lab"} ],
- [ {t:"1:30–2:30p",c:"MAT 101",k:"Quiz section"},
-   {t:"2:45–4:15p",c:"CMP 101",k:"Studio"},
-   {t:"4:30–5:00p",c:"ALL",k:"Tutorial"} ],
- [], /* Saturday — no classes; written work due by end of day */
+ [ {t:"9:00–10:00a",c:"MAT 101",k:"Lecture"},
+   {t:"10:15–11:45a",c:"CSC 101",k:"Lecture"},
+   {t:"12:30–1:30p",c:"MUS 101",k:"Class"} ],
+ [ {t:"1:30–2:30p",c:"MAT 101",k:"Problem session"} ],
+ [ {t:"1:30–2:30p",c:"CRE 101",k:"Practicum"},
+   {t:"2:45–3:45p",c:"AIM 101",k:"Lab"} ],
+ [ {t:"1:30–2:30p",c:"MUS 101",k:"Keyboard"} ],
+ [ {t:"1:30–3:00p",c:"CSC 101",k:"Section"} ],
+ [ {t:"1:30–2:30p",c:"HPS 101",k:"Lab"},
+   {t:"2:45–3:30p",c:"RDG 101",k:"Lab"} ],
+ [ {t:"9:00–10:00a",c:"MAT 101",k:"Quiz section"},
+   {t:"10:15–11:15a",c:"CSC 101",k:"Quiz section"},
+   {t:"11:30a–12:00p",c:"MUS 101",k:"Test"},
+   {t:"12:45–2:15p",c:"CMP 101",k:"Studio"},
+   {t:"2:30–3:30p",c:"CRE 101",k:"Practicum"},
+   {t:"3:45–4:15p",c:"ALL",k:"Tutorial"} ],
 ];
 const DAYNAMES=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 function meetsLine(code){
@@ -266,16 +269,16 @@ function meetsLine(code){
 }
 /* What each meeting kind is FOR — the standing definition shown in Schedule */
 const KINDDESC = {
- "MAT 101|Lecture":"work the week's reading","MAT 101|Problem session":"the week's problem set","MAT 101|Quiz section":"the weekly quiz, cumulative",
- "CSC 101|Lecture":"the week's CS50P lecture","CSC 101|Section":"the week's problem set + build",
- "MUS 101|Class":"theory chapter + written work (keyboard practice is homework)",
+ "MAT 101|Lecture":"the week's reading, worked","MAT 101|Problem session":"the week's problem set","MAT 101|Quiz section":"the weekly quiz, cumulative",
+ "CSC 101|Lecture":"the week's CS50P lecture","CSC 101|Section":"the week's problem set + build","CSC 101|Quiz section":"concept check — the build, examined",
+ "MUS 101|Class":"theory chapter + written work","MUS 101|Keyboard":"keyboard + ear (daily practice is homework)","MUS 101|Test":"the weekly test",
  "CMP 101|Studio":"the current miniature",
  "CRE 101|Practicum":"offers, outreach, publishing",
  "HPS 101|Lab":"the week's logs and protocols",
  "AIM 101|Lab":"prompt library + verification work",
  "RDG 101|Lab":"the book brief + Anki deck",
  "ALL|Tutorial":"defend one piece of work — the ten questions",
-};
+}
 /* What each meeting covers THIS WEEK — resolved from the course data, so the
    schedule always points at real coursework. */
 function agendaFor(code,kind){
@@ -286,8 +289,13 @@ function agendaFor(code,kind){
     if(kind==="Problem session") return "Problem set: "+d.sec;
     return d.noquiz? "Review week — rework the error log" : (d.mid? "MIDTERM — 40 questions, 60 minutes" : "Weekly quiz — 20 questions, cumulative"); }
   if(code==="CSC 101"){ const d=CSCW[w];
-    return kind==="Lecture"? d.lec : d.pset+" + build: "+d.b; }
-  if(code==="MUS 101"){ const d=MUSW[w]; return d.t+" — "+d.w; }
+    if(kind==="Lecture") return d.lec;
+    if(kind==="Section") return d.pset+" + build: "+d.b;
+    return "Concept check — "+d.b+", examined"; }
+  if(code==="MUS 101"){ const d=MUSW[w];
+    if(kind==="Class") return d.t+" — "+d.w;
+    if(kind==="Keyboard") return "Keyboard: "+d.kb;
+    return d.q? "Test: "+d.q : "Jury preparation"; }
   const c=TERMS[0].courses.find(x=>x.code===code); if(!c||!c.items) return "";
   const idx=c.items.findIndex((it,i)=> typeof it[2]==="number" && !S.checks[code+"#c"+i]);
   if(idx>=0) return "Next: "+c.items[idx][1];
@@ -672,7 +680,7 @@ function courseWeeks(c){
       {type:"chk", code:W(n)+"-PS01", tx:"Do "+w.ps+". Full attempt before checking any answers — they are in your book.", due:dueForWeekTask(i,false)},
       {type:"chk", code:W(n)+"-EX01", tx:"Write 300–500 words: "+w.ex, due:dueForWeekTask(i,false)},
     ];
-    if(!w.noquiz) tasks.push({type:"quiz", code:W(n)+(w.mid?"-MID":"-Q01"), tx:(w.mid?"Midterm — Friday, "+fshort(MIDTERM_DATE)+". 40 questions, 60 minutes, everything so far. Worth 20 gradebook points.":"Quiz — Friday's quiz section. 20 questions, 30 minutes, everything so far."), qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(w.mid?matMidPrompt():matQuizPrompt(n,w.end,w.sec,w.t))});
+    if(!w.noquiz) tasks.push({type:"quiz", code:W(n)+(w.mid?"-MID":"-Q01"), tx:(w.mid?"Midterm — Saturday, "+fshort(MIDTERM_DATE)+". 40 questions, 60 minutes, everything so far. Worth 20 gradebook points.":"Quiz — Saturday's quiz section. 20 questions, 30 minutes, everything so far."), qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(w.mid?matMidPrompt():matQuizPrompt(n,w.end,w.sec,w.t))});
     weeks.push({title:"Week "+n, sub:w.t, wi:i, tasks});});
   } else if(c.kind==="csc"){
     CSCW.forEach((w,i)=>{ const n=i+1; weeks.push({title:"Week "+n, sub:w.lec.replace(/Lecture \d+ — /,""), wi:i, tasks:[
@@ -680,7 +688,7 @@ function courseWeeks(c){
       {type:"chk", code:W(n)+"-PS01", tx:"Do "+w.pset+" — the real one on Harvard's site. Full attempt before any help.", due:dueForWeekTask(i,false)},
       {type:"chk", code:W(n)+"-B01", tx:"Build "+w.b+".", due:dueForWeekTask(i,false)},
       {type:"chk", code:W(n)+"-EX01", tx:"Code journal, 150 words: what broke, why, and the fix.", due:dueForWeekTask(i,false)},
-      {type:"quiz", code:W(n)+"-Q01", tx:"Concept check — Friday. Explain your build line by line, examined.", qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(cscCheckPrompt(w.b))},
+      {type:"quiz", code:W(n)+"-Q01", tx:"Concept check — Saturday. Explain your build line by line, examined.", qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(cscCheckPrompt(w.b))},
     ]});});
   } else if(c.kind==="mus"){
     MUSW.forEach((w,i)=>{ const n=i+1; const tasks=[
@@ -688,7 +696,7 @@ function courseWeeks(c){
       {type:"chk", code:W(n)+"-W01", tx:"Do "+w.w+".", due:dueForWeekTask(i,false)},
       {type:"chk", code:W(n)+"-KB01", tx:"Keyboard: "+w.kb+".", due:dueForWeekTask(i,false)},
     ];
-    if(w.q) tasks.push({type:"quiz", code:W(n)+"-Q01", tx:"Test — Friday. "+w.q+".", qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(musTestPrompt(w.t))});
+    if(w.q) tasks.push({type:"quiz", code:W(n)+"-Q01", tx:"Test — Saturday. "+w.q+".", qkey:c.code+"#q"+n, due:dueForWeekTask(i,true), p:P(musTestPrompt(w.t))});
     weeks.push({title:"Week "+n, sub:w.t, wi:i, tasks});});
   } else if(c.items){
     weeks.push({title:"The work", sub:"", wi:null, tasks:c.items.map(it=>{
@@ -802,7 +810,7 @@ function gradingDetails(){
   <b>80 = B− = pass.</b> Same gate as always. Under 80 on anything → Repairs: patch it, retest, cleared. Term I records simply <b>P</b> on the transcript — MIT's first-year rule — with your letter kept in the gradebook.</div></details>`;
 }
 function spineHTML(c){ return `<div class="spine">The book${c.spine.length>1?"s":""}: ${c.spine.map(s=>`<b>${s[0]}</b>${s[1]===true?'<span class="free">FREE</span>':''}`).join(" · ")}</div>`; }
-function meetsHTML(c){ const m=meetsLine(c.code); return m? `<div class="meets"><b>Meets:</b> ${m}. Everything else is homework — written work due Saturdays.</div>` : ""; }
+function meetsHTML(c){ const m=meetsLine(c.code); return m? `<div class="meets"><b>Meets:</b> ${m}. Everything else is homework — everything due Saturday.</div>` : ""; }
 function quizCell(qkey, sc, diag){
   const stamp = sc==null? "" : diag? `<span class="stamp d">logged ${sc}${sc<PASS?" — see your repair plan":""}</span>` : sc>=PASS? `<span class="stamp p">Cleared ✓ ${sc}</span>` : `<span class="stamp r">Needs repair · ${sc}</span>`;
   return `<div class="qrow"><input type="number" min="0" max="100" placeholder="score" data-q="${qkey}" aria-label="score"><button data-log="${qkey}" data-diag="${diag?1:0}">Log</button>${stamp}</div>`;
@@ -874,14 +882,14 @@ function syllabusHTML(c){
   courseWeeks(c).forEach(w=>{
     if(w.wi==null) return;
     const hwWk=HW_WEEKS.includes(w.wi+1) && (c.kind==="mat"||c.kind==="csc"||c.kind==="mus");
-    cal+=`<li>Week ${w.wi+1} · ${fshort(wkDate(w.wi,0))}–${fshort(wkDate(w.wi,6))} · ${w.sub}${hwWk?' · <span class="hwmark">HW collected Sat</span>':''}${w.wi===4?' · <span class="hwmark">Midterm Fri</span>':''}</li>`;
+    cal+=`<li>Week ${w.wi+1} · ${fshort(wkDate(w.wi,0))}–${fshort(wkDate(w.wi,6))} · ${w.sub}${hwWk?' · <span class="hwmark">HW collected Sat</span>':''}${w.wi===4?' · <span class="hwmark">Midterm Sat</span>':''}</li>`;
   });
   if(c.items) cal = c.items.map(it=> typeof it[2]==="number"? `<li>${it[0]} · due ${fshort(dueForItem(it[2]))}</li>` : `<li>${it[0]} · ${it[2]==="w"?"weekly":it[2]==="m"?"monthly":"standing"}</li>`).join("");
   return `<div class="syl">
   <h3>${CO} — ${c.title}</h3>
   <div class="note" style="margin-top:2px">Renaissance Operator Institute · Term I, Fall 2026 · ${c.cr} credits</div>
   <h4>Organisation</h4>
-  <div style="font-size:13px">Course head: Ricky. Examiner of record: your AI, per AIM 101 and the Honor Code. Tutorial: Fri 4:30p.</div>
+  <div style="font-size:13px">Course head: Ricky. Examiner of record: your AI, per AIM 101 and the Honor Code. Tutorial: Sat 3:45p.</div>
   <h4>Meets</h4>
   <div style="font-size:13px">${meetsLine(CO)||"No class meetings — checklist work on your own schedule."}</div>
   <h4>Textbook</h4>
@@ -1026,12 +1034,12 @@ function renderDash(){
     <div class="todaydate">${dateLine}</div>
     <div class="phase">${ph.label}</div>
     <ul class="plan">${planHTML}</ul>
-    <div class="note">Class time is ~15 hours a week, 1:30–5:15 PM, outside market hours. Everything else is homework you place yourself. Standing homework: Anki 20 min daily (RDG 101) · keyboard practice 60 min, six days (MUS 101).</div>
+    <div class="note">Class time is ~16 hours a week, over half on the weekend — your non-trading days. Weekdays carry one light after-market block. Everything else is homework you place yourself. Standing homework: Anki 20 min daily (RDG 101) · keyboard practice 60 min, six days (MUS 101).</div>
   </div>
   <div class="panel"><div class="ph">Due</div>
     ${shown.length? shown.map(n=>`<div class="next-card ${n.od?'od':''}"><span class="cc">${n.cc}</span><span style="flex:1">${n.tx}</span><span class="duechip">${n.od?'overdue · was '+fdate(n.due):'due '+fdate(n.due)}</span><button data-go="${n.id}">Go</button></div>`).join("") : `<div class="note">Nothing due right now. ${ph.p==="term"?"This week is clear — work ahead if you want; the calendar brings the next week to you on "+fdate(wkDate(Math.min(curWeek()+1,9),0))+".":"The term calendar takes over on Aug 9."}</div>`}
     ${due.length>7? `<div class="note">+ ${due.length-7} more in Courses.</div>`:""}
-    <div class="note">Order is real: overdue first, then by date, with Stabilization outranking coursework — Constitution 17. Written work Saturdays · quizzes in Friday's sections · midterms Fri ${fshort(MIDTERM_DATE)} · finals on fixed days, Oct 18–24 — see Schedule.</div>
+    <div class="note">Order is real: overdue first, then by date, with Stabilization outranking coursework — Constitution 17. Everything due Saturdays — written work + quiz sections · midterm Sat ${fshort(MIDTERM_DATE)} · finals on fixed days, Oct 18–24 — see Schedule.</div>
   </div>
   <div class="panel"><div class="ph">Student status</div>
     <div class="kv">
@@ -1056,8 +1064,8 @@ function renderDash(){
 function renderSchedule(){
   const hours = GRID.flat().length;
   let h=`<div class="panel"><div class="ph">Class schedule — Term I</div>
-  <div class="note" style="margin:0 0 12px">The real college model: about <b>15 hours of class a week</b>, Monday–Friday, 1:30–5:15 PM — placed outside MNQ market hours (6:30a–1:00p PT). Mornings and weekends carry no classes; everything not on this grid is homework you place yourself, with written work due Saturdays. Each meeting below states what it exists for, and Today resolves it to the current week's actual assignment. One grid drives Today and every course's Meets line, so the schedule cannot contradict itself. Times are defaults — edit the GRID block at the top of the file to move any class.</div>`;
-  [1,2,3,4,5].forEach(di=>{
+  <div class="note" style="margin:0 0 12px">Weekend-anchored — your non-trading days carry the load. <b>Sunday opens the week</b> with the lectures; weekdays carry one light block after the MNQ close (RTH ends 1:00p PT); <b>Saturday closes the week</b> — quiz sections, studio, tutorial, everything due. About <b>16 class hours</b>, over half on the weekend, and every block avoids the market by construction: Saturday it is closed, Sunday classes end before the Globex open (3:00p PT), weekday classes start after 1:00p. Everything not on this grid is homework you place yourself. Each meeting below states what it exists for, and Today resolves it to the current week's actual assignment. One grid drives Today and every course's Meets line, so the schedule cannot contradict itself. Times are defaults — edit the GRID block at the top of the file to move any class.</div>`;
+  [0,1,2,3,4,5,6].forEach(di=>{
     h+=`<div class="sched-day"><h4>${DAYNAMES[di]}</h4>`;
     GRID[di].forEach(b=>{
       const purpose = KINDDESC[(b.c)+"|"+(b.k)] || "";
@@ -1065,13 +1073,12 @@ function renderSchedule(){
     });
     h+=`</div>`;
   });
-  h+=`<div class="sched-day"><h4>Saturday + Sunday</h4><div class="blk"><span class="bt">—</span><span class="bc"></span><span class="bp">No classes. Written work due Saturday; otherwise the weekend is yours.</span></div></div>
-  </div>
+  h+=`</div>
   <div class="panel"><div class="ph">Exam dates — fixed, visible from day one</div>
   <table class="tr-table"><tr><th>Course</th><th>Midterm</th><th>Final</th></tr>
   ${TERMS[0].courses.filter(c=>c.kind!=="lab").map(c=>`<tr><td><b>${c.code}</b></td><td>${fdate(MIDTERM_DATE)}</td><td>${fdate(FINALS[c.code])} · ${c.finlabel||"Final exam"} + defense</td></tr>`).join("")}
   </table>
-  <div class="note">Sun Oct 18 · reading day. Sat Oct 24 · repairs and makeups. Every date is known from today — front-load homework or cram before an exam; the dates never sneak up on you.</div></div>`;
+  <div class="note">Sun Oct 18 · reading day. Weekday finals run 1:30p, after the close. Sat Oct 24 · repairs and makeups. Every date is known from today — front-load homework or cram before an exam; the dates never sneak up on you.</div></div>`;
   view.innerHTML=h;
 }
 
